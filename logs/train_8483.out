@@ -1,0 +1,56 @@
+===== Point2Roof training job =====
+Date: Mon May 18 21:31:40 CST 2026
+Host: geog-hpc-compute1
+Project: /geogfs1/home/u3666068/Point2Roof-master
+Data: /geogfs1/groups/hkurs/u3666068mgh/Tallin/train_list_subset_4096.txt
+Raw root: /geogfs1/groups/hkurs/u3666068mgh/Tallin
+Processed root: /geogfs1/groups/hkurs/u3666068mgh/Tallin/bwformer_trainval_256
+Subset list: /geogfs1/groups/hkurs/u3666068mgh/Tallin/train_list_subset_4096.txt
+Config: model_cfg.yaml
+Experiment tag: tallin_subset_4096
+SLURM_JOB_ID: 8483
+CUDA_VISIBLE_DEVICES before train.py: 3
+Mon May 18 21:31:40 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 PCIe               On  |   00000000:03:00.0 Off |                    0 |
+| N/A   36C    P0             51W /  350W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 PCIe               On  |   00000000:04:00.0 Off |                    0 |
+| N/A   34C    P0             47W /  350W |       4MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA H100 PCIe               On  |   00000000:45:00.0 Off |                    0 |
+| N/A   34C    P0             51W /  350W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA H100 PCIe               On  |   00000000:83:00.0 Off |                    0 |
+| N/A   67C    P0            349W /  350W |   81064MiB /  81559MiB |    100%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   4  NVIDIA H100 PCIe               On  |   00000000:C3:00.0 Off |                    0 |
+| N/A   31C    P0             48W /  350W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   5  NVIDIA H100 PCIe               On  |   00000000:C4:00.0 Off |                    0 |
+| N/A   32C    P0             48W /  350W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    3   N/A  N/A         1272904      C   python                                44394MiB |
+|    3   N/A  N/A         2594294      C   python                                36656MiB |
++-----------------------------------------------------------------------------------------+
+Python 3.9.25
+Command: python -u train.py --cfg_file model_cfg.yaml --data_path /geogfs1/groups/hkurs/u3666068mgh/Tallin/train_list_subset_4096.txt --extra_tag tallin_subset_4096 --gpu 0
+Training finished at Tue May 19 11:29:43 CST 2026

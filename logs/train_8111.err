@@ -1,0 +1,9 @@
+2026-05-12 18:03:53,874   INFO  ==> 实验标签: tallin_run
+2026-05-12 18:03:53,874   INFO  ==> 正在创建数据加载器...
+2026-05-12 18:03:53,874  ERROR  ==> 数据加载失败: build_dataloader() got an unexpected keyword argument 'drop_last'
+Traceback (most recent call last):
+  File "/geogfs1/home/u3666068/Point2Roof-master/train.py", line 137, in <module>
+    main()
+  File "/geogfs1/home/u3666068/Point2Roof-master/train.py", line 74, in main
+    train_loader = build_dataloader(
+TypeError: build_dataloader() got an unexpected keyword argument 'drop_last'

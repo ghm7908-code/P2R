@@ -1,0 +1,103 @@
+2026-05-18 21:02:13,994   INFO  ==> 实验标签: tallin_subset_4096
+2026-05-18 21:02:13,995   INFO  ==> 正在创建数据加载器...
+2026-05-18 21:02:13,995   INFO  Resolved dataset split path: /geogfs1/groups/hkurs/u3666068mgh/Tallin/train_list_subset_4096.txt
+2026-05-18 21:02:55,428   INFO  Dataset path: /geogfs1/groups/hkurs/u3666068mgh/Tallin/train_list_subset_4096.txt
+2026-05-18 21:02:55,428   INFO  Total samples: 4096
+2026-05-18 21:02:55,429   INFO  ==> 成功加载训练样本: 4096
+2026-05-18 21:02:55,429   INFO  ==> 输入特征: xyz (通道数: 3)
+2026-05-18 21:03:03,878   INFO  ==> 开始训练: 90 轮
+2026-05-18 21:03:03,879   INFO  ============================================================
+2026-05-18 21:03:03,879   INFO  开始训练，总轮数: 90
+2026-05-18 21:03:03,879   INFO  起始轮数: 0
+2026-05-18 21:03:03,879   INFO  检查点保存目录: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt
+2026-05-18 21:03:03,879   INFO  ============================================================
+epochs:   0%|          | 0/90 [00:00<?, ?it/s]2026-05-18 21:03:03,881   INFO  Epoch 1: 启用边处理网络
+
+train:   0%|          | 0/64 [00:00<?, ?it/s][A
+train:   2%|▏         | 1/64 [00:12<13:33, 12.91s/it][A
+train:   2%|▏         | 1/64 [00:12<13:33, 12.91s/it, loss=8.0359, lr=0.001000][Aepochs:   0%|          | 0/90 [00:13<?, ?it/s, pts_acc=0.517, edge_acc=0.333, pts_cls_loss=0.764, pts_offset_loss=1.75, pts_loss=2.52, refine_offset_loss=1.82, refine_loss=1.82, edge_cls_loss=3.7, edge_loss=3.7, loss=8.04, lr=0.001]epochs:   0%|          | 0/90 [00:13<?, ?it/s, pts_acc=0.517, edge_acc=0.333, pts_cls_loss=0.764, pts_offset_loss=1.75, pts_loss=2.52, refine_offset_loss=1.82, refine_loss=1.82, edge_cls_loss=3.7, edge_loss=3.7, loss=8.04, lr=0.001]2026-05-18 21:03:17,263   INFO  Epoch iter 0/64: loss=8.0359, lr=0.001000
+
+train:   3%|▎         | 2/64 [00:15<07:11,  6.96s/it, loss=8.0359, lr=0.001000][A
+train:   3%|▎         | 2/64 [00:15<07:11,  6.96s/it, loss=8.6081, lr=0.001000][Aepochs:   0%|          | 0/90 [00:16<?, ?it/s, pts_acc=0.535, edge_acc=0.4, pts_cls_loss=0.75, pts_offset_loss=1.78, pts_loss=2.53, refine_offset_loss=1.79, refine_loss=1.79, edge_cls_loss=4.29, edge_loss=4.29, loss=8.61, lr=0.001] epochs:   0%|          | 0/90 [00:16<?, ?it/s, pts_acc=0.535, edge_acc=0.4, pts_cls_loss=0.75, pts_offset_loss=1.78, pts_loss=2.53, refine_offset_loss=1.79, refine_loss=1.79, edge_cls_loss=4.29, edge_loss=4.29, loss=8.61, lr=0.001]
+train:   5%|▍         | 3/64 [00:18<05:08,  5.06s/it, loss=8.6081, lr=0.001000][A
+train:   5%|▍         | 3/64 [00:18<05:08,  5.06s/it, loss=8.7129, lr=0.001000][Aepochs:   0%|          | 0/90 [00:18<?, ?it/s, pts_acc=0.523, edge_acc=0.625, pts_cls_loss=0.742, pts_offset_loss=1.67, pts_loss=2.41, refine_offset_loss=1.77, refine_loss=1.77, edge_cls_loss=4.54, edge_loss=4.54, loss=8.71, lr=0.001]epochs:   0%|          | 0/90 [00:18<?, ?it/s, pts_acc=0.523, edge_acc=0.625, pts_cls_loss=0.742, pts_offset_loss=1.67, pts_loss=2.41, refine_offset_loss=1.77, refine_loss=1.77, edge_cls_loss=4.54, edge_loss=4.54, loss=8.71, lr=0.001]
+train:   6%|▋         | 4/64 [00:21<04:09,  4.16s/it, loss=8.7129, lr=0.001000][A
+train:   6%|▋         | 4/64 [00:21<04:09,  4.16s/it, loss=8.6321, lr=0.001000][Aepochs:   0%|          | 0/90 [00:21<?, ?it/s, pts_acc=0.526, edge_acc=0.857, pts_cls_loss=0.75, pts_offset_loss=1.63, pts_loss=2.38, refine_offset_loss=1.84, refine_loss=1.84, edge_cls_loss=4.41, edge_loss=4.41, loss=8.63, lr=0.001] epochs:   0%|          | 0/90 [00:21<?, ?it/s, pts_acc=0.526, edge_acc=0.857, pts_cls_loss=0.75, pts_offset_loss=1.63, pts_loss=2.38, refine_offset_loss=1.84, refine_loss=1.84, edge_cls_loss=4.41, edge_loss=4.41, loss=8.63, lr=0.001]
+train:   8%|▊         | 5/64 [00:24<03:37,  3.69s/it, loss=8.6321, lr=0.001000][A
+train:   8%|▊         | 5/64 [00:24<03:37,  3.69s/it, loss=10.6280, lr=0.001000][Aepochs:   0%|          | 0/90 [00:24<?, ?it/s, pts_acc=0.545, edge_acc=0.5, pts_cls_loss=0.75, pts_offset_loss=1.51, pts_loss=2.26, refine_offset_loss=1.52, refine_loss=1.52, edge_cls_loss=6.84, edge_loss=6.84, loss=10.6, lr=0.001]  epochs:   0%|          | 0/90 [00:24<?, ?it/s, pts_acc=0.545, edge_acc=0.5, pts_cls_loss=0.75, pts_offset_loss=1.51, pts_loss=2.26, refine_offset_loss=1.52, refine_loss=1.52, edge_cls_loss=6.84, edge_loss=6.84, loss=10.6, lr=0.001]
+train:   9%|▉         | 6/64 [00:27<03:20,  3.45s/it, loss=10.6280, lr=0.001000][A
+train:   9%|▉         | 6/64 [00:27<03:20,  3.45s/it, loss=6.1475, lr=0.001000] [Aepochs:   0%|          | 0/90 [00:27<?, ?it/s, pts_acc=0.532, edge_acc=0.533, pts_cls_loss=0.736, pts_offset_loss=1.49, pts_loss=2.23, refine_offset_loss=1.57, refine_loss=1.57, edge_cls_loss=2.35, edge_loss=2.35, loss=6.15, lr=0.001]epochs:   0%|          | 0/90 [00:27<?, ?it/s, pts_acc=0.532, edge_acc=0.533, pts_cls_loss=0.736, pts_offset_loss=1.49, pts_loss=2.23, refine_offset_loss=1.57, refine_loss=1.57, edge_cls_loss=2.35, edge_loss=2.35, loss=6.15, lr=0.001]
+train:  11%|█         | 7/64 [00:30<03:08,  3.31s/it, loss=6.1475, lr=0.001000][A
+train:  11%|█         | 7/64 [00:30<03:08,  3.31s/it, loss=7.5061, lr=0.001000][Aepochs:   0%|          | 0/90 [00:30<?, ?it/s, pts_acc=0.55, edge_acc=0.571, pts_cls_loss=0.737, pts_offset_loss=1.51, pts_loss=2.25, refine_offset_loss=1.77, refine_loss=1.77, edge_cls_loss=3.49, edge_loss=3.49, loss=7.51, lr=0.001] epochs:   0%|          | 0/90 [00:30<?, ?it/s, pts_acc=0.55, edge_acc=0.571, pts_cls_loss=0.737, pts_offset_loss=1.51, pts_loss=2.25, refine_offset_loss=1.77, refine_loss=1.77, edge_cls_loss=3.49, edge_loss=3.49, loss=7.51, lr=0.001]
+train:  12%|█▎        | 8/64 [00:33<03:00,  3.22s/it, loss=7.5061, lr=0.001000][A
+train:  12%|█▎        | 8/64 [00:33<03:00,  3.22s/it, loss=7.7641, lr=0.001000][Aepochs:   0%|          | 0/90 [00:33<?, ?it/s, pts_acc=0.555, edge_acc=0.444, pts_cls_loss=0.731, pts_offset_loss=1.41, pts_loss=2.14, refine_offset_loss=1.56, refine_loss=1.56, edge_cls_loss=4.06, edge_loss=4.06, loss=7.76, lr=0.001]epochs:   0%|          | 0/90 [00:33<?, ?it/s, pts_acc=0.555, edge_acc=0.444, pts_cls_loss=0.731, pts_offset_loss=1.41, pts_loss=2.14, refine_offset_loss=1.56, refine_loss=1.56, edge_cls_loss=4.06, edge_loss=4.06, loss=7.76, lr=0.001]
+train:  14%|█▍        | 9/64 [00:36<02:53,  3.16s/it, loss=7.7641, lr=0.001000][A
+train:  14%|█▍        | 9/64 [00:36<02:53,  3.16s/it, loss=7.9641, lr=0.001000][Aepochs:   0%|          | 0/90 [00:36<?, ?it/s, pts_acc=0.551, edge_acc=0.4, pts_cls_loss=0.72, pts_offset_loss=1.39, pts_loss=2.11, refine_offset_loss=1.71, refine_loss=1.71, edge_cls_loss=4.15, edge_loss=4.15, loss=7.96, lr=0.001]   epochs:   0%|          | 0/90 [00:36<?, ?it/s, pts_acc=0.551, edge_acc=0.4, pts_cls_loss=0.72, pts_offset_loss=1.39, pts_loss=2.11, refine_offset_loss=1.71, refine_loss=1.71, edge_cls_loss=4.15, edge_loss=4.15, loss=7.96, lr=0.001]
+train:  16%|█▌        | 10/64 [00:39<02:48,  3.13s/it, loss=7.9641, lr=0.001000][A
+train:  16%|█▌        | 10/64 [00:39<02:48,  3.13s/it, loss=10.5705, lr=0.001000][Aepochs:   0%|          | 0/90 [00:39<?, ?it/s, pts_acc=0.531, edge_acc=0, pts_cls_loss=0.716, pts_offset_loss=1.34, pts_loss=2.05, refine_offset_loss=1.51, refine_loss=1.51, edge_cls_loss=7, edge_loss=7, loss=10.6, lr=0.001]       epochs:   0%|          | 0/90 [00:39<?, ?it/s, pts_acc=0.531, edge_acc=0, pts_cls_loss=0.716, pts_offset_loss=1.34, pts_loss=2.05, refine_offset_loss=1.51, refine_loss=1.51, edge_cls_loss=7, edge_loss=7, loss=10.6, lr=0.001]
+train:  17%|█▋        | 11/64 [00:42<02:45,  3.12s/it, loss=10.5705, lr=0.001000][A
+train:  17%|█▋        | 11/64 [00:42<02:45,  3.12s/it, loss=7.8412, lr=0.001000] [Aepochs:   0%|          | 0/90 [00:42<?, ?it/s, pts_acc=0.552, edge_acc=1, pts_cls_loss=0.717, pts_offset_loss=1.3, pts_loss=2.01, refine_offset_loss=1.64, refine_loss=1.64, edge_cls_loss=4.19, edge_loss=4.19, loss=7.84, lr=0.001]epochs:   0%|          | 0/90 [00:42<?, ?it/s, pts_acc=0.552, edge_acc=1, pts_cls_loss=0.717, pts_offset_loss=1.3, pts_loss=2.01, refine_offset_loss=1.64, refine_loss=1.64, edge_cls_loss=4.19, edge_loss=4.19, loss=7.84, lr=0.001]
+train:  19%|█▉        | 12/64 [00:45<02:43,  3.15s/it, loss=7.8412, lr=0.001000][A
+train:  19%|█▉        | 12/64 [00:45<02:43,  3.15s/it, loss=7.3974, lr=0.001000][Aepochs:   0%|          | 0/90 [00:46<?, ?it/s, pts_acc=0.556, edge_acc=0.833, pts_cls_loss=0.713, pts_offset_loss=1.28, pts_loss=1.99, refine_offset_loss=1.57, refine_loss=1.57, edge_cls_loss=3.84, edge_loss=3.84, loss=7.4, lr=0.001]epochs:   0%|          | 0/90 [00:46<?, ?it/s, pts_acc=0.556, edge_acc=0.833, pts_cls_loss=0.713, pts_offset_loss=1.28, pts_loss=1.99, refine_offset_loss=1.57, refine_loss=1.57, edge_cls_loss=3.84, edge_loss=3.84, loss=7.4, lr=0.001]
+train:  20%|██        | 13/64 [00:48<02:42,  3.18s/it, loss=7.3974, lr=0.001000][A
+train:  20%|██        | 13/64 [00:48<02:42,  3.18s/it, loss=4.8666, lr=0.001000][Aepochs:   0%|          | 0/90 [00:49<?, ?it/s, pts_acc=0.547, edge_acc=1, pts_cls_loss=0.705, pts_offset_loss=1.24, pts_loss=1.95, refine_offset_loss=1.47, refine_loss=1.47, edge_cls_loss=1.45, edge_loss=1.45, loss=4.87, lr=0.001]   epochs:   0%|          | 0/90 [00:49<?, ?it/s, pts_acc=0.547, edge_acc=1, pts_cls_loss=0.705, pts_offset_loss=1.24, pts_loss=1.95, refine_offset_loss=1.47, refine_loss=1.47, edge_cls_loss=1.45, edge_loss=1.45, loss=4.87, lr=0.001]
+train:  22%|██▏       | 14/64 [00:52<02:42,  3.25s/it, loss=4.8666, lr=0.001000][A
+train:  22%|██▏       | 14/64 [00:52<02:42,  3.25s/it, loss=4.7204, lr=0.001000][Aepochs:   0%|          | 0/90 [00:52<?, ?it/s, pts_acc=0.569, edge_acc=1, pts_cls_loss=0.697, pts_offset_loss=1.26, pts_loss=1.96, refine_offset_loss=1.46, refine_loss=1.46, edge_cls_loss=1.31, edge_loss=1.31, loss=4.72, lr=0.001]epochs:   0%|          | 0/90 [00:52<?, ?it/s, pts_acc=0.569, edge_acc=1, pts_cls_loss=0.697, pts_offset_loss=1.26, pts_loss=1.96, refine_offset_loss=1.46, refine_loss=1.46, edge_cls_loss=1.31, edge_loss=1.31, loss=4.72, lr=0.001]
+train:  23%|██▎       | 15/64 [00:55<02:43,  3.33s/it, loss=4.7204, lr=0.001000][A
+train:  23%|██▎       | 15/64 [00:55<02:43,  3.33s/it, loss=4.6402, lr=0.001000][Aepochs:   0%|          | 0/90 [00:56<?, ?it/s, pts_acc=0.546, edge_acc=0.667, pts_cls_loss=0.698, pts_offset_loss=1.18, pts_loss=1.88, refine_offset_loss=1.34, refine_loss=1.34, edge_cls_loss=1.42, edge_loss=1.42, loss=4.64, lr=0.001]epochs:   0%|          | 0/90 [00:56<?, ?it/s, pts_acc=0.546, edge_acc=0.667, pts_cls_loss=0.698, pts_offset_loss=1.18, pts_loss=1.88, refine_offset_loss=1.34, refine_loss=1.34, edge_cls_loss=1.42, edge_loss=1.42, loss=4.64, lr=0.001]
+train:  25%|██▌       | 16/64 [00:59<02:44,  3.42s/it, loss=4.6402, lr=0.001000][A
+train:  25%|██▌       | 16/64 [00:59<02:44,  3.42s/it, loss=7.8376, lr=0.001000][Aepochs:   0%|          | 0/90 [00:59<?, ?it/s, pts_acc=0.565, edge_acc=0.6, pts_cls_loss=0.693, pts_offset_loss=1.19, pts_loss=1.88, refine_offset_loss=1.33, refine_loss=1.33, edge_cls_loss=4.62, edge_loss=4.62, loss=7.84, lr=0.001]  epochs:   0%|          | 0/90 [00:59<?, ?it/s, pts_acc=0.565, edge_acc=0.6, pts_cls_loss=0.693, pts_offset_loss=1.19, pts_loss=1.88, refine_offset_loss=1.33, refine_loss=1.33, edge_cls_loss=4.62, edge_loss=4.62, loss=7.84, lr=0.001]
+train:  27%|██▋       | 17/64 [01:02<02:42,  3.46s/it, loss=7.8376, lr=0.001000][A
+train:  27%|██▋       | 17/64 [01:02<02:42,  3.46s/it, loss=7.8477, lr=0.001000][Aepochs:   0%|          | 0/90 [01:03<?, ?it/s, pts_acc=0.57, edge_acc=0.667, pts_cls_loss=0.689, pts_offset_loss=1.16, pts_loss=1.85, refine_offset_loss=1.47, refine_loss=1.47, edge_cls_loss=4.53, edge_loss=4.53, loss=7.85, lr=0.001]epochs:   0%|          | 0/90 [01:03<?, ?it/s, pts_acc=0.57, edge_acc=0.667, pts_cls_loss=0.689, pts_offset_loss=1.16, pts_loss=1.85, refine_offset_loss=1.47, refine_loss=1.47, edge_cls_loss=4.53, edge_loss=4.53, loss=7.85, lr=0.001]
+train:  28%|██▊       | 18/64 [01:06<02:39,  3.47s/it, loss=7.8477, lr=0.001000][A
+train:  28%|██▊       | 18/64 [01:06<02:39,  3.47s/it, loss=3.7714, lr=0.001000][Aepochs:   0%|          | 0/90 [01:06<?, ?it/s, pts_acc=0.574, edge_acc=0, pts_cls_loss=0.684, pts_offset_loss=1.19, pts_loss=1.88, refine_offset_loss=1.25, refine_loss=1.25, edge_cls_loss=0.644, edge_loss=0.644, loss=3.77, lr=0.001] epochs:   0%|          | 0/90 [01:06<?, ?it/s, pts_acc=0.574, edge_acc=0, pts_cls_loss=0.684, pts_offset_loss=1.19, pts_loss=1.88, refine_offset_loss=1.25, refine_loss=1.25, edge_cls_loss=0.644, edge_loss=0.644, loss=3.77, lr=0.001]
+train:  30%|██▉       | 19/64 [01:09<02:37,  3.49s/it, loss=3.7714, lr=0.001000][A
+train:  30%|██▉       | 19/64 [01:09<02:37,  3.49s/it, loss=4.0754, lr=0.001000][Aepochs:   0%|          | 0/90 [01:10<?, ?it/s, pts_acc=0.574, edge_acc=0, pts_cls_loss=0.683, pts_offset_loss=1.15, pts_loss=1.84, refine_offset_loss=1.35, refine_loss=1.35, edge_cls_loss=0.891, edge_loss=0.891, loss=4.08, lr=0.001]epochs:   0%|          | 0/90 [01:10<?, ?it/s, pts_acc=0.574, edge_acc=0, pts_cls_loss=0.683, pts_offset_loss=1.15, pts_loss=1.84, refine_offset_loss=1.35, refine_loss=1.35, edge_cls_loss=0.891, edge_loss=0.891, loss=4.08, lr=0.001]
+train:  31%|███▏      | 20/64 [01:13<02:35,  3.54s/it, loss=4.0754, lr=0.001000][A
+train:  31%|███▏      | 20/64 [01:13<02:35,  3.54s/it, loss=6.3282, lr=0.001000][Aepochs:   0%|          | 0/90 [01:14<?, ?it/s, pts_acc=0.578, edge_acc=1, pts_cls_loss=0.675, pts_offset_loss=1.11, pts_loss=1.78, refine_offset_loss=1.28, refine_loss=1.28, edge_cls_loss=3.26, edge_loss=3.26, loss=6.33, lr=0.001]  epochs:   0%|          | 0/90 [01:14<?, ?it/s, pts_acc=0.578, edge_acc=1, pts_cls_loss=0.675, pts_offset_loss=1.11, pts_loss=1.78, refine_offset_loss=1.28, refine_loss=1.28, edge_cls_loss=3.26, edge_loss=3.26, loss=6.33, lr=0.001]epochs:   0%|          | 0/90 [01:17<?, ?it/s, pts_acc=0.578, edge_acc=1, pts_cls_loss=0.675, pts_offset_loss=1.11, pts_loss=1.78, refine_offset_loss=1.28, refine_loss=1.28, edge_cls_loss=3.26, edge_loss=3.26, loss=6.33, lr=0.001]
+Traceback (most recent call last):
+  File "/geogfs1/home/u3666068/Point2Roof-master/train.py", line 136, in <module>
+    main()
+  File "/geogfs1/home/u3666068/Point2Roof-master/train.py", line 122, in main
+    train_model(
+  File "/geogfs1/home/u3666068/Point2Roof-master/train_utils.py", line 170, in train_model
+    accumulated_iter, avg_loss, avg_loss_dict = train_one_epoch(
+  File "/geogfs1/home/u3666068/Point2Roof-master/train_utils.py", line 88, in train_one_epoch
+    loss, loss_dict, disp_dict = model(batch)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/geogfs1/home/u3666068/Point2Roof-master/model/roofnet.py", line 57, in forward
+    batch_dict = self.edge_att_net(batch_dict)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/geogfs1/home/u3666068/Point2Roof-master/model/edge_pred_net.py", line 130, in forward
+    edge_fea = self.att_layer(point_fea[p1], point_fea[p2])
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/geogfs1/home/u3666068/Point2Roof-master/model/edge_pred_net.py", line 232, in forward
+    att1 = self.edge_att1(fusion_fea)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/modules/batchnorm.py", line 193, in forward
+    return F.batch_norm(
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/functional.py", line 2810, in batch_norm
+    _verify_batch_size(input.size())
+  File "/geogfs1/home/u3666068/miniconda3/envs/p2f/lib/python3.9/site-packages/torch/nn/functional.py", line 2776, in _verify_batch_size
+    raise ValueError(
+ValueError: Expected more than 1 value per channel when training, got input size torch.Size([1, 256])
+
+                                                                                [A

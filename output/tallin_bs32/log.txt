@@ -1,0 +1,7 @@
+2026-05-08 19:39:38,823   INFO  ==> 实验标签: tallin_bs32
+2026-05-08 19:39:38,823   INFO  ==> 正在创建数据加载器...
+2026-05-08 19:39:38,824   INFO  Resolved dataset split path: /geogfs1/groups/hkurs/u3666068mgh/Tallin/train
+2026-05-08 21:15:57,848   INFO  Dataset path: /geogfs1/groups/hkurs/u3666068mgh/Tallin/train
+2026-05-08 21:15:57,849   INFO  Total samples: 0
+2026-05-08 21:15:57,850  WARNING  No .xyz/.obj sample pairs were found under /geogfs1/groups/hkurs/u3666068mgh/Tallin/train
+2026-05-08 21:15:57,850  ERROR  ==> 数据加载失败: num_samples should be a positive integer value, but got num_samples=0

@@ -1,0 +1,1734 @@
+2026-05-18 21:02:13,994   INFO  ==> 实验标签: tallin_subset_4096
+2026-05-18 21:02:13,995   INFO  ==> 正在创建数据加载器...
+2026-05-18 21:02:13,995   INFO  Resolved dataset split path: /geogfs1/groups/hkurs/u3666068mgh/Tallin/train_list_subset_4096.txt
+2026-05-18 21:02:55,428   INFO  Dataset path: /geogfs1/groups/hkurs/u3666068mgh/Tallin/train_list_subset_4096.txt
+2026-05-18 21:02:55,428   INFO  Total samples: 4096
+2026-05-18 21:02:55,429   INFO  ==> 成功加载训练样本: 4096
+2026-05-18 21:02:55,429   INFO  ==> 输入特征: xyz (通道数: 3)
+2026-05-18 21:03:03,878   INFO  ==> 开始训练: 90 轮
+2026-05-18 21:03:03,879   INFO  ============================================================
+2026-05-18 21:03:03,879   INFO  开始训练，总轮数: 90
+2026-05-18 21:03:03,879   INFO  起始轮数: 0
+2026-05-18 21:03:03,879   INFO  检查点保存目录: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt
+2026-05-18 21:03:03,879   INFO  ============================================================
+2026-05-18 21:03:03,881   INFO  Epoch 1: 启用边处理网络
+2026-05-18 21:03:17,263   INFO  Epoch iter 0/64: loss=8.0359, lr=0.001000
+2026-05-18 21:31:58,506   INFO  ==> 实验标签: tallin_subset_4096
+2026-05-18 21:31:58,507   INFO  ==> 正在创建数据加载器...
+2026-05-18 21:31:58,507   INFO  Resolved dataset split path: /geogfs1/groups/hkurs/u3666068mgh/Tallin/train_list_subset_4096.txt
+2026-05-18 21:32:40,017   INFO  Dataset path: /geogfs1/groups/hkurs/u3666068mgh/Tallin/train_list_subset_4096.txt
+2026-05-18 21:32:40,017   INFO  Total samples: 4096
+2026-05-18 21:32:40,018   INFO  ==> 成功加载训练样本: 4096
+2026-05-18 21:32:40,018   INFO  ==> 输入特征: xyz (通道数: 3)
+2026-05-18 21:32:45,931   INFO  ==> 开始训练: 90 轮
+2026-05-18 21:32:45,931   INFO  ============================================================
+2026-05-18 21:32:45,931   INFO  开始训练，总轮数: 90
+2026-05-18 21:32:45,931   INFO  起始轮数: 0
+2026-05-18 21:32:45,931   INFO  检查点保存目录: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt
+2026-05-18 21:32:45,931   INFO  ============================================================
+2026-05-18 21:32:45,933   INFO  Epoch 1: 启用边处理网络
+2026-05-18 21:32:51,480   INFO  Epoch iter 0/64: loss=7.9353, lr=0.001000
+2026-05-18 21:37:04,207   INFO  Epoch iter 50/64: loss=1.5606, lr=0.001000
+2026-05-18 21:39:27,220   INFO  Epoch 1 完成
+2026-05-18 21:39:27,220   INFO  平均损失: 4.5284
+2026-05-18 21:39:27,220   INFO  学习率: 0.001000
+2026-05-18 21:39:27,220   INFO    pts_cls_loss: 0.6828
+2026-05-18 21:39:27,220   INFO    pts_offset_loss: 0.8163
+2026-05-18 21:39:27,220   INFO    pts_loss: 1.4991
+2026-05-18 21:39:27,220   INFO    refine_offset_loss: 0.9587
+2026-05-18 21:39:27,220   INFO    refine_loss: 0.9587
+2026-05-18 21:39:27,220   INFO    edge_cls_loss: 2.0706
+2026-05-18 21:39:27,221   INFO    edge_loss: 2.0706
+2026-05-18 21:39:27,254   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_1.pth
+2026-05-18 21:39:27,255   INFO    轮数: 1
+2026-05-18 21:39:27,255   INFO    损失: 4.5284361988306046
+2026-05-18 21:39:27,255   INFO    输入通道: 3
+2026-05-18 21:39:27,255   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_1.pth
+2026-05-18 21:39:27,255   INFO  Epoch 2: 启用边处理网络
+2026-05-18 21:39:38,776   INFO  Epoch iter 0/64: loss=0.9690, lr=0.001000
+2026-05-18 21:49:26,650   INFO  Epoch iter 50/64: loss=0.1499, lr=0.001000
+2026-05-18 21:52:00,752   INFO  Epoch 2 完成
+2026-05-18 21:52:00,753   INFO  平均损失: 0.3627
+2026-05-18 21:52:00,753   INFO  学习率: 0.001000
+2026-05-18 21:52:00,753   INFO    pts_cls_loss: 0.2765
+2026-05-18 21:52:00,753   INFO    pts_offset_loss: 0.0073
+2026-05-18 21:52:00,753   INFO    pts_loss: 0.2838
+2026-05-18 21:52:00,753   INFO    refine_offset_loss: 0.0790
+2026-05-18 21:52:00,753   INFO    refine_loss: 0.0790
+2026-05-18 21:52:00,753   INFO    edge_cls_loss: 0.0000
+2026-05-18 21:52:00,753   INFO    edge_loss: 0.0000
+2026-05-18 21:52:00,878   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_2.pth
+2026-05-18 21:52:00,878   INFO    轮数: 2
+2026-05-18 21:52:00,878   INFO    损失: 0.3627215066226199
+2026-05-18 21:52:00,878   INFO    输入通道: 3
+2026-05-18 21:52:00,878   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_2.pth
+2026-05-18 21:52:00,878   INFO  Epoch 3: 启用边处理网络
+2026-05-18 21:52:15,722   INFO  Epoch iter 0/64: loss=0.0959, lr=0.001000
+2026-05-18 22:02:22,068   INFO  Epoch iter 50/64: loss=0.0271, lr=0.001000
+2026-05-18 22:05:15,212   INFO  Epoch 3 完成
+2026-05-18 22:05:15,212   INFO  平均损失: 0.0454
+2026-05-18 22:05:15,212   INFO  学习率: 0.001000
+2026-05-18 22:05:15,212   INFO    pts_cls_loss: 0.0407
+2026-05-18 22:05:15,212   INFO    pts_offset_loss: 0.0004
+2026-05-18 22:05:15,212   INFO    pts_loss: 0.0411
+2026-05-18 22:05:15,212   INFO    refine_offset_loss: 0.0043
+2026-05-18 22:05:15,212   INFO    refine_loss: 0.0043
+2026-05-18 22:05:15,212   INFO    edge_cls_loss: 0.0000
+2026-05-18 22:05:15,212   INFO    edge_loss: 0.0000
+2026-05-18 22:05:15,276   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_3.pth
+2026-05-18 22:05:15,276   INFO    轮数: 3
+2026-05-18 22:05:15,276   INFO    损失: 0.04540201838244684
+2026-05-18 22:05:15,276   INFO    输入通道: 3
+2026-05-18 22:05:15,276   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_3.pth
+2026-05-18 22:05:15,277   INFO  Epoch 4: 启用边处理网络
+2026-05-18 22:05:32,587   INFO  Epoch iter 0/64: loss=0.0203, lr=0.001000
+2026-05-18 22:15:50,319   INFO  Epoch iter 50/64: loss=0.0113, lr=0.001000
+2026-05-18 22:18:35,481   INFO  Epoch 4 完成
+2026-05-18 22:18:35,481   INFO  平均损失: 0.0142
+2026-05-18 22:18:35,481   INFO  学习率: 0.001000
+2026-05-18 22:18:35,481   INFO    pts_cls_loss: 0.0109
+2026-05-18 22:18:35,481   INFO    pts_offset_loss: 0.0001
+2026-05-18 22:18:35,481   INFO    pts_loss: 0.0111
+2026-05-18 22:18:35,481   INFO    refine_offset_loss: 0.0031
+2026-05-18 22:18:35,481   INFO    refine_loss: 0.0031
+2026-05-18 22:18:35,481   INFO    edge_cls_loss: 0.0000
+2026-05-18 22:18:35,481   INFO    edge_loss: 0.0000
+2026-05-18 22:18:35,516   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_4.pth
+2026-05-18 22:18:35,516   INFO    轮数: 4
+2026-05-18 22:18:35,516   INFO    损失: 0.014195180599926971
+2026-05-18 22:18:35,516   INFO    输入通道: 3
+2026-05-18 22:18:35,516   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_4.pth
+2026-05-18 22:18:35,517   INFO  Epoch 5: 启用边处理网络
+2026-05-18 22:18:51,191   INFO  Epoch iter 0/64: loss=0.0110, lr=0.001000
+2026-05-18 22:29:06,712   INFO  Epoch iter 50/64: loss=0.0071, lr=0.001000
+2026-05-18 22:31:34,598   INFO  Epoch 5 完成
+2026-05-18 22:31:34,598   INFO  平均损失: 0.0082
+2026-05-18 22:31:34,598   INFO  学习率: 0.001000
+2026-05-18 22:31:34,598   INFO    pts_cls_loss: 0.0055
+2026-05-18 22:31:34,599   INFO    pts_offset_loss: 0.0000
+2026-05-18 22:31:34,599   INFO    pts_loss: 0.0055
+2026-05-18 22:31:34,599   INFO    refine_offset_loss: 0.0027
+2026-05-18 22:31:34,599   INFO    refine_loss: 0.0027
+2026-05-18 22:31:34,599   INFO    edge_cls_loss: 0.0000
+2026-05-18 22:31:34,599   INFO    edge_loss: 0.0000
+2026-05-18 22:31:34,745   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_5.pth
+2026-05-18 22:31:34,745   INFO    轮数: 5
+2026-05-18 22:31:34,745   INFO    损失: 0.008202501725463662
+2026-05-18 22:31:34,745   INFO    输入通道: 3
+2026-05-18 22:31:34,745   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_5.pth
+2026-05-18 22:31:34,746   INFO  Epoch 6: 启用边处理网络
+2026-05-18 22:31:46,053   INFO  Epoch iter 0/64: loss=0.0082, lr=0.001000
+2026-05-18 22:41:54,117   INFO  Epoch iter 50/64: loss=0.0059, lr=0.001000
+2026-05-18 22:44:17,387   INFO  Epoch 6 完成
+2026-05-18 22:44:17,387   INFO  平均损失: 0.0065
+2026-05-18 22:44:17,387   INFO  学习率: 0.001000
+2026-05-18 22:44:17,387   INFO    pts_cls_loss: 0.0035
+2026-05-18 22:44:17,387   INFO    pts_offset_loss: 0.0000
+2026-05-18 22:44:17,387   INFO    pts_loss: 0.0035
+2026-05-18 22:44:17,387   INFO    refine_offset_loss: 0.0030
+2026-05-18 22:44:17,387   INFO    refine_loss: 0.0030
+2026-05-18 22:44:17,387   INFO    edge_cls_loss: 0.0000
+2026-05-18 22:44:17,387   INFO    edge_loss: 0.0000
+2026-05-18 22:44:17,390   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_1.pth
+2026-05-18 22:44:17,497   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_6.pth
+2026-05-18 22:44:17,497   INFO    轮数: 6
+2026-05-18 22:44:17,497   INFO    损失: 0.006491018117230851
+2026-05-18 22:44:17,497   INFO    输入通道: 3
+2026-05-18 22:44:17,497   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_6.pth
+2026-05-18 22:44:17,498   INFO  Epoch 7: 启用边处理网络
+2026-05-18 22:44:32,392   INFO  Epoch iter 0/64: loss=0.0055, lr=0.001000
+2026-05-18 22:55:06,290   INFO  Epoch iter 50/64: loss=0.0033, lr=0.001000
+2026-05-18 22:57:44,618   INFO  Epoch 7 完成
+2026-05-18 22:57:44,621   INFO  平均损失: 0.0042
+2026-05-18 22:57:44,621   INFO  学习率: 0.001000
+2026-05-18 22:57:44,622   INFO    pts_cls_loss: 0.0025
+2026-05-18 22:57:44,622   INFO    pts_offset_loss: 0.0000
+2026-05-18 22:57:44,623   INFO    pts_loss: 0.0025
+2026-05-18 22:57:44,624   INFO    refine_offset_loss: 0.0017
+2026-05-18 22:57:44,624   INFO    refine_loss: 0.0017
+2026-05-18 22:57:44,624   INFO    edge_cls_loss: 0.0000
+2026-05-18 22:57:44,624   INFO    edge_loss: 0.0000
+2026-05-18 22:57:44,637   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_2.pth
+2026-05-18 22:57:44,807   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_7.pth
+2026-05-18 22:57:44,807   INFO    轮数: 7
+2026-05-18 22:57:44,807   INFO    损失: 0.0041900051255652215
+2026-05-18 22:57:44,807   INFO    输入通道: 3
+2026-05-18 22:57:44,807   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_7.pth
+2026-05-18 22:57:44,808   INFO  Epoch 8: 启用边处理网络
+2026-05-18 22:57:59,056   INFO  Epoch iter 0/64: loss=0.0041, lr=0.001000
+2026-05-18 23:06:11,845   INFO  Epoch iter 50/64: loss=0.0029, lr=0.001000
+2026-05-18 23:07:55,825   INFO  Epoch 8 完成
+2026-05-18 23:07:55,825   INFO  平均损失: 0.0031
+2026-05-18 23:07:55,825   INFO  学习率: 0.001000
+2026-05-18 23:07:55,825   INFO    pts_cls_loss: 0.0019
+2026-05-18 23:07:55,825   INFO    pts_offset_loss: 0.0000
+2026-05-18 23:07:55,825   INFO    pts_loss: 0.0019
+2026-05-18 23:07:55,825   INFO    refine_offset_loss: 0.0013
+2026-05-18 23:07:55,825   INFO    refine_loss: 0.0013
+2026-05-18 23:07:55,825   INFO    edge_cls_loss: 0.0000
+2026-05-18 23:07:55,825   INFO    edge_loss: 0.0000
+2026-05-18 23:07:55,828   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_3.pth
+2026-05-18 23:07:55,858   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_8.pth
+2026-05-18 23:07:55,858   INFO    轮数: 8
+2026-05-18 23:07:55,858   INFO    损失: 0.003148825762764318
+2026-05-18 23:07:55,858   INFO    输入通道: 3
+2026-05-18 23:07:55,858   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_8.pth
+2026-05-18 23:07:55,858   INFO  Epoch 9: 启用边处理网络
+2026-05-18 23:08:06,585   INFO  Epoch iter 0/64: loss=0.0038, lr=0.001000
+2026-05-18 23:14:33,524   INFO  Epoch iter 50/64: loss=0.0025, lr=0.001000
+2026-05-18 23:16:19,230   INFO  Epoch 9 完成
+2026-05-18 23:16:19,231   INFO  平均损失: 0.0028
+2026-05-18 23:16:19,231   INFO  学习率: 0.001000
+2026-05-18 23:16:19,231   INFO    pts_cls_loss: 0.0015
+2026-05-18 23:16:19,231   INFO    pts_offset_loss: 0.0000
+2026-05-18 23:16:19,231   INFO    pts_loss: 0.0015
+2026-05-18 23:16:19,231   INFO    refine_offset_loss: 0.0013
+2026-05-18 23:16:19,231   INFO    refine_loss: 0.0013
+2026-05-18 23:16:19,231   INFO    edge_cls_loss: 0.0000
+2026-05-18 23:16:19,231   INFO    edge_loss: 0.0000
+2026-05-18 23:16:19,234   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_4.pth
+2026-05-18 23:16:19,324   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_9.pth
+2026-05-18 23:16:19,324   INFO    轮数: 9
+2026-05-18 23:16:19,324   INFO    损失: 0.0028077463175577577
+2026-05-18 23:16:19,324   INFO    输入通道: 3
+2026-05-18 23:16:19,324   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_9.pth
+2026-05-18 23:16:19,324   INFO  Epoch 10: 启用边处理网络
+2026-05-18 23:16:30,678   INFO  Epoch iter 0/64: loss=0.0025, lr=0.001000
+2026-05-18 23:23:22,805   INFO  Epoch iter 50/64: loss=0.0020, lr=0.001000
+2026-05-18 23:25:11,651   INFO  Epoch 10 完成
+2026-05-18 23:25:11,652   INFO  平均损失: 0.0024
+2026-05-18 23:25:11,652   INFO  学习率: 0.001000
+2026-05-18 23:25:11,652   INFO    pts_cls_loss: 0.0013
+2026-05-18 23:25:11,652   INFO    pts_offset_loss: 0.0000
+2026-05-18 23:25:11,652   INFO    pts_loss: 0.0013
+2026-05-18 23:25:11,652   INFO    refine_offset_loss: 0.0011
+2026-05-18 23:25:11,652   INFO    refine_loss: 0.0011
+2026-05-18 23:25:11,652   INFO    edge_cls_loss: 0.0000
+2026-05-18 23:25:11,652   INFO    edge_loss: 0.0000
+2026-05-18 23:25:11,654   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_5.pth
+2026-05-18 23:25:11,687   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_10.pth
+2026-05-18 23:25:11,687   INFO    轮数: 10
+2026-05-18 23:25:11,687   INFO    损失: 0.0023633525506738806
+2026-05-18 23:25:11,687   INFO    输入通道: 3
+2026-05-18 23:25:11,687   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_10.pth
+2026-05-18 23:25:11,688   INFO  Epoch 11: 启用边处理网络
+2026-05-18 23:25:23,744   INFO  Epoch iter 0/64: loss=0.0018, lr=0.001000
+2026-05-18 23:32:12,399   INFO  Epoch iter 50/64: loss=0.0014, lr=0.001000
+2026-05-18 23:33:54,921   INFO  Epoch 11 完成
+2026-05-18 23:33:54,921   INFO  平均损失: 0.0017
+2026-05-18 23:33:54,921   INFO  学习率: 0.001000
+2026-05-18 23:33:54,921   INFO    pts_cls_loss: 0.0012
+2026-05-18 23:33:54,921   INFO    pts_offset_loss: 0.0000
+2026-05-18 23:33:54,921   INFO    pts_loss: 0.0012
+2026-05-18 23:33:54,921   INFO    refine_offset_loss: 0.0005
+2026-05-18 23:33:54,921   INFO    refine_loss: 0.0005
+2026-05-18 23:33:54,921   INFO    edge_cls_loss: 0.0000
+2026-05-18 23:33:54,921   INFO    edge_loss: 0.0000
+2026-05-18 23:33:54,924   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_6.pth
+2026-05-18 23:33:54,964   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_11.pth
+2026-05-18 23:33:54,964   INFO    轮数: 11
+2026-05-18 23:33:54,964   INFO    损失: 0.0017156493431684794
+2026-05-18 23:33:54,964   INFO    输入通道: 3
+2026-05-18 23:33:54,964   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_11.pth
+2026-05-18 23:33:54,964   INFO  Epoch 12: 启用边处理网络
+2026-05-18 23:34:05,578   INFO  Epoch iter 0/64: loss=0.0015, lr=0.001000
+2026-05-18 23:40:52,853   INFO  Epoch iter 50/64: loss=0.0015, lr=0.001000
+2026-05-18 23:42:40,804   INFO  Epoch 12 完成
+2026-05-18 23:42:40,804   INFO  平均损失: 0.0017
+2026-05-18 23:42:40,804   INFO  学习率: 0.001000
+2026-05-18 23:42:40,804   INFO    pts_cls_loss: 0.0011
+2026-05-18 23:42:40,804   INFO    pts_offset_loss: 0.0000
+2026-05-18 23:42:40,804   INFO    pts_loss: 0.0011
+2026-05-18 23:42:40,804   INFO    refine_offset_loss: 0.0006
+2026-05-18 23:42:40,804   INFO    refine_loss: 0.0006
+2026-05-18 23:42:40,804   INFO    edge_cls_loss: 0.0000
+2026-05-18 23:42:40,804   INFO    edge_loss: 0.0000
+2026-05-18 23:42:40,807   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_7.pth
+2026-05-18 23:42:40,835   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_12.pth
+2026-05-18 23:42:40,835   INFO    轮数: 12
+2026-05-18 23:42:40,835   INFO    损失: 0.0016696983457222814
+2026-05-18 23:42:40,835   INFO    输入通道: 3
+2026-05-18 23:42:40,835   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_12.pth
+2026-05-18 23:42:40,835   INFO  Epoch 13: 启用边处理网络
+2026-05-18 23:42:51,624   INFO  Epoch iter 0/64: loss=0.0016, lr=0.001000
+2026-05-18 23:49:40,517   INFO  Epoch iter 50/64: loss=0.0013, lr=0.001000
+2026-05-18 23:51:21,783   INFO  Epoch 13 完成
+2026-05-18 23:51:21,784   INFO  平均损失: 0.0014
+2026-05-18 23:51:21,784   INFO  学习率: 0.001000
+2026-05-18 23:51:21,784   INFO    pts_cls_loss: 0.0010
+2026-05-18 23:51:21,784   INFO    pts_offset_loss: 0.0000
+2026-05-18 23:51:21,784   INFO    pts_loss: 0.0010
+2026-05-18 23:51:21,784   INFO    refine_offset_loss: 0.0004
+2026-05-18 23:51:21,784   INFO    refine_loss: 0.0004
+2026-05-18 23:51:21,784   INFO    edge_cls_loss: 0.0000
+2026-05-18 23:51:21,784   INFO    edge_loss: 0.0000
+2026-05-18 23:51:21,787   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_8.pth
+2026-05-18 23:51:21,817   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_13.pth
+2026-05-18 23:51:21,817   INFO    轮数: 13
+2026-05-18 23:51:21,817   INFO    损失: 0.001446300018869806
+2026-05-18 23:51:21,817   INFO    输入通道: 3
+2026-05-18 23:51:21,817   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_13.pth
+2026-05-18 23:51:21,818   INFO  Epoch 14: 启用边处理网络
+2026-05-18 23:51:33,025   INFO  Epoch iter 0/64: loss=0.0013, lr=0.001000
+2026-05-18 23:58:25,377   INFO  Epoch iter 50/64: loss=0.0011, lr=0.001000
+2026-05-19 00:00:09,315   INFO  Epoch 14 完成
+2026-05-19 00:00:09,316   INFO  平均损失: 0.0012
+2026-05-19 00:00:09,316   INFO  学习率: 0.001000
+2026-05-19 00:00:09,316   INFO    pts_cls_loss: 0.0010
+2026-05-19 00:00:09,316   INFO    pts_offset_loss: 0.0000
+2026-05-19 00:00:09,316   INFO    pts_loss: 0.0010
+2026-05-19 00:00:09,316   INFO    refine_offset_loss: 0.0002
+2026-05-19 00:00:09,316   INFO    refine_loss: 0.0002
+2026-05-19 00:00:09,316   INFO    edge_cls_loss: 0.0000
+2026-05-19 00:00:09,316   INFO    edge_loss: 0.0000
+2026-05-19 00:00:09,319   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_9.pth
+2026-05-19 00:00:09,347   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_14.pth
+2026-05-19 00:00:09,347   INFO    轮数: 14
+2026-05-19 00:00:09,347   INFO    损失: 0.0012022275586787146
+2026-05-19 00:00:09,347   INFO    输入通道: 3
+2026-05-19 00:00:09,347   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_14.pth
+2026-05-19 00:00:09,348   INFO  Epoch 15: 启用边处理网络
+2026-05-19 00:00:21,129   INFO  Epoch iter 0/64: loss=0.0011, lr=0.001000
+2026-05-19 00:07:08,777   INFO  Epoch iter 50/64: loss=0.0012, lr=0.001000
+2026-05-19 00:08:50,212   INFO  Epoch 15 完成
+2026-05-19 00:08:50,213   INFO  平均损失: 0.0011
+2026-05-19 00:08:50,213   INFO  学习率: 0.001000
+2026-05-19 00:08:50,213   INFO    pts_cls_loss: 0.0010
+2026-05-19 00:08:50,213   INFO    pts_offset_loss: 0.0000
+2026-05-19 00:08:50,213   INFO    pts_loss: 0.0010
+2026-05-19 00:08:50,213   INFO    refine_offset_loss: 0.0001
+2026-05-19 00:08:50,213   INFO    refine_loss: 0.0001
+2026-05-19 00:08:50,213   INFO    edge_cls_loss: 0.0000
+2026-05-19 00:08:50,213   INFO    edge_loss: 0.0000
+2026-05-19 00:08:50,216   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_10.pth
+2026-05-19 00:08:50,306   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_15.pth
+2026-05-19 00:08:50,306   INFO    轮数: 15
+2026-05-19 00:08:50,306   INFO    损失: 0.001060215443430934
+2026-05-19 00:08:50,306   INFO    输入通道: 3
+2026-05-19 00:08:50,307   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_15.pth
+2026-05-19 00:08:50,307   INFO  Epoch 16: 启用边处理网络
+2026-05-19 00:09:00,942   INFO  Epoch iter 0/64: loss=0.0011, lr=0.001000
+2026-05-19 00:15:45,551   INFO  Epoch iter 50/64: loss=0.0010, lr=0.001000
+2026-05-19 00:17:36,138   INFO  Epoch 16 完成
+2026-05-19 00:17:36,139   INFO  平均损失: 0.0010
+2026-05-19 00:17:36,139   INFO  学习率: 0.001000
+2026-05-19 00:17:36,139   INFO    pts_cls_loss: 0.0010
+2026-05-19 00:17:36,139   INFO    pts_offset_loss: 0.0000
+2026-05-19 00:17:36,139   INFO    pts_loss: 0.0010
+2026-05-19 00:17:36,139   INFO    refine_offset_loss: 0.0000
+2026-05-19 00:17:36,139   INFO    refine_loss: 0.0000
+2026-05-19 00:17:36,139   INFO    edge_cls_loss: 0.0000
+2026-05-19 00:17:36,139   INFO    edge_loss: 0.0000
+2026-05-19 00:17:36,142   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_11.pth
+2026-05-19 00:17:36,250   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_16.pth
+2026-05-19 00:17:36,251   INFO    轮数: 16
+2026-05-19 00:17:36,251   INFO    损失: 0.0010280693086315296
+2026-05-19 00:17:36,251   INFO    输入通道: 3
+2026-05-19 00:17:36,251   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_16.pth
+2026-05-19 00:17:36,251   INFO  Epoch 17: 启用边处理网络
+2026-05-19 00:17:48,403   INFO  Epoch iter 0/64: loss=0.0011, lr=0.001000
+2026-05-19 00:24:33,248   INFO  Epoch iter 50/64: loss=0.0010, lr=0.001000
+2026-05-19 00:26:21,247   INFO  Epoch 17 完成
+2026-05-19 00:26:21,247   INFO  平均损失: 0.0010
+2026-05-19 00:26:21,248   INFO  学习率: 0.001000
+2026-05-19 00:26:21,248   INFO    pts_cls_loss: 0.0010
+2026-05-19 00:26:21,248   INFO    pts_offset_loss: 0.0000
+2026-05-19 00:26:21,248   INFO    pts_loss: 0.0010
+2026-05-19 00:26:21,248   INFO    refine_offset_loss: 0.0000
+2026-05-19 00:26:21,248   INFO    refine_loss: 0.0000
+2026-05-19 00:26:21,248   INFO    edge_cls_loss: 0.0000
+2026-05-19 00:26:21,248   INFO    edge_loss: 0.0000
+2026-05-19 00:26:21,250   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_12.pth
+2026-05-19 00:26:21,320   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_17.pth
+2026-05-19 00:26:21,321   INFO    轮数: 17
+2026-05-19 00:26:21,321   INFO    损失: 0.001006280609544774
+2026-05-19 00:26:21,321   INFO    输入通道: 3
+2026-05-19 00:26:21,321   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_17.pth
+2026-05-19 00:26:21,321   INFO  Epoch 18: 启用边处理网络
+2026-05-19 00:26:31,555   INFO  Epoch iter 0/64: loss=0.0010, lr=0.001000
+2026-05-19 00:33:13,337   INFO  Epoch iter 50/64: loss=0.0010, lr=0.001000
+2026-05-19 00:34:55,935   INFO  Epoch 18 完成
+2026-05-19 00:34:55,936   INFO  平均损失: 0.0010
+2026-05-19 00:34:55,936   INFO  学习率: 0.001000
+2026-05-19 00:34:55,936   INFO    pts_cls_loss: 0.0010
+2026-05-19 00:34:55,936   INFO    pts_offset_loss: 0.0000
+2026-05-19 00:34:55,936   INFO    pts_loss: 0.0010
+2026-05-19 00:34:55,936   INFO    refine_offset_loss: 0.0000
+2026-05-19 00:34:55,936   INFO    refine_loss: 0.0000
+2026-05-19 00:34:55,936   INFO    edge_cls_loss: 0.0000
+2026-05-19 00:34:55,936   INFO    edge_loss: 0.0000
+2026-05-19 00:34:55,938   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_13.pth
+2026-05-19 00:34:55,968   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_18.pth
+2026-05-19 00:34:55,968   INFO    轮数: 18
+2026-05-19 00:34:55,968   INFO    损失: 0.0009801218102438725
+2026-05-19 00:34:55,968   INFO    输入通道: 3
+2026-05-19 00:34:55,969   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_18.pth
+2026-05-19 00:34:55,969   INFO  Epoch 19: 启用边处理网络
+2026-05-19 00:35:06,395   INFO  Epoch iter 0/64: loss=0.0010, lr=0.001000
+2026-05-19 00:41:56,284   INFO  Epoch iter 50/64: loss=0.0010, lr=0.001000
+2026-05-19 00:43:37,029   INFO  Epoch 19 完成
+2026-05-19 00:43:37,029   INFO  平均损失: 0.0010
+2026-05-19 00:43:37,029   INFO  学习率: 0.001000
+2026-05-19 00:43:37,029   INFO    pts_cls_loss: 0.0010
+2026-05-19 00:43:37,029   INFO    pts_offset_loss: 0.0000
+2026-05-19 00:43:37,029   INFO    pts_loss: 0.0010
+2026-05-19 00:43:37,029   INFO    refine_offset_loss: 0.0000
+2026-05-19 00:43:37,029   INFO    refine_loss: 0.0000
+2026-05-19 00:43:37,029   INFO    edge_cls_loss: 0.0000
+2026-05-19 00:43:37,029   INFO    edge_loss: 0.0000
+2026-05-19 00:43:37,032   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_14.pth
+2026-05-19 00:43:37,084   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_19.pth
+2026-05-19 00:43:37,084   INFO    轮数: 19
+2026-05-19 00:43:37,084   INFO    损失: 0.0009846430029938347
+2026-05-19 00:43:37,084   INFO    输入通道: 3
+2026-05-19 00:43:37,085   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_19.pth
+2026-05-19 00:43:37,085   INFO  Epoch 20: 启用边处理网络
+2026-05-19 00:43:47,614   INFO  Epoch iter 0/64: loss=0.0010, lr=0.001000
+2026-05-19 00:50:30,307   INFO  Epoch iter 50/64: loss=0.0010, lr=0.001000
+2026-05-19 00:52:14,779   INFO  Epoch 20 完成
+2026-05-19 00:52:14,779   INFO  平均损失: 0.0010
+2026-05-19 00:52:14,779   INFO  学习率: 0.000500
+2026-05-19 00:52:14,779   INFO    pts_cls_loss: 0.0010
+2026-05-19 00:52:14,779   INFO    pts_offset_loss: 0.0000
+2026-05-19 00:52:14,779   INFO    pts_loss: 0.0010
+2026-05-19 00:52:14,780   INFO    refine_offset_loss: 0.0000
+2026-05-19 00:52:14,780   INFO    refine_loss: 0.0000
+2026-05-19 00:52:14,780   INFO    edge_cls_loss: 0.0000
+2026-05-19 00:52:14,780   INFO    edge_loss: 0.0000
+2026-05-19 00:52:14,783   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_15.pth
+2026-05-19 00:52:14,814   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_20.pth
+2026-05-19 00:52:14,814   INFO    轮数: 20
+2026-05-19 00:52:14,814   INFO    损失: 0.000977115993919142
+2026-05-19 00:52:14,814   INFO    输入通道: 3
+2026-05-19 00:52:14,815   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_20.pth
+2026-05-19 00:52:14,815   INFO  Epoch 21: 启用边处理网络
+2026-05-19 00:52:26,074   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 00:59:07,811   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 01:00:51,342   INFO  Epoch 21 完成
+2026-05-19 01:00:51,342   INFO  平均损失: 0.0010
+2026-05-19 01:00:51,342   INFO  学习率: 0.000500
+2026-05-19 01:00:51,342   INFO    pts_cls_loss: 0.0010
+2026-05-19 01:00:51,342   INFO    pts_offset_loss: 0.0000
+2026-05-19 01:00:51,342   INFO    pts_loss: 0.0010
+2026-05-19 01:00:51,342   INFO    refine_offset_loss: 0.0000
+2026-05-19 01:00:51,342   INFO    refine_loss: 0.0000
+2026-05-19 01:00:51,342   INFO    edge_cls_loss: 0.0000
+2026-05-19 01:00:51,342   INFO    edge_loss: 0.0000
+2026-05-19 01:00:51,344   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_16.pth
+2026-05-19 01:00:51,376   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_21.pth
+2026-05-19 01:00:51,376   INFO    轮数: 21
+2026-05-19 01:00:51,376   INFO    损失: 0.000978018581008655
+2026-05-19 01:00:51,376   INFO    输入通道: 3
+2026-05-19 01:00:51,376   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_21.pth
+2026-05-19 01:00:51,376   INFO  Epoch 22: 启用边处理网络
+2026-05-19 01:01:02,593   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 01:07:32,006   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 01:09:15,890   INFO  Epoch 22 完成
+2026-05-19 01:09:15,890   INFO  平均损失: 0.0010
+2026-05-19 01:09:15,890   INFO  学习率: 0.000500
+2026-05-19 01:09:15,890   INFO    pts_cls_loss: 0.0010
+2026-05-19 01:09:15,890   INFO    pts_offset_loss: 0.0000
+2026-05-19 01:09:15,890   INFO    pts_loss: 0.0010
+2026-05-19 01:09:15,890   INFO    refine_offset_loss: 0.0000
+2026-05-19 01:09:15,890   INFO    refine_loss: 0.0000
+2026-05-19 01:09:15,890   INFO    edge_cls_loss: 0.0000
+2026-05-19 01:09:15,890   INFO    edge_loss: 0.0000
+2026-05-19 01:09:15,894   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_17.pth
+2026-05-19 01:09:16,019   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_22.pth
+2026-05-19 01:09:16,019   INFO    轮数: 22
+2026-05-19 01:09:16,019   INFO    损失: 0.0009714206353237387
+2026-05-19 01:09:16,019   INFO    输入通道: 3
+2026-05-19 01:09:16,019   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_22.pth
+2026-05-19 01:09:16,019   INFO  Epoch 23: 启用边处理网络
+2026-05-19 01:09:26,704   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 01:16:16,832   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 01:18:08,346   INFO  Epoch 23 完成
+2026-05-19 01:18:08,346   INFO  平均损失: 0.0010
+2026-05-19 01:18:08,346   INFO  学习率: 0.000500
+2026-05-19 01:18:08,346   INFO    pts_cls_loss: 0.0010
+2026-05-19 01:18:08,346   INFO    pts_offset_loss: 0.0000
+2026-05-19 01:18:08,346   INFO    pts_loss: 0.0010
+2026-05-19 01:18:08,346   INFO    refine_offset_loss: 0.0000
+2026-05-19 01:18:08,346   INFO    refine_loss: 0.0000
+2026-05-19 01:18:08,346   INFO    edge_cls_loss: 0.0000
+2026-05-19 01:18:08,346   INFO    edge_loss: 0.0000
+2026-05-19 01:18:08,351   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_18.pth
+2026-05-19 01:18:08,380   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_23.pth
+2026-05-19 01:18:08,380   INFO    轮数: 23
+2026-05-19 01:18:08,380   INFO    损失: 0.0009623164814911433
+2026-05-19 01:18:08,380   INFO    输入通道: 3
+2026-05-19 01:18:08,380   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_23.pth
+2026-05-19 01:18:08,380   INFO  Epoch 24: 启用边处理网络
+2026-05-19 01:18:20,047   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 01:24:56,999   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 01:26:45,819   INFO  Epoch 24 完成
+2026-05-19 01:26:45,820   INFO  平均损失: 0.0010
+2026-05-19 01:26:45,820   INFO  学习率: 0.000500
+2026-05-19 01:26:45,820   INFO    pts_cls_loss: 0.0010
+2026-05-19 01:26:45,820   INFO    pts_offset_loss: 0.0000
+2026-05-19 01:26:45,820   INFO    pts_loss: 0.0010
+2026-05-19 01:26:45,820   INFO    refine_offset_loss: 0.0000
+2026-05-19 01:26:45,820   INFO    refine_loss: 0.0000
+2026-05-19 01:26:45,820   INFO    edge_cls_loss: 0.0000
+2026-05-19 01:26:45,820   INFO    edge_loss: 0.0000
+2026-05-19 01:26:45,823   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_19.pth
+2026-05-19 01:26:45,854   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_24.pth
+2026-05-19 01:26:45,854   INFO    轮数: 24
+2026-05-19 01:26:45,854   INFO    损失: 0.0009728100330903544
+2026-05-19 01:26:45,854   INFO    输入通道: 3
+2026-05-19 01:26:45,854   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_24.pth
+2026-05-19 01:26:45,854   INFO  Epoch 25: 启用边处理网络
+2026-05-19 01:26:56,651   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 01:33:49,597   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 01:35:33,136   INFO  Epoch 25 完成
+2026-05-19 01:35:33,137   INFO  平均损失: 0.0010
+2026-05-19 01:35:33,137   INFO  学习率: 0.000500
+2026-05-19 01:35:33,137   INFO    pts_cls_loss: 0.0010
+2026-05-19 01:35:33,137   INFO    pts_offset_loss: 0.0000
+2026-05-19 01:35:33,137   INFO    pts_loss: 0.0010
+2026-05-19 01:35:33,137   INFO    refine_offset_loss: 0.0000
+2026-05-19 01:35:33,137   INFO    refine_loss: 0.0000
+2026-05-19 01:35:33,137   INFO    edge_cls_loss: 0.0000
+2026-05-19 01:35:33,137   INFO    edge_loss: 0.0000
+2026-05-19 01:35:33,140   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_20.pth
+2026-05-19 01:35:33,209   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_25.pth
+2026-05-19 01:35:33,210   INFO    轮数: 25
+2026-05-19 01:35:33,210   INFO    损失: 0.0009872549435385736
+2026-05-19 01:35:33,210   INFO    输入通道: 3
+2026-05-19 01:35:33,210   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_25.pth
+2026-05-19 01:35:33,210   INFO  Epoch 26: 启用边处理网络
+2026-05-19 01:35:44,472   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 01:42:35,323   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 01:44:17,998   INFO  Epoch 26 完成
+2026-05-19 01:44:17,999   INFO  平均损失: 0.0010
+2026-05-19 01:44:17,999   INFO  学习率: 0.000500
+2026-05-19 01:44:17,999   INFO    pts_cls_loss: 0.0010
+2026-05-19 01:44:17,999   INFO    pts_offset_loss: 0.0000
+2026-05-19 01:44:17,999   INFO    pts_loss: 0.0010
+2026-05-19 01:44:17,999   INFO    refine_offset_loss: 0.0000
+2026-05-19 01:44:17,999   INFO    refine_loss: 0.0000
+2026-05-19 01:44:17,999   INFO    edge_cls_loss: 0.0000
+2026-05-19 01:44:17,999   INFO    edge_loss: 0.0000
+2026-05-19 01:44:18,008   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_21.pth
+2026-05-19 01:44:18,039   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_26.pth
+2026-05-19 01:44:18,039   INFO    轮数: 26
+2026-05-19 01:44:18,039   INFO    损失: 0.0009993838230002439
+2026-05-19 01:44:18,039   INFO    输入通道: 3
+2026-05-19 01:44:18,039   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_26.pth
+2026-05-19 01:44:18,040   INFO  Epoch 27: 启用边处理网络
+2026-05-19 01:44:29,464   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 01:51:13,885   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 01:53:00,067   INFO  Epoch 27 完成
+2026-05-19 01:53:00,068   INFO  平均损失: 0.0010
+2026-05-19 01:53:00,068   INFO  学习率: 0.000500
+2026-05-19 01:53:00,068   INFO    pts_cls_loss: 0.0010
+2026-05-19 01:53:00,068   INFO    pts_offset_loss: 0.0000
+2026-05-19 01:53:00,068   INFO    pts_loss: 0.0010
+2026-05-19 01:53:00,068   INFO    refine_offset_loss: 0.0000
+2026-05-19 01:53:00,068   INFO    refine_loss: 0.0000
+2026-05-19 01:53:00,068   INFO    edge_cls_loss: 0.0000
+2026-05-19 01:53:00,068   INFO    edge_loss: 0.0000
+2026-05-19 01:53:00,073   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_22.pth
+2026-05-19 01:53:00,184   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_27.pth
+2026-05-19 01:53:00,184   INFO    轮数: 27
+2026-05-19 01:53:00,184   INFO    损失: 0.0010092173179145902
+2026-05-19 01:53:00,184   INFO    输入通道: 3
+2026-05-19 01:53:00,184   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_27.pth
+2026-05-19 01:53:00,185   INFO  Epoch 28: 启用边处理网络
+2026-05-19 01:53:11,744   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 01:59:45,826   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 02:01:34,965   INFO  Epoch 28 完成
+2026-05-19 02:01:34,965   INFO  平均损失: 0.0010
+2026-05-19 02:01:34,965   INFO  学习率: 0.000500
+2026-05-19 02:01:34,966   INFO    pts_cls_loss: 0.0010
+2026-05-19 02:01:34,966   INFO    pts_offset_loss: 0.0000
+2026-05-19 02:01:34,966   INFO    pts_loss: 0.0010
+2026-05-19 02:01:34,966   INFO    refine_offset_loss: 0.0000
+2026-05-19 02:01:34,966   INFO    refine_loss: 0.0000
+2026-05-19 02:01:34,966   INFO    edge_cls_loss: 0.0000
+2026-05-19 02:01:34,966   INFO    edge_loss: 0.0000
+2026-05-19 02:01:34,975   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_23.pth
+2026-05-19 02:01:35,013   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_28.pth
+2026-05-19 02:01:35,014   INFO    轮数: 28
+2026-05-19 02:01:35,014   INFO    损失: 0.0010181354227825068
+2026-05-19 02:01:35,014   INFO    输入通道: 3
+2026-05-19 02:01:35,014   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_28.pth
+2026-05-19 02:01:35,014   INFO  Epoch 29: 启用边处理网络
+2026-05-19 02:01:46,464   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 02:08:32,529   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 02:10:20,848   INFO  Epoch 29 完成
+2026-05-19 02:10:20,849   INFO  平均损失: 0.0010
+2026-05-19 02:10:20,849   INFO  学习率: 0.000500
+2026-05-19 02:10:20,849   INFO    pts_cls_loss: 0.0010
+2026-05-19 02:10:20,849   INFO    pts_offset_loss: 0.0000
+2026-05-19 02:10:20,849   INFO    pts_loss: 0.0010
+2026-05-19 02:10:20,849   INFO    refine_offset_loss: 0.0000
+2026-05-19 02:10:20,849   INFO    refine_loss: 0.0000
+2026-05-19 02:10:20,849   INFO    edge_cls_loss: 0.0000
+2026-05-19 02:10:20,849   INFO    edge_loss: 0.0000
+2026-05-19 02:10:20,852   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_24.pth
+2026-05-19 02:10:20,882   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_29.pth
+2026-05-19 02:10:20,882   INFO    轮数: 29
+2026-05-19 02:10:20,882   INFO    损失: 0.0010250558934785658
+2026-05-19 02:10:20,882   INFO    输入通道: 3
+2026-05-19 02:10:20,882   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_29.pth
+2026-05-19 02:10:20,882   INFO  Epoch 30: 启用边处理网络
+2026-05-19 02:10:31,250   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 02:17:09,835   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 02:18:54,714   INFO  Epoch 30 完成
+2026-05-19 02:18:54,714   INFO  平均损失: 0.0010
+2026-05-19 02:18:54,714   INFO  学习率: 0.000500
+2026-05-19 02:18:54,714   INFO    pts_cls_loss: 0.0010
+2026-05-19 02:18:54,714   INFO    pts_offset_loss: 0.0000
+2026-05-19 02:18:54,714   INFO    pts_loss: 0.0010
+2026-05-19 02:18:54,714   INFO    refine_offset_loss: 0.0000
+2026-05-19 02:18:54,714   INFO    refine_loss: 0.0000
+2026-05-19 02:18:54,714   INFO    edge_cls_loss: 0.0000
+2026-05-19 02:18:54,714   INFO    edge_loss: 0.0000
+2026-05-19 02:18:54,716   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_25.pth
+2026-05-19 02:18:54,746   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_30.pth
+2026-05-19 02:18:54,746   INFO    轮数: 30
+2026-05-19 02:18:54,746   INFO    损失: 0.0010301665934093762
+2026-05-19 02:18:54,746   INFO    输入通道: 3
+2026-05-19 02:18:54,746   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_30.pth
+2026-05-19 02:18:54,747   INFO  Epoch 31: 启用边处理网络
+2026-05-19 02:19:05,144   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 02:25:49,930   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 02:27:31,884   INFO  Epoch 31 完成
+2026-05-19 02:27:31,884   INFO  平均损失: 0.0010
+2026-05-19 02:27:31,884   INFO  学习率: 0.000500
+2026-05-19 02:27:31,884   INFO    pts_cls_loss: 0.0010
+2026-05-19 02:27:31,884   INFO    pts_offset_loss: 0.0000
+2026-05-19 02:27:31,884   INFO    pts_loss: 0.0010
+2026-05-19 02:27:31,884   INFO    refine_offset_loss: 0.0000
+2026-05-19 02:27:31,884   INFO    refine_loss: 0.0000
+2026-05-19 02:27:31,884   INFO    edge_cls_loss: 0.0000
+2026-05-19 02:27:31,884   INFO    edge_loss: 0.0000
+2026-05-19 02:27:31,887   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_26.pth
+2026-05-19 02:27:31,917   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_31.pth
+2026-05-19 02:27:31,917   INFO    轮数: 31
+2026-05-19 02:27:31,917   INFO    损失: 0.0010338678839616477
+2026-05-19 02:27:31,917   INFO    输入通道: 3
+2026-05-19 02:27:31,917   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_31.pth
+2026-05-19 02:27:31,917   INFO  Epoch 32: 启用边处理网络
+2026-05-19 02:27:42,762   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 02:34:14,381   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 02:35:56,235   INFO  Epoch 32 完成
+2026-05-19 02:35:56,236   INFO  平均损失: 0.0010
+2026-05-19 02:35:56,236   INFO  学习率: 0.000500
+2026-05-19 02:35:56,236   INFO    pts_cls_loss: 0.0010
+2026-05-19 02:35:56,236   INFO    pts_offset_loss: 0.0000
+2026-05-19 02:35:56,236   INFO    pts_loss: 0.0010
+2026-05-19 02:35:56,236   INFO    refine_offset_loss: 0.0000
+2026-05-19 02:35:56,236   INFO    refine_loss: 0.0000
+2026-05-19 02:35:56,236   INFO    edge_cls_loss: 0.0000
+2026-05-19 02:35:56,236   INFO    edge_loss: 0.0000
+2026-05-19 02:35:56,238   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_27.pth
+2026-05-19 02:35:56,269   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_32.pth
+2026-05-19 02:35:56,269   INFO    轮数: 32
+2026-05-19 02:35:56,269   INFO    损失: 0.0010368875791755272
+2026-05-19 02:35:56,269   INFO    输入通道: 3
+2026-05-19 02:35:56,269   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_32.pth
+2026-05-19 02:35:56,270   INFO  Epoch 33: 启用边处理网络
+2026-05-19 02:36:07,019   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 02:43:01,671   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 02:44:45,929   INFO  Epoch 33 完成
+2026-05-19 02:44:45,929   INFO  平均损失: 0.0010
+2026-05-19 02:44:45,929   INFO  学习率: 0.000500
+2026-05-19 02:44:45,929   INFO    pts_cls_loss: 0.0010
+2026-05-19 02:44:45,929   INFO    pts_offset_loss: 0.0000
+2026-05-19 02:44:45,929   INFO    pts_loss: 0.0010
+2026-05-19 02:44:45,929   INFO    refine_offset_loss: 0.0000
+2026-05-19 02:44:45,929   INFO    refine_loss: 0.0000
+2026-05-19 02:44:45,929   INFO    edge_cls_loss: 0.0000
+2026-05-19 02:44:45,929   INFO    edge_loss: 0.0000
+2026-05-19 02:44:45,932   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_28.pth
+2026-05-19 02:44:46,024   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_33.pth
+2026-05-19 02:44:46,025   INFO    轮数: 33
+2026-05-19 02:44:46,025   INFO    损失: 0.001038537635395187
+2026-05-19 02:44:46,025   INFO    输入通道: 3
+2026-05-19 02:44:46,026   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_33.pth
+2026-05-19 02:44:46,026   INFO  Epoch 34: 启用边处理网络
+2026-05-19 02:44:57,414   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 02:51:41,924   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 02:53:30,410   INFO  Epoch 34 完成
+2026-05-19 02:53:30,411   INFO  平均损失: 0.0010
+2026-05-19 02:53:30,411   INFO  学习率: 0.000500
+2026-05-19 02:53:30,411   INFO    pts_cls_loss: 0.0010
+2026-05-19 02:53:30,411   INFO    pts_offset_loss: 0.0000
+2026-05-19 02:53:30,411   INFO    pts_loss: 0.0010
+2026-05-19 02:53:30,411   INFO    refine_offset_loss: 0.0000
+2026-05-19 02:53:30,411   INFO    refine_loss: 0.0000
+2026-05-19 02:53:30,411   INFO    edge_cls_loss: 0.0000
+2026-05-19 02:53:30,411   INFO    edge_loss: 0.0000
+2026-05-19 02:53:30,416   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_29.pth
+2026-05-19 02:53:30,446   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_34.pth
+2026-05-19 02:53:30,446   INFO    轮数: 34
+2026-05-19 02:53:30,446   INFO    损失: 0.0010406082419649465
+2026-05-19 02:53:30,446   INFO    输入通道: 3
+2026-05-19 02:53:30,446   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_34.pth
+2026-05-19 02:53:30,446   INFO  Epoch 35: 启用边处理网络
+2026-05-19 02:53:41,927   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 03:00:29,255   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 03:02:19,338   INFO  Epoch 35 完成
+2026-05-19 03:02:19,339   INFO  平均损失: 0.0010
+2026-05-19 03:02:19,339   INFO  学习率: 0.000500
+2026-05-19 03:02:19,339   INFO    pts_cls_loss: 0.0010
+2026-05-19 03:02:19,339   INFO    pts_offset_loss: 0.0000
+2026-05-19 03:02:19,339   INFO    pts_loss: 0.0010
+2026-05-19 03:02:19,339   INFO    refine_offset_loss: 0.0000
+2026-05-19 03:02:19,339   INFO    refine_loss: 0.0000
+2026-05-19 03:02:19,339   INFO    edge_cls_loss: 0.0000
+2026-05-19 03:02:19,339   INFO    edge_loss: 0.0000
+2026-05-19 03:02:19,342   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_30.pth
+2026-05-19 03:02:19,372   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_35.pth
+2026-05-19 03:02:19,372   INFO    轮数: 35
+2026-05-19 03:02:19,372   INFO    损失: 0.0010421138103993144
+2026-05-19 03:02:19,373   INFO    输入通道: 3
+2026-05-19 03:02:19,373   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_35.pth
+2026-05-19 03:02:19,373   INFO  Epoch 36: 启用边处理网络
+2026-05-19 03:02:31,189   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 03:09:12,656   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 03:10:54,797   INFO  Epoch 36 完成
+2026-05-19 03:10:54,797   INFO  平均损失: 0.0010
+2026-05-19 03:10:54,797   INFO  学习率: 0.000500
+2026-05-19 03:10:54,797   INFO    pts_cls_loss: 0.0010
+2026-05-19 03:10:54,797   INFO    pts_offset_loss: 0.0000
+2026-05-19 03:10:54,797   INFO    pts_loss: 0.0010
+2026-05-19 03:10:54,797   INFO    refine_offset_loss: 0.0000
+2026-05-19 03:10:54,797   INFO    refine_loss: 0.0000
+2026-05-19 03:10:54,797   INFO    edge_cls_loss: 0.0000
+2026-05-19 03:10:54,798   INFO    edge_loss: 0.0000
+2026-05-19 03:10:54,801   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_31.pth
+2026-05-19 03:10:54,831   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_36.pth
+2026-05-19 03:10:54,831   INFO    轮数: 36
+2026-05-19 03:10:54,831   INFO    损失: 0.001043239506543614
+2026-05-19 03:10:54,831   INFO    输入通道: 3
+2026-05-19 03:10:54,831   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_36.pth
+2026-05-19 03:10:54,831   INFO  Epoch 37: 启用边处理网络
+2026-05-19 03:11:05,362   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 03:17:55,430   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 03:19:39,418   INFO  Epoch 37 完成
+2026-05-19 03:19:39,418   INFO  平均损失: 0.0010
+2026-05-19 03:19:39,418   INFO  学习率: 0.000500
+2026-05-19 03:19:39,418   INFO    pts_cls_loss: 0.0010
+2026-05-19 03:19:39,418   INFO    pts_offset_loss: 0.0000
+2026-05-19 03:19:39,418   INFO    pts_loss: 0.0010
+2026-05-19 03:19:39,418   INFO    refine_offset_loss: 0.0000
+2026-05-19 03:19:39,418   INFO    refine_loss: 0.0000
+2026-05-19 03:19:39,418   INFO    edge_cls_loss: 0.0000
+2026-05-19 03:19:39,418   INFO    edge_loss: 0.0000
+2026-05-19 03:19:39,421   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_32.pth
+2026-05-19 03:19:39,491   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_37.pth
+2026-05-19 03:19:39,491   INFO    轮数: 37
+2026-05-19 03:19:39,491   INFO    损失: 0.0010437451219331706
+2026-05-19 03:19:39,492   INFO    输入通道: 3
+2026-05-19 03:19:39,492   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_37.pth
+2026-05-19 03:19:39,492   INFO  Epoch 38: 启用边处理网络
+2026-05-19 03:19:50,224   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 03:26:42,831   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 03:28:25,226   INFO  Epoch 38 完成
+2026-05-19 03:28:25,227   INFO  平均损失: 0.0010
+2026-05-19 03:28:25,227   INFO  学习率: 0.000500
+2026-05-19 03:28:25,227   INFO    pts_cls_loss: 0.0010
+2026-05-19 03:28:25,227   INFO    pts_offset_loss: 0.0000
+2026-05-19 03:28:25,227   INFO    pts_loss: 0.0010
+2026-05-19 03:28:25,227   INFO    refine_offset_loss: 0.0000
+2026-05-19 03:28:25,227   INFO    refine_loss: 0.0000
+2026-05-19 03:28:25,227   INFO    edge_cls_loss: 0.0000
+2026-05-19 03:28:25,227   INFO    edge_loss: 0.0000
+2026-05-19 03:28:25,230   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_33.pth
+2026-05-19 03:28:25,265   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_38.pth
+2026-05-19 03:28:25,266   INFO    轮数: 38
+2026-05-19 03:28:25,266   INFO    损失: 0.0010446420801599743
+2026-05-19 03:28:25,266   INFO    输入通道: 3
+2026-05-19 03:28:25,266   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_38.pth
+2026-05-19 03:28:25,266   INFO  Epoch 39: 启用边处理网络
+2026-05-19 03:28:37,072   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 03:35:28,127   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 03:37:17,244   INFO  Epoch 39 完成
+2026-05-19 03:37:17,245   INFO  平均损失: 0.0010
+2026-05-19 03:37:17,245   INFO  学习率: 0.000500
+2026-05-19 03:37:17,245   INFO    pts_cls_loss: 0.0010
+2026-05-19 03:37:17,245   INFO    pts_offset_loss: 0.0000
+2026-05-19 03:37:17,245   INFO    pts_loss: 0.0010
+2026-05-19 03:37:17,245   INFO    refine_offset_loss: 0.0000
+2026-05-19 03:37:17,245   INFO    refine_loss: 0.0000
+2026-05-19 03:37:17,245   INFO    edge_cls_loss: 0.0000
+2026-05-19 03:37:17,245   INFO    edge_loss: 0.0000
+2026-05-19 03:37:17,248   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_34.pth
+2026-05-19 03:37:17,290   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_39.pth
+2026-05-19 03:37:17,290   INFO    轮数: 39
+2026-05-19 03:37:17,290   INFO    损失: 0.0010454869916429743
+2026-05-19 03:37:17,290   INFO    输入通道: 3
+2026-05-19 03:37:17,290   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_39.pth
+2026-05-19 03:37:17,290   INFO  Epoch 40: 启用边处理网络
+2026-05-19 03:37:26,433   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000500
+2026-05-19 03:43:07,412   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000500
+2026-05-19 03:44:47,988   INFO  Epoch 40 完成
+2026-05-19 03:44:47,989   INFO  平均损失: 0.0010
+2026-05-19 03:44:47,989   INFO  学习率: 0.000250
+2026-05-19 03:44:47,989   INFO    pts_cls_loss: 0.0010
+2026-05-19 03:44:47,989   INFO    pts_offset_loss: 0.0000
+2026-05-19 03:44:47,989   INFO    pts_loss: 0.0010
+2026-05-19 03:44:47,989   INFO    refine_offset_loss: 0.0000
+2026-05-19 03:44:47,989   INFO    refine_loss: 0.0000
+2026-05-19 03:44:47,989   INFO    edge_cls_loss: 0.0000
+2026-05-19 03:44:47,989   INFO    edge_loss: 0.0000
+2026-05-19 03:44:47,992   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_35.pth
+2026-05-19 03:44:48,113   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_40.pth
+2026-05-19 03:44:48,114   INFO    轮数: 40
+2026-05-19 03:44:48,114   INFO    损失: 0.0010459587610966992
+2026-05-19 03:44:48,114   INFO    输入通道: 3
+2026-05-19 03:44:48,114   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_40.pth
+2026-05-19 03:44:48,114   INFO  Epoch 41: 启用边处理网络
+2026-05-19 03:44:58,412   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 03:51:33,950   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 03:53:19,584   INFO  Epoch 41 完成
+2026-05-19 03:53:19,585   INFO  平均损失: 0.0010
+2026-05-19 03:53:19,585   INFO  学习率: 0.000250
+2026-05-19 03:53:19,585   INFO    pts_cls_loss: 0.0010
+2026-05-19 03:53:19,585   INFO    pts_offset_loss: 0.0000
+2026-05-19 03:53:19,585   INFO    pts_loss: 0.0010
+2026-05-19 03:53:19,585   INFO    refine_offset_loss: 0.0000
+2026-05-19 03:53:19,585   INFO    refine_loss: 0.0000
+2026-05-19 03:53:19,585   INFO    edge_cls_loss: 0.0000
+2026-05-19 03:53:19,585   INFO    edge_loss: 0.0000
+2026-05-19 03:53:19,587   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_36.pth
+2026-05-19 03:53:19,617   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_41.pth
+2026-05-19 03:53:19,617   INFO    轮数: 41
+2026-05-19 03:53:19,617   INFO    损失: 0.0010465433078934439
+2026-05-19 03:53:19,617   INFO    输入通道: 3
+2026-05-19 03:53:19,617   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_41.pth
+2026-05-19 03:53:19,617   INFO  Epoch 42: 启用边处理网络
+2026-05-19 03:53:30,528   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 04:00:12,835   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 04:02:03,272   INFO  Epoch 42 完成
+2026-05-19 04:02:03,272   INFO  平均损失: 0.0010
+2026-05-19 04:02:03,272   INFO  学习率: 0.000250
+2026-05-19 04:02:03,272   INFO    pts_cls_loss: 0.0010
+2026-05-19 04:02:03,272   INFO    pts_offset_loss: 0.0000
+2026-05-19 04:02:03,272   INFO    pts_loss: 0.0010
+2026-05-19 04:02:03,272   INFO    refine_offset_loss: 0.0000
+2026-05-19 04:02:03,272   INFO    refine_loss: 0.0000
+2026-05-19 04:02:03,272   INFO    edge_cls_loss: 0.0000
+2026-05-19 04:02:03,272   INFO    edge_loss: 0.0000
+2026-05-19 04:02:03,276   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_37.pth
+2026-05-19 04:02:03,349   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_42.pth
+2026-05-19 04:02:03,349   INFO    轮数: 42
+2026-05-19 04:02:03,349   INFO    损失: 0.0010467814518051455
+2026-05-19 04:02:03,349   INFO    输入通道: 3
+2026-05-19 04:02:03,349   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_42.pth
+2026-05-19 04:02:03,349   INFO  Epoch 43: 启用边处理网络
+2026-05-19 04:02:14,336   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 04:09:01,802   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 04:10:50,051   INFO  Epoch 43 完成
+2026-05-19 04:10:50,051   INFO  平均损失: 0.0010
+2026-05-19 04:10:50,051   INFO  学习率: 0.000250
+2026-05-19 04:10:50,051   INFO    pts_cls_loss: 0.0010
+2026-05-19 04:10:50,051   INFO    pts_offset_loss: 0.0000
+2026-05-19 04:10:50,051   INFO    pts_loss: 0.0010
+2026-05-19 04:10:50,051   INFO    refine_offset_loss: 0.0000
+2026-05-19 04:10:50,051   INFO    refine_loss: 0.0000
+2026-05-19 04:10:50,051   INFO    edge_cls_loss: 0.0000
+2026-05-19 04:10:50,051   INFO    edge_loss: 0.0000
+2026-05-19 04:10:50,054   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_38.pth
+2026-05-19 04:10:50,084   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_43.pth
+2026-05-19 04:10:50,084   INFO    轮数: 43
+2026-05-19 04:10:50,084   INFO    损失: 0.0010469304561411263
+2026-05-19 04:10:50,084   INFO    输入通道: 3
+2026-05-19 04:10:50,084   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_43.pth
+2026-05-19 04:10:50,084   INFO  Epoch 44: 启用边处理网络
+2026-05-19 04:11:00,549   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 04:17:48,537   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 04:19:32,841   INFO  Epoch 44 完成
+2026-05-19 04:19:32,841   INFO  平均损失: 0.0010
+2026-05-19 04:19:32,841   INFO  学习率: 0.000250
+2026-05-19 04:19:32,841   INFO    pts_cls_loss: 0.0010
+2026-05-19 04:19:32,841   INFO    pts_offset_loss: 0.0000
+2026-05-19 04:19:32,841   INFO    pts_loss: 0.0010
+2026-05-19 04:19:32,841   INFO    refine_offset_loss: 0.0000
+2026-05-19 04:19:32,841   INFO    refine_loss: 0.0000
+2026-05-19 04:19:32,841   INFO    edge_cls_loss: 0.0000
+2026-05-19 04:19:32,841   INFO    edge_loss: 0.0000
+2026-05-19 04:19:32,844   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_39.pth
+2026-05-19 04:19:32,874   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_44.pth
+2026-05-19 04:19:32,875   INFO    轮数: 44
+2026-05-19 04:19:32,875   INFO    损失: 0.0010474057253304636
+2026-05-19 04:19:32,875   INFO    输入通道: 3
+2026-05-19 04:19:32,875   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_44.pth
+2026-05-19 04:19:32,875   INFO  Epoch 45: 启用边处理网络
+2026-05-19 04:19:43,574   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 04:26:25,401   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 04:28:08,935   INFO  Epoch 45 完成
+2026-05-19 04:28:08,935   INFO  平均损失: 0.0010
+2026-05-19 04:28:08,936   INFO  学习率: 0.000250
+2026-05-19 04:28:08,936   INFO    pts_cls_loss: 0.0010
+2026-05-19 04:28:08,936   INFO    pts_offset_loss: 0.0000
+2026-05-19 04:28:08,936   INFO    pts_loss: 0.0010
+2026-05-19 04:28:08,936   INFO    refine_offset_loss: 0.0000
+2026-05-19 04:28:08,936   INFO    refine_loss: 0.0000
+2026-05-19 04:28:08,936   INFO    edge_cls_loss: 0.0000
+2026-05-19 04:28:08,936   INFO    edge_loss: 0.0000
+2026-05-19 04:28:08,961   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_40.pth
+2026-05-19 04:28:09,029   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_45.pth
+2026-05-19 04:28:09,029   INFO    轮数: 45
+2026-05-19 04:28:09,029   INFO    损失: 0.0010478195872565266
+2026-05-19 04:28:09,030   INFO    输入通道: 3
+2026-05-19 04:28:09,030   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_45.pth
+2026-05-19 04:28:09,030   INFO  Epoch 46: 启用边处理网络
+2026-05-19 04:28:20,080   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 04:35:10,141   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 04:36:55,638   INFO  Epoch 46 完成
+2026-05-19 04:36:55,639   INFO  平均损失: 0.0010
+2026-05-19 04:36:55,639   INFO  学习率: 0.000250
+2026-05-19 04:36:55,639   INFO    pts_cls_loss: 0.0010
+2026-05-19 04:36:55,639   INFO    pts_offset_loss: 0.0000
+2026-05-19 04:36:55,639   INFO    pts_loss: 0.0010
+2026-05-19 04:36:55,639   INFO    refine_offset_loss: 0.0000
+2026-05-19 04:36:55,639   INFO    refine_loss: 0.0000
+2026-05-19 04:36:55,639   INFO    edge_cls_loss: 0.0000
+2026-05-19 04:36:55,639   INFO    edge_loss: 0.0000
+2026-05-19 04:36:55,650   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_41.pth
+2026-05-19 04:36:55,731   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_46.pth
+2026-05-19 04:36:55,731   INFO    轮数: 46
+2026-05-19 04:36:55,731   INFO    损失: 0.0010475299568497576
+2026-05-19 04:36:55,731   INFO    输入通道: 3
+2026-05-19 04:36:55,731   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_46.pth
+2026-05-19 04:36:55,732   INFO  Epoch 47: 启用边处理网络
+2026-05-19 04:37:07,595   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 04:43:57,948   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 04:45:48,150   INFO  Epoch 47 完成
+2026-05-19 04:45:48,151   INFO  平均损失: 0.0010
+2026-05-19 04:45:48,151   INFO  学习率: 0.000250
+2026-05-19 04:45:48,151   INFO    pts_cls_loss: 0.0010
+2026-05-19 04:45:48,151   INFO    pts_offset_loss: 0.0000
+2026-05-19 04:45:48,151   INFO    pts_loss: 0.0010
+2026-05-19 04:45:48,151   INFO    refine_offset_loss: 0.0000
+2026-05-19 04:45:48,151   INFO    refine_loss: 0.0000
+2026-05-19 04:45:48,151   INFO    edge_cls_loss: 0.0000
+2026-05-19 04:45:48,151   INFO    edge_loss: 0.0000
+2026-05-19 04:45:48,153   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_42.pth
+2026-05-19 04:45:48,183   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_47.pth
+2026-05-19 04:45:48,183   INFO    轮数: 47
+2026-05-19 04:45:48,183   INFO    损失: 0.0010481407680345
+2026-05-19 04:45:48,183   INFO    输入通道: 3
+2026-05-19 04:45:48,184   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_47.pth
+2026-05-19 04:45:48,184   INFO  Epoch 48: 启用边处理网络
+2026-05-19 04:46:00,069   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 04:52:49,408   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 04:54:39,833   INFO  Epoch 48 完成
+2026-05-19 04:54:39,834   INFO  平均损失: 0.0010
+2026-05-19 04:54:39,834   INFO  学习率: 0.000250
+2026-05-19 04:54:39,834   INFO    pts_cls_loss: 0.0010
+2026-05-19 04:54:39,834   INFO    pts_offset_loss: 0.0000
+2026-05-19 04:54:39,834   INFO    pts_loss: 0.0010
+2026-05-19 04:54:39,834   INFO    refine_offset_loss: 0.0000
+2026-05-19 04:54:39,834   INFO    refine_loss: 0.0000
+2026-05-19 04:54:39,834   INFO    edge_cls_loss: 0.0000
+2026-05-19 04:54:39,834   INFO    edge_loss: 0.0000
+2026-05-19 04:54:39,836   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_43.pth
+2026-05-19 04:54:39,866   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_48.pth
+2026-05-19 04:54:39,867   INFO    轮数: 48
+2026-05-19 04:54:39,867   INFO    损失: 0.0010482146662980085
+2026-05-19 04:54:39,867   INFO    输入通道: 3
+2026-05-19 04:54:39,867   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_48.pth
+2026-05-19 04:54:39,867   INFO  Epoch 49: 启用边处理网络
+2026-05-19 04:54:50,176   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 05:01:27,133   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 05:03:14,636   INFO  Epoch 49 完成
+2026-05-19 05:03:14,636   INFO  平均损失: 0.0010
+2026-05-19 05:03:14,636   INFO  学习率: 0.000250
+2026-05-19 05:03:14,636   INFO    pts_cls_loss: 0.0010
+2026-05-19 05:03:14,636   INFO    pts_offset_loss: 0.0000
+2026-05-19 05:03:14,636   INFO    pts_loss: 0.0010
+2026-05-19 05:03:14,636   INFO    refine_offset_loss: 0.0000
+2026-05-19 05:03:14,636   INFO    refine_loss: 0.0000
+2026-05-19 05:03:14,636   INFO    edge_cls_loss: 0.0000
+2026-05-19 05:03:14,636   INFO    edge_loss: 0.0000
+2026-05-19 05:03:14,640   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_44.pth
+2026-05-19 05:03:14,672   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_49.pth
+2026-05-19 05:03:14,672   INFO    轮数: 49
+2026-05-19 05:03:14,672   INFO    损失: 0.0010482617744855816
+2026-05-19 05:03:14,672   INFO    输入通道: 3
+2026-05-19 05:03:14,672   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_49.pth
+2026-05-19 05:03:14,672   INFO  Epoch 50: 启用边处理网络
+2026-05-19 05:03:25,195   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 05:10:18,803   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 05:12:02,331   INFO  Epoch 50 完成
+2026-05-19 05:12:02,331   INFO  平均损失: 0.0010
+2026-05-19 05:12:02,331   INFO  学习率: 0.000250
+2026-05-19 05:12:02,332   INFO    pts_cls_loss: 0.0010
+2026-05-19 05:12:02,332   INFO    pts_offset_loss: 0.0000
+2026-05-19 05:12:02,332   INFO    pts_loss: 0.0010
+2026-05-19 05:12:02,332   INFO    refine_offset_loss: 0.0000
+2026-05-19 05:12:02,332   INFO    refine_loss: 0.0000
+2026-05-19 05:12:02,332   INFO    edge_cls_loss: 0.0000
+2026-05-19 05:12:02,332   INFO    edge_loss: 0.0000
+2026-05-19 05:12:02,334   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_45.pth
+2026-05-19 05:12:02,464   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_50.pth
+2026-05-19 05:12:02,465   INFO    轮数: 50
+2026-05-19 05:12:02,465   INFO    损失: 0.0010487814724911004
+2026-05-19 05:12:02,465   INFO    输入通道: 3
+2026-05-19 05:12:02,465   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_50.pth
+2026-05-19 05:12:02,465   INFO  Epoch 51: 启用边处理网络
+2026-05-19 05:12:13,677   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 05:19:09,989   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 05:20:54,774   INFO  Epoch 51 完成
+2026-05-19 05:20:54,774   INFO  平均损失: 0.0010
+2026-05-19 05:20:54,774   INFO  学习率: 0.000250
+2026-05-19 05:20:54,774   INFO    pts_cls_loss: 0.0010
+2026-05-19 05:20:54,774   INFO    pts_offset_loss: 0.0000
+2026-05-19 05:20:54,774   INFO    pts_loss: 0.0010
+2026-05-19 05:20:54,774   INFO    refine_offset_loss: 0.0000
+2026-05-19 05:20:54,774   INFO    refine_loss: 0.0000
+2026-05-19 05:20:54,774   INFO    edge_cls_loss: 0.0000
+2026-05-19 05:20:54,774   INFO    edge_loss: 0.0000
+2026-05-19 05:20:54,778   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_46.pth
+2026-05-19 05:20:54,873   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_51.pth
+2026-05-19 05:20:54,873   INFO    轮数: 51
+2026-05-19 05:20:54,873   INFO    损失: 0.0010488081807125127
+2026-05-19 05:20:54,873   INFO    输入通道: 3
+2026-05-19 05:20:54,873   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_51.pth
+2026-05-19 05:20:54,874   INFO  Epoch 52: 启用边处理网络
+2026-05-19 05:21:06,482   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 05:27:55,834   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 05:29:44,020   INFO  Epoch 52 完成
+2026-05-19 05:29:44,021   INFO  平均损失: 0.0010
+2026-05-19 05:29:44,021   INFO  学习率: 0.000250
+2026-05-19 05:29:44,021   INFO    pts_cls_loss: 0.0010
+2026-05-19 05:29:44,021   INFO    pts_offset_loss: 0.0000
+2026-05-19 05:29:44,021   INFO    pts_loss: 0.0010
+2026-05-19 05:29:44,021   INFO    refine_offset_loss: 0.0000
+2026-05-19 05:29:44,021   INFO    refine_loss: 0.0000
+2026-05-19 05:29:44,021   INFO    edge_cls_loss: 0.0000
+2026-05-19 05:29:44,021   INFO    edge_loss: 0.0000
+2026-05-19 05:29:44,024   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_47.pth
+2026-05-19 05:29:44,132   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_52.pth
+2026-05-19 05:29:44,132   INFO    轮数: 52
+2026-05-19 05:29:44,132   INFO    损失: 0.001048975902449456
+2026-05-19 05:29:44,132   INFO    输入通道: 3
+2026-05-19 05:29:44,132   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_52.pth
+2026-05-19 05:29:44,132   INFO  Epoch 53: 启用边处理网络
+2026-05-19 05:29:55,770   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 05:36:30,105   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000250
+2026-05-19 05:38:19,367   INFO  Epoch 53 完成
+2026-05-19 05:38:19,367   INFO  平均损失: 0.0010
+2026-05-19 05:38:19,367   INFO  学习率: 0.000250
+2026-05-19 05:38:19,367   INFO    pts_cls_loss: 0.0010
+2026-05-19 05:38:19,367   INFO    pts_offset_loss: 0.0000
+2026-05-19 05:38:19,367   INFO    pts_loss: 0.0010
+2026-05-19 05:38:19,367   INFO    refine_offset_loss: 0.0000
+2026-05-19 05:38:19,367   INFO    refine_loss: 0.0000
+2026-05-19 05:38:19,367   INFO    edge_cls_loss: 0.0000
+2026-05-19 05:38:19,367   INFO    edge_loss: 0.0000
+2026-05-19 05:38:19,370   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_48.pth
+2026-05-19 05:38:19,400   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_53.pth
+2026-05-19 05:38:19,400   INFO    轮数: 53
+2026-05-19 05:38:19,400   INFO    损失: 0.0010492232304386562
+2026-05-19 05:38:19,400   INFO    输入通道: 3
+2026-05-19 05:38:19,400   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_53.pth
+2026-05-19 05:38:19,401   INFO  Epoch 54: 启用边处理网络
+2026-05-19 05:38:31,180   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 05:45:14,136   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000250
+2026-05-19 05:47:02,801   INFO  Epoch 54 完成
+2026-05-19 05:47:02,802   INFO  平均损失: 0.0010
+2026-05-19 05:47:02,802   INFO  学习率: 0.000250
+2026-05-19 05:47:02,802   INFO    pts_cls_loss: 0.0010
+2026-05-19 05:47:02,802   INFO    pts_offset_loss: 0.0000
+2026-05-19 05:47:02,802   INFO    pts_loss: 0.0010
+2026-05-19 05:47:02,802   INFO    refine_offset_loss: 0.0000
+2026-05-19 05:47:02,802   INFO    refine_loss: 0.0000
+2026-05-19 05:47:02,802   INFO    edge_cls_loss: 0.0000
+2026-05-19 05:47:02,802   INFO    edge_loss: 0.0000
+2026-05-19 05:47:02,805   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_49.pth
+2026-05-19 05:47:02,835   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_54.pth
+2026-05-19 05:47:02,835   INFO    轮数: 54
+2026-05-19 05:47:02,835   INFO    损失: 0.0010494611287867883
+2026-05-19 05:47:02,835   INFO    输入通道: 3
+2026-05-19 05:47:02,836   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_54.pth
+2026-05-19 05:47:02,836   INFO  Epoch 55: 启用边处理网络
+2026-05-19 05:47:13,278   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 05:53:58,848   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 05:55:44,378   INFO  Epoch 55 完成
+2026-05-19 05:55:44,379   INFO  平均损失: 0.0010
+2026-05-19 05:55:44,379   INFO  学习率: 0.000250
+2026-05-19 05:55:44,379   INFO    pts_cls_loss: 0.0010
+2026-05-19 05:55:44,379   INFO    pts_offset_loss: 0.0000
+2026-05-19 05:55:44,379   INFO    pts_loss: 0.0010
+2026-05-19 05:55:44,379   INFO    refine_offset_loss: 0.0000
+2026-05-19 05:55:44,379   INFO    refine_loss: 0.0000
+2026-05-19 05:55:44,379   INFO    edge_cls_loss: 0.0000
+2026-05-19 05:55:44,379   INFO    edge_loss: 0.0000
+2026-05-19 05:55:44,381   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_50.pth
+2026-05-19 05:55:44,465   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_55.pth
+2026-05-19 05:55:44,465   INFO    轮数: 55
+2026-05-19 05:55:44,465   INFO    损失: 0.001049542537657544
+2026-05-19 05:55:44,466   INFO    输入通道: 3
+2026-05-19 05:55:44,466   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_55.pth
+2026-05-19 05:55:44,466   INFO  Epoch 56: 启用边处理网络
+2026-05-19 05:55:54,691   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000250
+2026-05-19 06:02:29,403   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 06:04:12,506   INFO  Epoch 56 完成
+2026-05-19 06:04:12,506   INFO  平均损失: 0.0010
+2026-05-19 06:04:12,506   INFO  学习率: 0.000250
+2026-05-19 06:04:12,506   INFO    pts_cls_loss: 0.0010
+2026-05-19 06:04:12,506   INFO    pts_offset_loss: 0.0000
+2026-05-19 06:04:12,506   INFO    pts_loss: 0.0010
+2026-05-19 06:04:12,506   INFO    refine_offset_loss: 0.0000
+2026-05-19 06:04:12,506   INFO    refine_loss: 0.0000
+2026-05-19 06:04:12,506   INFO    edge_cls_loss: 0.0000
+2026-05-19 06:04:12,506   INFO    edge_loss: 0.0000
+2026-05-19 06:04:12,509   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_51.pth
+2026-05-19 06:04:12,597   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_56.pth
+2026-05-19 06:04:12,598   INFO    轮数: 56
+2026-05-19 06:04:12,598   INFO    损失: 0.0010497975581529317
+2026-05-19 06:04:12,598   INFO    输入通道: 3
+2026-05-19 06:04:12,598   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_56.pth
+2026-05-19 06:04:12,598   INFO  Epoch 57: 启用边处理网络
+2026-05-19 06:04:23,204   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 06:11:02,728   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000250
+2026-05-19 06:12:44,645   INFO  Epoch 57 完成
+2026-05-19 06:12:44,645   INFO  平均损失: 0.0010
+2026-05-19 06:12:44,646   INFO  学习率: 0.000250
+2026-05-19 06:12:44,646   INFO    pts_cls_loss: 0.0010
+2026-05-19 06:12:44,646   INFO    pts_offset_loss: 0.0000
+2026-05-19 06:12:44,646   INFO    pts_loss: 0.0010
+2026-05-19 06:12:44,646   INFO    refine_offset_loss: 0.0000
+2026-05-19 06:12:44,646   INFO    refine_loss: 0.0000
+2026-05-19 06:12:44,646   INFO    edge_cls_loss: 0.0000
+2026-05-19 06:12:44,646   INFO    edge_loss: 0.0000
+2026-05-19 06:12:44,649   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_52.pth
+2026-05-19 06:12:44,767   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_57.pth
+2026-05-19 06:12:44,767   INFO    轮数: 57
+2026-05-19 06:12:44,767   INFO    损失: 0.0010496633913135156
+2026-05-19 06:12:44,767   INFO    输入通道: 3
+2026-05-19 06:12:44,767   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_57.pth
+2026-05-19 06:12:44,768   INFO  Epoch 58: 启用边处理网络
+2026-05-19 06:12:56,000   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000250
+2026-05-19 06:19:51,949   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000250
+2026-05-19 06:21:36,946   INFO  Epoch 58 完成
+2026-05-19 06:21:36,947   INFO  平均损失: 0.0011
+2026-05-19 06:21:36,947   INFO  学习率: 0.000250
+2026-05-19 06:21:36,947   INFO    pts_cls_loss: 0.0011
+2026-05-19 06:21:36,947   INFO    pts_offset_loss: 0.0000
+2026-05-19 06:21:36,947   INFO    pts_loss: 0.0011
+2026-05-19 06:21:36,947   INFO    refine_offset_loss: 0.0000
+2026-05-19 06:21:36,947   INFO    refine_loss: 0.0000
+2026-05-19 06:21:36,947   INFO    edge_cls_loss: 0.0000
+2026-05-19 06:21:36,947   INFO    edge_loss: 0.0000
+2026-05-19 06:21:36,950   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_53.pth
+2026-05-19 06:21:36,981   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_58.pth
+2026-05-19 06:21:36,981   INFO    轮数: 58
+2026-05-19 06:21:36,981   INFO    损失: 0.0010503107641852694
+2026-05-19 06:21:36,981   INFO    输入通道: 3
+2026-05-19 06:21:36,981   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_58.pth
+2026-05-19 06:21:36,982   INFO  Epoch 59: 启用边处理网络
+2026-05-19 06:21:48,224   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000250
+2026-05-19 06:28:36,808   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 06:30:24,267   INFO  Epoch 59 完成
+2026-05-19 06:30:24,267   INFO  平均损失: 0.0011
+2026-05-19 06:30:24,267   INFO  学习率: 0.000250
+2026-05-19 06:30:24,267   INFO    pts_cls_loss: 0.0011
+2026-05-19 06:30:24,267   INFO    pts_offset_loss: 0.0000
+2026-05-19 06:30:24,267   INFO    pts_loss: 0.0011
+2026-05-19 06:30:24,267   INFO    refine_offset_loss: 0.0000
+2026-05-19 06:30:24,267   INFO    refine_loss: 0.0000
+2026-05-19 06:30:24,267   INFO    edge_cls_loss: 0.0000
+2026-05-19 06:30:24,267   INFO    edge_loss: 0.0000
+2026-05-19 06:30:24,270   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_54.pth
+2026-05-19 06:30:24,359   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_59.pth
+2026-05-19 06:30:24,360   INFO    轮数: 59
+2026-05-19 06:30:24,360   INFO    损失: 0.0010502924342290498
+2026-05-19 06:30:24,360   INFO    输入通道: 3
+2026-05-19 06:30:24,360   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_59.pth
+2026-05-19 06:30:24,360   INFO  Epoch 60: 启用边处理网络
+2026-05-19 06:30:35,565   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000250
+2026-05-19 06:37:21,955   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000250
+2026-05-19 06:39:12,571   INFO  Epoch 60 完成
+2026-05-19 06:39:12,572   INFO  平均损失: 0.0011
+2026-05-19 06:39:12,572   INFO  学习率: 0.000125
+2026-05-19 06:39:12,572   INFO    pts_cls_loss: 0.0011
+2026-05-19 06:39:12,572   INFO    pts_offset_loss: 0.0000
+2026-05-19 06:39:12,572   INFO    pts_loss: 0.0011
+2026-05-19 06:39:12,572   INFO    refine_offset_loss: 0.0000
+2026-05-19 06:39:12,572   INFO    refine_loss: 0.0000
+2026-05-19 06:39:12,572   INFO    edge_cls_loss: 0.0000
+2026-05-19 06:39:12,572   INFO    edge_loss: 0.0000
+2026-05-19 06:39:12,575   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_55.pth
+2026-05-19 06:39:12,605   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_60.pth
+2026-05-19 06:39:12,606   INFO    轮数: 60
+2026-05-19 06:39:12,606   INFO    损失: 0.0010500666976440698
+2026-05-19 06:39:12,606   INFO    输入通道: 3
+2026-05-19 06:39:12,606   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_60.pth
+2026-05-19 06:39:12,606   INFO  Epoch 61: 启用边处理网络
+2026-05-19 06:39:24,340   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000125
+2026-05-19 06:46:05,695   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000125
+2026-05-19 06:47:46,443   INFO  Epoch 61 完成
+2026-05-19 06:47:46,443   INFO  平均损失: 0.0011
+2026-05-19 06:47:46,443   INFO  学习率: 0.000125
+2026-05-19 06:47:46,443   INFO    pts_cls_loss: 0.0011
+2026-05-19 06:47:46,443   INFO    pts_offset_loss: 0.0000
+2026-05-19 06:47:46,443   INFO    pts_loss: 0.0011
+2026-05-19 06:47:46,443   INFO    refine_offset_loss: 0.0000
+2026-05-19 06:47:46,443   INFO    refine_loss: 0.0000
+2026-05-19 06:47:46,443   INFO    edge_cls_loss: 0.0000
+2026-05-19 06:47:46,443   INFO    edge_loss: 0.0000
+2026-05-19 06:47:46,446   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_56.pth
+2026-05-19 06:47:46,508   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_61.pth
+2026-05-19 06:47:46,508   INFO    轮数: 61
+2026-05-19 06:47:46,508   INFO    损失: 0.0010505446898605442
+2026-05-19 06:47:46,508   INFO    输入通道: 3
+2026-05-19 06:47:46,508   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_61.pth
+2026-05-19 06:47:46,509   INFO  Epoch 62: 启用边处理网络
+2026-05-19 06:47:56,937   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 06:54:37,773   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 06:56:21,826   INFO  Epoch 62 完成
+2026-05-19 06:56:21,827   INFO  平均损失: 0.0011
+2026-05-19 06:56:21,827   INFO  学习率: 0.000125
+2026-05-19 06:56:21,827   INFO    pts_cls_loss: 0.0011
+2026-05-19 06:56:21,827   INFO    pts_offset_loss: 0.0000
+2026-05-19 06:56:21,827   INFO    pts_loss: 0.0011
+2026-05-19 06:56:21,827   INFO    refine_offset_loss: 0.0000
+2026-05-19 06:56:21,827   INFO    refine_loss: 0.0000
+2026-05-19 06:56:21,827   INFO    edge_cls_loss: 0.0000
+2026-05-19 06:56:21,827   INFO    edge_loss: 0.0000
+2026-05-19 06:56:21,830   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_57.pth
+2026-05-19 06:56:21,861   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_62.pth
+2026-05-19 06:56:21,861   INFO    轮数: 62
+2026-05-19 06:56:21,861   INFO    损失: 0.0010506552862352692
+2026-05-19 06:56:21,861   INFO    输入通道: 3
+2026-05-19 06:56:21,862   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_62.pth
+2026-05-19 06:56:21,862   INFO  Epoch 63: 启用边处理网络
+2026-05-19 06:56:32,450   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 07:03:23,183   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000125
+2026-05-19 07:05:05,830   INFO  Epoch 63 完成
+2026-05-19 07:05:05,830   INFO  平均损失: 0.0011
+2026-05-19 07:05:05,830   INFO  学习率: 0.000125
+2026-05-19 07:05:05,830   INFO    pts_cls_loss: 0.0011
+2026-05-19 07:05:05,830   INFO    pts_offset_loss: 0.0000
+2026-05-19 07:05:05,830   INFO    pts_loss: 0.0011
+2026-05-19 07:05:05,830   INFO    refine_offset_loss: 0.0000
+2026-05-19 07:05:05,830   INFO    refine_loss: 0.0000
+2026-05-19 07:05:05,830   INFO    edge_cls_loss: 0.0000
+2026-05-19 07:05:05,830   INFO    edge_loss: 0.0000
+2026-05-19 07:05:05,834   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_58.pth
+2026-05-19 07:05:05,913   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_63.pth
+2026-05-19 07:05:05,913   INFO    轮数: 63
+2026-05-19 07:05:05,913   INFO    损失: 0.0010508114046388073
+2026-05-19 07:05:05,914   INFO    输入通道: 3
+2026-05-19 07:05:05,914   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_63.pth
+2026-05-19 07:05:05,914   INFO  Epoch 64: 启用边处理网络
+2026-05-19 07:05:17,238   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 07:12:04,985   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 07:13:49,647   INFO  Epoch 64 完成
+2026-05-19 07:13:49,647   INFO  平均损失: 0.0011
+2026-05-19 07:13:49,647   INFO  学习率: 0.000125
+2026-05-19 07:13:49,647   INFO    pts_cls_loss: 0.0011
+2026-05-19 07:13:49,647   INFO    pts_offset_loss: 0.0000
+2026-05-19 07:13:49,647   INFO    pts_loss: 0.0011
+2026-05-19 07:13:49,647   INFO    refine_offset_loss: 0.0000
+2026-05-19 07:13:49,647   INFO    refine_loss: 0.0000
+2026-05-19 07:13:49,647   INFO    edge_cls_loss: 0.0000
+2026-05-19 07:13:49,647   INFO    edge_loss: 0.0000
+2026-05-19 07:13:49,651   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_59.pth
+2026-05-19 07:13:49,682   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_64.pth
+2026-05-19 07:13:49,682   INFO    轮数: 64
+2026-05-19 07:13:49,682   INFO    损失: 0.0010507933275221149
+2026-05-19 07:13:49,682   INFO    输入通道: 3
+2026-05-19 07:13:49,682   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_64.pth
+2026-05-19 07:13:49,683   INFO  Epoch 65: 启用边处理网络
+2026-05-19 07:14:00,902   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 07:20:40,580   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000125
+2026-05-19 07:22:19,201   INFO  Epoch 65 完成
+2026-05-19 07:22:19,201   INFO  平均损失: 0.0011
+2026-05-19 07:22:19,201   INFO  学习率: 0.000125
+2026-05-19 07:22:19,201   INFO    pts_cls_loss: 0.0011
+2026-05-19 07:22:19,201   INFO    pts_offset_loss: 0.0000
+2026-05-19 07:22:19,201   INFO    pts_loss: 0.0011
+2026-05-19 07:22:19,201   INFO    refine_offset_loss: 0.0000
+2026-05-19 07:22:19,201   INFO    refine_loss: 0.0000
+2026-05-19 07:22:19,201   INFO    edge_cls_loss: 0.0000
+2026-05-19 07:22:19,201   INFO    edge_loss: 0.0000
+2026-05-19 07:22:19,204   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_60.pth
+2026-05-19 07:22:19,315   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_65.pth
+2026-05-19 07:22:19,316   INFO    轮数: 65
+2026-05-19 07:22:19,316   INFO    损失: 0.001050556733389385
+2026-05-19 07:22:19,316   INFO    输入通道: 3
+2026-05-19 07:22:19,316   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_65.pth
+2026-05-19 07:22:19,316   INFO  Epoch 66: 启用边处理网络
+2026-05-19 07:22:29,817   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 07:29:14,729   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 07:31:02,666   INFO  Epoch 66 完成
+2026-05-19 07:31:02,666   INFO  平均损失: 0.0011
+2026-05-19 07:31:02,666   INFO  学习率: 0.000125
+2026-05-19 07:31:02,666   INFO    pts_cls_loss: 0.0011
+2026-05-19 07:31:02,666   INFO    pts_offset_loss: 0.0000
+2026-05-19 07:31:02,666   INFO    pts_loss: 0.0011
+2026-05-19 07:31:02,666   INFO    refine_offset_loss: 0.0000
+2026-05-19 07:31:02,666   INFO    refine_loss: 0.0000
+2026-05-19 07:31:02,666   INFO    edge_cls_loss: 0.0000
+2026-05-19 07:31:02,666   INFO    edge_loss: 0.0000
+2026-05-19 07:31:02,670   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_61.pth
+2026-05-19 07:31:02,702   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_66.pth
+2026-05-19 07:31:02,702   INFO    轮数: 66
+2026-05-19 07:31:02,702   INFO    损失: 0.0010506321686989395
+2026-05-19 07:31:02,702   INFO    输入通道: 3
+2026-05-19 07:31:02,702   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_66.pth
+2026-05-19 07:31:02,702   INFO  Epoch 67: 启用边处理网络
+2026-05-19 07:31:14,001   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000125
+2026-05-19 07:38:00,804   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 07:39:45,718   INFO  Epoch 67 完成
+2026-05-19 07:39:45,719   INFO  平均损失: 0.0011
+2026-05-19 07:39:45,719   INFO  学习率: 0.000125
+2026-05-19 07:39:45,719   INFO    pts_cls_loss: 0.0011
+2026-05-19 07:39:45,719   INFO    pts_offset_loss: 0.0000
+2026-05-19 07:39:45,719   INFO    pts_loss: 0.0011
+2026-05-19 07:39:45,719   INFO    refine_offset_loss: 0.0000
+2026-05-19 07:39:45,719   INFO    refine_loss: 0.0000
+2026-05-19 07:39:45,719   INFO    edge_cls_loss: 0.0000
+2026-05-19 07:39:45,719   INFO    edge_loss: 0.0000
+2026-05-19 07:39:45,722   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_62.pth
+2026-05-19 07:39:45,751   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_67.pth
+2026-05-19 07:39:45,751   INFO    轮数: 67
+2026-05-19 07:39:45,751   INFO    损失: 0.0010506610906304559
+2026-05-19 07:39:45,751   INFO    输入通道: 3
+2026-05-19 07:39:45,751   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_67.pth
+2026-05-19 07:39:45,752   INFO  Epoch 68: 启用边处理网络
+2026-05-19 07:39:56,629   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000125
+2026-05-19 07:46:32,147   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 07:48:13,192   INFO  Epoch 68 完成
+2026-05-19 07:48:13,192   INFO  平均损失: 0.0011
+2026-05-19 07:48:13,192   INFO  学习率: 0.000125
+2026-05-19 07:48:13,192   INFO    pts_cls_loss: 0.0011
+2026-05-19 07:48:13,192   INFO    pts_offset_loss: 0.0000
+2026-05-19 07:48:13,192   INFO    pts_loss: 0.0011
+2026-05-19 07:48:13,192   INFO    refine_offset_loss: 0.0000
+2026-05-19 07:48:13,192   INFO    refine_loss: 0.0000
+2026-05-19 07:48:13,192   INFO    edge_cls_loss: 0.0000
+2026-05-19 07:48:13,192   INFO    edge_loss: 0.0000
+2026-05-19 07:48:13,195   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_63.pth
+2026-05-19 07:48:13,225   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_68.pth
+2026-05-19 07:48:13,226   INFO    轮数: 68
+2026-05-19 07:48:13,226   INFO    损失: 0.0010507349943509325
+2026-05-19 07:48:13,226   INFO    输入通道: 3
+2026-05-19 07:48:13,226   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_68.pth
+2026-05-19 07:48:13,226   INFO  Epoch 69: 启用边处理网络
+2026-05-19 07:48:24,269   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 07:55:15,080   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 07:56:54,623   INFO  Epoch 69 完成
+2026-05-19 07:56:54,623   INFO  平均损失: 0.0011
+2026-05-19 07:56:54,623   INFO  学习率: 0.000125
+2026-05-19 07:56:54,623   INFO    pts_cls_loss: 0.0011
+2026-05-19 07:56:54,624   INFO    pts_offset_loss: 0.0000
+2026-05-19 07:56:54,624   INFO    pts_loss: 0.0011
+2026-05-19 07:56:54,624   INFO    refine_offset_loss: 0.0000
+2026-05-19 07:56:54,624   INFO    refine_loss: 0.0000
+2026-05-19 07:56:54,624   INFO    edge_cls_loss: 0.0000
+2026-05-19 07:56:54,624   INFO    edge_loss: 0.0000
+2026-05-19 07:56:54,626   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_64.pth
+2026-05-19 07:56:54,658   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_69.pth
+2026-05-19 07:56:54,658   INFO    轮数: 69
+2026-05-19 07:56:54,658   INFO    损失: 0.00105054012783512
+2026-05-19 07:56:54,658   INFO    输入通道: 3
+2026-05-19 07:56:54,658   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_69.pth
+2026-05-19 07:56:54,659   INFO  Epoch 70: 启用边处理网络
+2026-05-19 07:57:05,343   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 08:03:50,141   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 08:05:38,545   INFO  Epoch 70 完成
+2026-05-19 08:05:38,546   INFO  平均损失: 0.0011
+2026-05-19 08:05:38,546   INFO  学习率: 0.000125
+2026-05-19 08:05:38,546   INFO    pts_cls_loss: 0.0011
+2026-05-19 08:05:38,546   INFO    pts_offset_loss: 0.0000
+2026-05-19 08:05:38,546   INFO    pts_loss: 0.0011
+2026-05-19 08:05:38,546   INFO    refine_offset_loss: 0.0000
+2026-05-19 08:05:38,546   INFO    refine_loss: 0.0000
+2026-05-19 08:05:38,546   INFO    edge_cls_loss: 0.0000
+2026-05-19 08:05:38,546   INFO    edge_loss: 0.0000
+2026-05-19 08:05:38,550   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_65.pth
+2026-05-19 08:05:38,617   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_70.pth
+2026-05-19 08:05:38,617   INFO    轮数: 70
+2026-05-19 08:05:38,617   INFO    损失: 0.00105110998993041
+2026-05-19 08:05:38,617   INFO    输入通道: 3
+2026-05-19 08:05:38,617   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_70.pth
+2026-05-19 08:05:38,618   INFO  Epoch 71: 启用边处理网络
+2026-05-19 08:05:50,482   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 08:12:38,843   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 08:14:28,932   INFO  Epoch 71 完成
+2026-05-19 08:14:28,932   INFO  平均损失: 0.0011
+2026-05-19 08:14:28,932   INFO  学习率: 0.000125
+2026-05-19 08:14:28,932   INFO    pts_cls_loss: 0.0011
+2026-05-19 08:14:28,932   INFO    pts_offset_loss: 0.0000
+2026-05-19 08:14:28,932   INFO    pts_loss: 0.0011
+2026-05-19 08:14:28,932   INFO    refine_offset_loss: 0.0000
+2026-05-19 08:14:28,932   INFO    refine_loss: 0.0000
+2026-05-19 08:14:28,932   INFO    edge_cls_loss: 0.0000
+2026-05-19 08:14:28,932   INFO    edge_loss: 0.0000
+2026-05-19 08:14:28,935   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_66.pth
+2026-05-19 08:14:29,022   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_71.pth
+2026-05-19 08:14:29,022   INFO    轮数: 71
+2026-05-19 08:14:29,022   INFO    损失: 0.0010507781971682562
+2026-05-19 08:14:29,022   INFO    输入通道: 3
+2026-05-19 08:14:29,022   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_71.pth
+2026-05-19 08:14:29,023   INFO  Epoch 72: 启用边处理网络
+2026-05-19 08:14:41,048   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 08:21:31,047   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 08:23:19,886   INFO  Epoch 72 完成
+2026-05-19 08:23:19,886   INFO  平均损失: 0.0011
+2026-05-19 08:23:19,886   INFO  学习率: 0.000125
+2026-05-19 08:23:19,887   INFO    pts_cls_loss: 0.0011
+2026-05-19 08:23:19,887   INFO    pts_offset_loss: 0.0000
+2026-05-19 08:23:19,887   INFO    pts_loss: 0.0011
+2026-05-19 08:23:19,887   INFO    refine_offset_loss: 0.0000
+2026-05-19 08:23:19,887   INFO    refine_loss: 0.0000
+2026-05-19 08:23:19,887   INFO    edge_cls_loss: 0.0000
+2026-05-19 08:23:19,887   INFO    edge_loss: 0.0000
+2026-05-19 08:23:19,890   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_67.pth
+2026-05-19 08:23:20,030   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_72.pth
+2026-05-19 08:23:20,030   INFO    轮数: 72
+2026-05-19 08:23:20,030   INFO    损失: 0.0010508698542253114
+2026-05-19 08:23:20,030   INFO    输入通道: 3
+2026-05-19 08:23:20,030   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_72.pth
+2026-05-19 08:23:20,031   INFO  Epoch 73: 启用边处理网络
+2026-05-19 08:23:30,564   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 08:30:16,175   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 08:32:01,166   INFO  Epoch 73 完成
+2026-05-19 08:32:01,166   INFO  平均损失: 0.0011
+2026-05-19 08:32:01,166   INFO  学习率: 0.000125
+2026-05-19 08:32:01,167   INFO    pts_cls_loss: 0.0011
+2026-05-19 08:32:01,167   INFO    pts_offset_loss: 0.0000
+2026-05-19 08:32:01,167   INFO    pts_loss: 0.0011
+2026-05-19 08:32:01,167   INFO    refine_offset_loss: 0.0000
+2026-05-19 08:32:01,167   INFO    refine_loss: 0.0000
+2026-05-19 08:32:01,167   INFO    edge_cls_loss: 0.0000
+2026-05-19 08:32:01,167   INFO    edge_loss: 0.0000
+2026-05-19 08:32:01,170   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_68.pth
+2026-05-19 08:32:01,313   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_73.pth
+2026-05-19 08:32:01,313   INFO    轮数: 73
+2026-05-19 08:32:01,313   INFO    损失: 0.0010513057259231573
+2026-05-19 08:32:01,313   INFO    输入通道: 3
+2026-05-19 08:32:01,314   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_73.pth
+2026-05-19 08:32:01,314   INFO  Epoch 74: 启用边处理网络
+2026-05-19 08:32:12,705   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 08:38:55,965   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 08:40:39,502   INFO  Epoch 74 完成
+2026-05-19 08:40:39,502   INFO  平均损失: 0.0011
+2026-05-19 08:40:39,502   INFO  学习率: 0.000125
+2026-05-19 08:40:39,502   INFO    pts_cls_loss: 0.0011
+2026-05-19 08:40:39,502   INFO    pts_offset_loss: 0.0000
+2026-05-19 08:40:39,502   INFO    pts_loss: 0.0011
+2026-05-19 08:40:39,502   INFO    refine_offset_loss: 0.0000
+2026-05-19 08:40:39,502   INFO    refine_loss: 0.0000
+2026-05-19 08:40:39,502   INFO    edge_cls_loss: 0.0000
+2026-05-19 08:40:39,502   INFO    edge_loss: 0.0000
+2026-05-19 08:40:39,505   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_69.pth
+2026-05-19 08:40:39,586   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_74.pth
+2026-05-19 08:40:39,586   INFO    轮数: 74
+2026-05-19 08:40:39,586   INFO    损失: 0.0010508929135539802
+2026-05-19 08:40:39,586   INFO    输入通道: 3
+2026-05-19 08:40:39,587   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_74.pth
+2026-05-19 08:40:39,587   INFO  Epoch 75: 启用边处理网络
+2026-05-19 08:40:51,595   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 08:47:44,065   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 08:49:31,336   INFO  Epoch 75 完成
+2026-05-19 08:49:31,336   INFO  平均损失: 0.0011
+2026-05-19 08:49:31,336   INFO  学习率: 0.000125
+2026-05-19 08:49:31,336   INFO    pts_cls_loss: 0.0011
+2026-05-19 08:49:31,336   INFO    pts_offset_loss: 0.0000
+2026-05-19 08:49:31,336   INFO    pts_loss: 0.0011
+2026-05-19 08:49:31,337   INFO    refine_offset_loss: 0.0000
+2026-05-19 08:49:31,337   INFO    refine_loss: 0.0000
+2026-05-19 08:49:31,337   INFO    edge_cls_loss: 0.0000
+2026-05-19 08:49:31,337   INFO    edge_loss: 0.0000
+2026-05-19 08:49:31,340   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_70.pth
+2026-05-19 08:49:31,462   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_75.pth
+2026-05-19 08:49:31,462   INFO    轮数: 75
+2026-05-19 08:49:31,463   INFO    损失: 0.0010516219081182498
+2026-05-19 08:49:31,463   INFO    输入通道: 3
+2026-05-19 08:49:31,463   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_75.pth
+2026-05-19 08:49:31,463   INFO  Epoch 76: 启用边处理网络
+2026-05-19 08:49:43,363   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000125
+2026-05-19 08:56:32,035   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 08:58:20,770   INFO  Epoch 76 完成
+2026-05-19 08:58:20,771   INFO  平均损失: 0.0011
+2026-05-19 08:58:20,771   INFO  学习率: 0.000125
+2026-05-19 08:58:20,771   INFO    pts_cls_loss: 0.0011
+2026-05-19 08:58:20,771   INFO    pts_offset_loss: 0.0000
+2026-05-19 08:58:20,771   INFO    pts_loss: 0.0011
+2026-05-19 08:58:20,771   INFO    refine_offset_loss: 0.0000
+2026-05-19 08:58:20,771   INFO    refine_loss: 0.0000
+2026-05-19 08:58:20,771   INFO    edge_cls_loss: 0.0000
+2026-05-19 08:58:20,771   INFO    edge_loss: 0.0000
+2026-05-19 08:58:20,774   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_71.pth
+2026-05-19 08:58:20,875   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_76.pth
+2026-05-19 08:58:20,875   INFO    轮数: 76
+2026-05-19 08:58:20,875   INFO    损失: 0.0010510105512366863
+2026-05-19 08:58:20,875   INFO    输入通道: 3
+2026-05-19 08:58:20,875   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_76.pth
+2026-05-19 08:58:20,876   INFO  Epoch 77: 启用边处理网络
+2026-05-19 08:58:32,963   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 09:06:21,902   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 09:08:32,238   INFO  Epoch 77 完成
+2026-05-19 09:08:32,239   INFO  平均损失: 0.0011
+2026-05-19 09:08:32,239   INFO  学习率: 0.000125
+2026-05-19 09:08:32,240   INFO    pts_cls_loss: 0.0011
+2026-05-19 09:08:32,240   INFO    pts_offset_loss: 0.0000
+2026-05-19 09:08:32,240   INFO    pts_loss: 0.0011
+2026-05-19 09:08:32,240   INFO    refine_offset_loss: 0.0000
+2026-05-19 09:08:32,240   INFO    refine_loss: 0.0000
+2026-05-19 09:08:32,240   INFO    edge_cls_loss: 0.0000
+2026-05-19 09:08:32,240   INFO    edge_loss: 0.0000
+2026-05-19 09:08:32,265   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_72.pth
+2026-05-19 09:08:32,409   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_77.pth
+2026-05-19 09:08:32,409   INFO    轮数: 77
+2026-05-19 09:08:32,409   INFO    损失: 0.0010511664640944218
+2026-05-19 09:08:32,409   INFO    输入通道: 3
+2026-05-19 09:08:32,409   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_77.pth
+2026-05-19 09:08:32,410   INFO  Epoch 78: 启用边处理网络
+2026-05-19 09:08:46,862   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 09:17:22,207   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 09:19:33,180   INFO  Epoch 78 完成
+2026-05-19 09:19:33,180   INFO  平均损失: 0.0011
+2026-05-19 09:19:33,180   INFO  学习率: 0.000125
+2026-05-19 09:19:33,180   INFO    pts_cls_loss: 0.0011
+2026-05-19 09:19:33,180   INFO    pts_offset_loss: 0.0000
+2026-05-19 09:19:33,180   INFO    pts_loss: 0.0011
+2026-05-19 09:19:33,180   INFO    refine_offset_loss: 0.0000
+2026-05-19 09:19:33,180   INFO    refine_loss: 0.0000
+2026-05-19 09:19:33,180   INFO    edge_cls_loss: 0.0000
+2026-05-19 09:19:33,180   INFO    edge_loss: 0.0000
+2026-05-19 09:19:33,192   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_73.pth
+2026-05-19 09:19:33,239   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_78.pth
+2026-05-19 09:19:33,240   INFO    轮数: 78
+2026-05-19 09:19:33,240   INFO    损失: 0.0010514112709643086
+2026-05-19 09:19:33,240   INFO    输入通道: 3
+2026-05-19 09:19:33,240   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_78.pth
+2026-05-19 09:19:33,240   INFO  Epoch 79: 启用边处理网络
+2026-05-19 09:19:46,974   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 09:28:10,316   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 09:30:19,691   INFO  Epoch 79 完成
+2026-05-19 09:30:19,691   INFO  平均损失: 0.0011
+2026-05-19 09:30:19,691   INFO  学习率: 0.000125
+2026-05-19 09:30:19,691   INFO    pts_cls_loss: 0.0011
+2026-05-19 09:30:19,692   INFO    pts_offset_loss: 0.0000
+2026-05-19 09:30:19,692   INFO    pts_loss: 0.0011
+2026-05-19 09:30:19,692   INFO    refine_offset_loss: 0.0000
+2026-05-19 09:30:19,692   INFO    refine_loss: 0.0000
+2026-05-19 09:30:19,692   INFO    edge_cls_loss: 0.0000
+2026-05-19 09:30:19,692   INFO    edge_loss: 0.0000
+2026-05-19 09:30:19,695   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_74.pth
+2026-05-19 09:30:19,767   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_79.pth
+2026-05-19 09:30:19,767   INFO    轮数: 79
+2026-05-19 09:30:19,767   INFO    损失: 0.0010511409982427722
+2026-05-19 09:30:19,767   INFO    输入通道: 3
+2026-05-19 09:30:19,768   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_79.pth
+2026-05-19 09:30:19,768   INFO  Epoch 80: 启用边处理网络
+2026-05-19 09:30:34,877   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000125
+2026-05-19 09:39:16,926   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000125
+2026-05-19 09:41:29,041   INFO  Epoch 80 完成
+2026-05-19 09:41:29,042   INFO  平均损失: 0.0011
+2026-05-19 09:41:29,042   INFO  学习率: 0.000063
+2026-05-19 09:41:29,042   INFO    pts_cls_loss: 0.0011
+2026-05-19 09:41:29,042   INFO    pts_offset_loss: 0.0000
+2026-05-19 09:41:29,042   INFO    pts_loss: 0.0011
+2026-05-19 09:41:29,042   INFO    refine_offset_loss: 0.0000
+2026-05-19 09:41:29,042   INFO    refine_loss: 0.0000
+2026-05-19 09:41:29,042   INFO    edge_cls_loss: 0.0000
+2026-05-19 09:41:29,042   INFO    edge_loss: 0.0000
+2026-05-19 09:41:29,058   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_75.pth
+2026-05-19 09:41:29,145   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_80.pth
+2026-05-19 09:41:29,145   INFO    轮数: 80
+2026-05-19 09:41:29,145   INFO    损失: 0.0010513829583942425
+2026-05-19 09:41:29,145   INFO    输入通道: 3
+2026-05-19 09:41:29,146   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_80.pth
+2026-05-19 09:41:29,146   INFO  Epoch 81: 启用边处理网络
+2026-05-19 09:41:43,521   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000063
+2026-05-19 09:50:21,696   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000063
+2026-05-19 09:52:33,332   INFO  Epoch 81 完成
+2026-05-19 09:52:33,332   INFO  平均损失: 0.0011
+2026-05-19 09:52:33,332   INFO  学习率: 0.000063
+2026-05-19 09:52:33,332   INFO    pts_cls_loss: 0.0011
+2026-05-19 09:52:33,332   INFO    pts_offset_loss: 0.0000
+2026-05-19 09:52:33,332   INFO    pts_loss: 0.0011
+2026-05-19 09:52:33,332   INFO    refine_offset_loss: 0.0000
+2026-05-19 09:52:33,333   INFO    refine_loss: 0.0000
+2026-05-19 09:52:33,333   INFO    edge_cls_loss: 0.0000
+2026-05-19 09:52:33,333   INFO    edge_loss: 0.0000
+2026-05-19 09:52:33,364   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_76.pth
+2026-05-19 09:52:33,504   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_81.pth
+2026-05-19 09:52:33,505   INFO    轮数: 81
+2026-05-19 09:52:33,505   INFO    损失: 0.0010514788191358093
+2026-05-19 09:52:33,505   INFO    输入通道: 3
+2026-05-19 09:52:33,505   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_81.pth
+2026-05-19 09:52:33,505   INFO  Epoch 82: 启用边处理网络
+2026-05-19 09:52:48,163   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000063
+2026-05-19 10:01:26,917   INFO  Epoch iter 50/64: loss=0.0010, lr=0.000063
+2026-05-19 10:03:45,054   INFO  Epoch 82 完成
+2026-05-19 10:03:45,054   INFO  平均损失: 0.0011
+2026-05-19 10:03:45,054   INFO  学习率: 0.000063
+2026-05-19 10:03:45,054   INFO    pts_cls_loss: 0.0011
+2026-05-19 10:03:45,054   INFO    pts_offset_loss: 0.0000
+2026-05-19 10:03:45,054   INFO    pts_loss: 0.0011
+2026-05-19 10:03:45,054   INFO    refine_offset_loss: 0.0000
+2026-05-19 10:03:45,055   INFO    refine_loss: 0.0000
+2026-05-19 10:03:45,055   INFO    edge_cls_loss: 0.0000
+2026-05-19 10:03:45,055   INFO    edge_loss: 0.0000
+2026-05-19 10:03:45,066   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_77.pth
+2026-05-19 10:03:45,209   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_82.pth
+2026-05-19 10:03:45,209   INFO    轮数: 82
+2026-05-19 10:03:45,209   INFO    损失: 0.001051231372912298
+2026-05-19 10:03:45,209   INFO    输入通道: 3
+2026-05-19 10:03:45,209   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_82.pth
+2026-05-19 10:03:45,210   INFO  Epoch 83: 启用边处理网络
+2026-05-19 10:03:59,439   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000063
+2026-05-19 10:12:37,462   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000063
+2026-05-19 10:14:53,182   INFO  Epoch 83 完成
+2026-05-19 10:14:53,183   INFO  平均损失: 0.0011
+2026-05-19 10:14:53,183   INFO  学习率: 0.000063
+2026-05-19 10:14:53,183   INFO    pts_cls_loss: 0.0011
+2026-05-19 10:14:53,183   INFO    pts_offset_loss: 0.0000
+2026-05-19 10:14:53,183   INFO    pts_loss: 0.0011
+2026-05-19 10:14:53,183   INFO    refine_offset_loss: 0.0000
+2026-05-19 10:14:53,183   INFO    refine_loss: 0.0000
+2026-05-19 10:14:53,183   INFO    edge_cls_loss: 0.0000
+2026-05-19 10:14:53,183   INFO    edge_loss: 0.0000
+2026-05-19 10:14:53,208   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_78.pth
+2026-05-19 10:14:53,328   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_83.pth
+2026-05-19 10:14:53,328   INFO    轮数: 83
+2026-05-19 10:14:53,328   INFO    损失: 0.0010515709673200035
+2026-05-19 10:14:53,329   INFO    输入通道: 3
+2026-05-19 10:14:53,329   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_83.pth
+2026-05-19 10:14:53,329   INFO  Epoch 84: 启用边处理网络
+2026-05-19 10:15:08,212   INFO  Epoch iter 0/64: loss=0.0010, lr=0.000063
+2026-05-19 10:23:42,189   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000063
+2026-05-19 10:25:55,364   INFO  Epoch 84 完成
+2026-05-19 10:25:55,364   INFO  平均损失: 0.0011
+2026-05-19 10:25:55,364   INFO  学习率: 0.000063
+2026-05-19 10:25:55,364   INFO    pts_cls_loss: 0.0011
+2026-05-19 10:25:55,365   INFO    pts_offset_loss: 0.0000
+2026-05-19 10:25:55,365   INFO    pts_loss: 0.0011
+2026-05-19 10:25:55,365   INFO    refine_offset_loss: 0.0000
+2026-05-19 10:25:55,365   INFO    refine_loss: 0.0000
+2026-05-19 10:25:55,365   INFO    edge_cls_loss: 0.0000
+2026-05-19 10:25:55,365   INFO    edge_loss: 0.0000
+2026-05-19 10:25:55,372   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_79.pth
+2026-05-19 10:25:55,455   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_84.pth
+2026-05-19 10:25:55,456   INFO    轮数: 84
+2026-05-19 10:25:55,456   INFO    损失: 0.0010512523658690043
+2026-05-19 10:25:55,456   INFO    输入通道: 3
+2026-05-19 10:25:55,456   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_84.pth
+2026-05-19 10:25:55,457   INFO  Epoch 85: 启用边处理网络
+2026-05-19 10:26:09,919   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000063
+2026-05-19 10:34:28,328   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000063
+2026-05-19 10:36:34,498   INFO  Epoch 85 完成
+2026-05-19 10:36:34,499   INFO  平均损失: 0.0011
+2026-05-19 10:36:34,499   INFO  学习率: 0.000063
+2026-05-19 10:36:34,499   INFO    pts_cls_loss: 0.0011
+2026-05-19 10:36:34,499   INFO    pts_offset_loss: 0.0000
+2026-05-19 10:36:34,499   INFO    pts_loss: 0.0011
+2026-05-19 10:36:34,499   INFO    refine_offset_loss: 0.0000
+2026-05-19 10:36:34,499   INFO    refine_loss: 0.0000
+2026-05-19 10:36:34,499   INFO    edge_cls_loss: 0.0000
+2026-05-19 10:36:34,499   INFO    edge_loss: 0.0000
+2026-05-19 10:36:34,509   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_80.pth
+2026-05-19 10:36:34,606   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_85.pth
+2026-05-19 10:36:34,607   INFO    轮数: 85
+2026-05-19 10:36:34,607   INFO    损失: 0.0010516325382923242
+2026-05-19 10:36:34,607   INFO    输入通道: 3
+2026-05-19 10:36:34,607   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_85.pth
+2026-05-19 10:36:34,607   INFO  Epoch 86: 启用边处理网络
+2026-05-19 10:36:48,319   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000063
+2026-05-19 10:45:09,912   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000063
+2026-05-19 10:47:16,095   INFO  Epoch 86 完成
+2026-05-19 10:47:16,095   INFO  平均损失: 0.0011
+2026-05-19 10:47:16,096   INFO  学习率: 0.000063
+2026-05-19 10:47:16,096   INFO    pts_cls_loss: 0.0011
+2026-05-19 10:47:16,096   INFO    pts_offset_loss: 0.0000
+2026-05-19 10:47:16,096   INFO    pts_loss: 0.0011
+2026-05-19 10:47:16,096   INFO    refine_offset_loss: 0.0000
+2026-05-19 10:47:16,096   INFO    refine_loss: 0.0000
+2026-05-19 10:47:16,096   INFO    edge_cls_loss: 0.0000
+2026-05-19 10:47:16,096   INFO    edge_loss: 0.0000
+2026-05-19 10:47:16,099   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_81.pth
+2026-05-19 10:47:16,172   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_86.pth
+2026-05-19 10:47:16,172   INFO    轮数: 86
+2026-05-19 10:47:16,172   INFO    损失: 0.0010518335438973736
+2026-05-19 10:47:16,172   INFO    输入通道: 3
+2026-05-19 10:47:16,172   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_86.pth
+2026-05-19 10:47:16,173   INFO  Epoch 87: 启用边处理网络
+2026-05-19 10:47:29,830   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000063
+2026-05-19 10:55:37,201   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000063
+2026-05-19 10:57:46,091   INFO  Epoch 87 完成
+2026-05-19 10:57:46,091   INFO  平均损失: 0.0011
+2026-05-19 10:57:46,091   INFO  学习率: 0.000063
+2026-05-19 10:57:46,091   INFO    pts_cls_loss: 0.0011
+2026-05-19 10:57:46,091   INFO    pts_offset_loss: 0.0000
+2026-05-19 10:57:46,091   INFO    pts_loss: 0.0011
+2026-05-19 10:57:46,091   INFO    refine_offset_loss: 0.0000
+2026-05-19 10:57:46,091   INFO    refine_loss: 0.0000
+2026-05-19 10:57:46,091   INFO    edge_cls_loss: 0.0000
+2026-05-19 10:57:46,091   INFO    edge_loss: 0.0000
+2026-05-19 10:57:46,094   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_82.pth
+2026-05-19 10:57:46,185   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_87.pth
+2026-05-19 10:57:46,185   INFO    轮数: 87
+2026-05-19 10:57:46,186   INFO    损失: 0.0010513034376344876
+2026-05-19 10:57:46,186   INFO    输入通道: 3
+2026-05-19 10:57:46,186   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_87.pth
+2026-05-19 10:57:46,186   INFO  Epoch 88: 启用边处理网络
+2026-05-19 10:58:00,400   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000063
+2026-05-19 11:06:19,022   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000063
+2026-05-19 11:08:29,145   INFO  Epoch 88 完成
+2026-05-19 11:08:29,145   INFO  平均损失: 0.0011
+2026-05-19 11:08:29,145   INFO  学习率: 0.000063
+2026-05-19 11:08:29,145   INFO    pts_cls_loss: 0.0011
+2026-05-19 11:08:29,145   INFO    pts_offset_loss: 0.0000
+2026-05-19 11:08:29,145   INFO    pts_loss: 0.0011
+2026-05-19 11:08:29,145   INFO    refine_offset_loss: 0.0000
+2026-05-19 11:08:29,145   INFO    refine_loss: 0.0000
+2026-05-19 11:08:29,145   INFO    edge_cls_loss: 0.0000
+2026-05-19 11:08:29,145   INFO    edge_loss: 0.0000
+2026-05-19 11:08:29,155   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_83.pth
+2026-05-19 11:08:29,198   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_88.pth
+2026-05-19 11:08:29,198   INFO    轮数: 88
+2026-05-19 11:08:29,198   INFO    损失: 0.001051465304044541
+2026-05-19 11:08:29,198   INFO    输入通道: 3
+2026-05-19 11:08:29,199   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_88.pth
+2026-05-19 11:08:29,199   INFO  Epoch 89: 启用边处理网络
+2026-05-19 11:08:41,659   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000063
+2026-05-19 11:16:59,675   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000063
+2026-05-19 11:19:08,278   INFO  Epoch 89 完成
+2026-05-19 11:19:08,278   INFO  平均损失: 0.0011
+2026-05-19 11:19:08,278   INFO  学习率: 0.000063
+2026-05-19 11:19:08,278   INFO    pts_cls_loss: 0.0011
+2026-05-19 11:19:08,278   INFO    pts_offset_loss: 0.0000
+2026-05-19 11:19:08,278   INFO    pts_loss: 0.0011
+2026-05-19 11:19:08,278   INFO    refine_offset_loss: 0.0000
+2026-05-19 11:19:08,278   INFO    refine_loss: 0.0000
+2026-05-19 11:19:08,278   INFO    edge_cls_loss: 0.0000
+2026-05-19 11:19:08,278   INFO    edge_loss: 0.0000
+2026-05-19 11:19:08,281   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_84.pth
+2026-05-19 11:19:08,392   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_89.pth
+2026-05-19 11:19:08,393   INFO    轮数: 89
+2026-05-19 11:19:08,393   INFO    损失: 0.001051636198099004
+2026-05-19 11:19:08,393   INFO    输入通道: 3
+2026-05-19 11:19:08,393   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_89.pth
+2026-05-19 11:19:08,393   INFO  Epoch 90: 启用边处理网络
+2026-05-19 11:19:21,150   INFO  Epoch iter 0/64: loss=0.0011, lr=0.000063
+2026-05-19 11:27:34,799   INFO  Epoch iter 50/64: loss=0.0011, lr=0.000063
+2026-05-19 11:29:42,182   INFO  Epoch 90 完成
+2026-05-19 11:29:42,183   INFO  平均损失: 0.0011
+2026-05-19 11:29:42,183   INFO  学习率: 0.000063
+2026-05-19 11:29:42,183   INFO    pts_cls_loss: 0.0011
+2026-05-19 11:29:42,183   INFO    pts_offset_loss: 0.0000
+2026-05-19 11:29:42,183   INFO    pts_loss: 0.0011
+2026-05-19 11:29:42,183   INFO    refine_offset_loss: 0.0000
+2026-05-19 11:29:42,183   INFO    refine_loss: 0.0000
+2026-05-19 11:29:42,183   INFO    edge_cls_loss: 0.0000
+2026-05-19 11:29:42,183   INFO    edge_loss: 0.0000
+2026-05-19 11:29:42,195   INFO  删除旧检查点: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_85.pth
+2026-05-19 11:29:42,300   INFO  检查点保存成功: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_90.pth
+2026-05-19 11:29:42,301   INFO    轮数: 90
+2026-05-19 11:29:42,301   INFO    损失: 0.0010516202564758714
+2026-05-19 11:29:42,301   INFO    输入通道: 3
+2026-05-19 11:29:42,301   INFO  检查点保存: /geogfs1/home/u3666068/Point2Roof-master/output/tallin_subset_4096/ckpt/checkpoint_epoch_90.pth
+2026-05-19 11:29:42,301   INFO  训练完成！
