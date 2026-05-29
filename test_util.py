@@ -4,6 +4,7 @@ import os
 import torch
 import numpy as np
 from scipy.optimize import linear_sum_assignment
+from scipy.spatial.distance import cdist
 import itertools
 from model.pointnet_util import *
 from model.model_utils import *
@@ -51,7 +52,307 @@ def _safe_div(num, den):
     return float(num) / float(den) if den else 0.0
 
 
-def test_model(model, data_loader, logger, edge_thresh=0.5, point_match_thresh=0.1):
+# ============================================================================
+# APCalculator: precision / recall / F1 / ACO / WED (from evaluate_wireframe.py)
+# ============================================================================
+
+def parse_obj_index_static(token, num_vertices):
+    raw = int(token.split("/")[0])
+    if raw > 0:
+        return raw - 1
+    return num_vertices + raw
+
+
+def hausdorff_distance_line(p_line, t_line, sample_points=20):
+    """Compute Hausdorff distance matrix between two sets of line segments."""
+    n_pred, n_gt = p_line.shape[0], t_line.shape[0]
+    if n_pred == 0 or n_gt == 0:
+        return np.zeros((n_pred, n_gt), dtype=np.float64)
+
+    all_lines = np.concatenate((p_line, t_line), axis=0)
+    weights = np.linspace(0.0, 1.0, sample_points, dtype=np.float64).reshape(1, sample_points, 1)
+    all_points = all_lines[:, 0, :][:, np.newaxis, :] + weights * (
+        all_lines[:, 1, :][:, np.newaxis, :] - all_lines[:, 0, :][:, np.newaxis, :]
+    )
+
+    distance_matrix = cdist(
+        all_points[:n_pred, :, :].reshape(-1, 3),
+        all_points[n_pred:n_pred + n_gt, :, :].reshape(-1, 3),
+        "euclidean",
+    )
+    distance_matrix = distance_matrix.reshape(n_pred, sample_points, n_gt, sample_points)
+    distance_matrix = np.transpose(distance_matrix, axes=(0, 2, 1, 3))
+    h_pt_value = distance_matrix.min(-1).max(-1, keepdims=True)
+    h_tp_value = distance_matrix.min(-2).max(-1, keepdims=True)
+    hausdorff_matrix = np.concatenate((h_pt_value, h_tp_value), axis=-1)
+    hausdorff_matrix = hausdorff_matrix.max(-1)
+    return hausdorff_matrix
+
+
+def graph_edit_distance(pd_vertices, pd_edges, gt_vertices, gt_edges, wed_v):
+    wed_e = 0.0
+    if len(pd_vertices) > 0:
+        distances = cdist(pd_vertices, gt_vertices)
+        wed_v += float(np.min(distances, axis=1).sum())
+        min_indices = np.argmin(distances, axis=1)
+        pd_vertices = pd_vertices.copy()
+        for i, index in enumerate(min_indices):
+            pd_vertices[i] = gt_vertices[index]
+        unique_pd_vertices = np.unique(pd_vertices, axis=0)
+        renew_pd_edges = pd_edges.copy()
+        for i, point in enumerate(unique_pd_vertices):
+            v_indices = np.where((pd_vertices == point).all(axis=1))[0]
+            for v_index in v_indices:
+                renew_pd_edges[pd_edges == v_index] = i
+        renew_pd_edges = np.unique(renew_pd_edges, axis=0)
+
+        gt_edges_copy = gt_edges.copy()
+        for edge in renew_pd_edges:
+            e1_index = np.where((gt_vertices == unique_pd_vertices[edge[0]]).all(axis=1))[0]
+            e2_index = np.where((gt_vertices == unique_pd_vertices[edge[1]]).all(axis=1))[0]
+            if len(e1_index) == 0 or len(e2_index) == 0:
+                wed_e += np.linalg.norm(unique_pd_vertices[edge[0]] - unique_pd_vertices[edge[1]])
+                continue
+            matched_edge = np.array(sorted([e1_index[0], e2_index[0]]))
+            exists = np.where((gt_edges == matched_edge).all(axis=1))[0]
+            if len(exists):
+                mask = np.any(gt_edges_copy != matched_edge, axis=1)
+                gt_edges_copy = gt_edges_copy[mask]
+            else:
+                wed_e += np.linalg.norm(unique_pd_vertices[edge[0]] - unique_pd_vertices[edge[1]])
+    else:
+        gt_edges_copy = gt_edges.copy()
+        wed_v = 0.0
+
+    for edge in gt_edges_copy:
+        wed_e += np.linalg.norm(gt_vertices[edge[0]] - gt_vertices[edge[1]])
+
+    sum_distance = 0.0
+    for edge in gt_edges:
+        sum_distance += np.linalg.norm(gt_vertices[edge[0]] - gt_vertices[edge[1]])
+
+    if sum_distance <= 1e-12:
+        return 0.0
+    return float((wed_e + wed_v) / sum_distance)
+
+
+def computer_edges_wed(edges, vertices):
+    index = []
+    for edge in edges:
+        indices = []
+        for point in edge:
+            matching_indices = np.where((vertices == point).all(axis=1))[0]
+            indices.append(matching_indices[0] if len(matching_indices) > 0 else -1)
+        index.append(indices)
+    if len(index) == 0:
+        return np.zeros((0, 2), dtype=np.int32)
+    return np.sort(np.asarray(index, dtype=np.int32), axis=-1)
+
+
+def remove_corners(corner_a, corner_b):
+    if len(corner_a) == 0:
+        return corner_a.reshape(0, 3)
+    if len(corner_b) == 0:
+        return corner_a.copy()
+    corner_a_view = corner_a.view([("", corner_a.dtype)] * corner_a.shape[1])
+    corner_b_view = corner_b.view([("", corner_b.dtype)] * corner_b.shape[1])
+    corner = np.setdiff1d(corner_a_view, corner_b_view).view(corner_a.dtype).reshape(-1, corner_a.shape[1])
+    return corner
+
+
+class APCalculator:
+    """Precision/recall/F1 calculator with Hungarian matching and Hausdorff distance."""
+
+    def __init__(self, distance_thresh=0.1, confidence_thresh=0.7):
+        self.distance_thresh = distance_thresh
+        self.confidence_thresh = confidence_thresh
+        self.sample_count = 0
+        self.reset()
+
+    def compute_metrics(self, batch):
+        batch_size = len(batch["predicted_vertices"])
+        self.sample_count += batch_size
+
+        batch_predicted_corners = batch["predicted_vertices"]
+        batch_predicted_edges = batch["predicted_edges"]
+        batch_pred_edges_vertices = batch["pred_edges_vertices"]
+        batch_label_corners = batch["wf_vertices"]
+        batch_label_edges = batch["wf_edges"]
+        batch_label_edges_vertices = batch["wf_edges_vertices"]
+
+        for b in range(batch_size):
+            predicted_corners = np.asarray(batch_predicted_corners[b], dtype=np.float64).reshape(-1, 3)
+            predicted_edges = np.asarray(batch_predicted_edges[b], dtype=np.int32).reshape(-1, 2)
+            pred_edges_vertices = np.asarray(batch_pred_edges_vertices[b], dtype=np.float64).reshape(-1, 2, 3)
+            label_corners = np.asarray(batch_label_corners[b], dtype=np.float64).reshape(-1, 3)
+            label_edges = np.asarray(batch_label_edges[b], dtype=np.int32).reshape(-1, 2)
+            label_edges_vertices = np.asarray(batch_label_edges_vertices[b], dtype=np.float64).reshape(-1, 2, 3)
+
+            tp_edges = 0
+            tp_fp_edges = len(predicted_edges)
+            tp_fn_edges = len(label_edges)
+            distances = 0.0
+
+            pr_corners = np.zeros((0, 2, 3), dtype=np.float64)
+            gt_corners = np.zeros((0, 2, 3), dtype=np.float64)
+            matched_pred_edge_indices = np.zeros((0,), dtype=np.int32)
+            matched_gt_edge_indices = np.zeros((0,), dtype=np.int32)
+
+            if len(predicted_edges) != 0 and len(label_edges_vertices) != 0:
+                edge_distance = hausdorff_distance_line(pred_edges_vertices, label_edges_vertices)
+                predict_indices, label_indices = linear_sum_assignment(edge_distance)
+                edge_mask = edge_distance[predict_indices, label_indices] <= self.distance_thresh
+                matched_pred_edge_indices = predict_indices[edge_mask]
+                matched_gt_edge_indices = label_indices[edge_mask]
+                pr_corners = pred_edges_vertices[matched_pred_edge_indices]
+                gt_corners = label_edges_vertices[matched_gt_edge_indices]
+                tp_edges = int(edge_mask.sum())
+
+                un_match_pr_corners = remove_corners(
+                    predicted_corners, np.unique(pr_corners.reshape(-1, 3), axis=0) if len(pr_corners) else np.zeros((0, 3))
+                )
+                un_match_gt_corners = remove_corners(
+                    label_corners, np.unique(gt_corners.reshape(-1, 3), axis=0) if len(gt_corners) else np.zeros((0, 3))
+                )
+
+                additional_corner_matches = 0
+                if len(un_match_pr_corners) > 0 and len(un_match_gt_corners) > 0:
+                    distance_matrix = cdist(un_match_pr_corners, un_match_gt_corners)
+                    un_match_predict_indices, un_match_label_indices = linear_sum_assignment(distance_matrix)
+                    un_match_mask = (
+                        distance_matrix[un_match_predict_indices, un_match_label_indices] <= self.distance_thresh
+                    )
+                    distances += float(
+                        distance_matrix[
+                            un_match_predict_indices[un_match_mask],
+                            un_match_label_indices[un_match_mask],
+                        ].sum()
+                    )
+                    additional_corner_matches = int(un_match_mask.sum())
+
+                matched_pred_vertices = (
+                    np.unique(pr_corners.reshape(-1, 3), axis=0) if len(pr_corners) else np.zeros((0, 3), dtype=np.float64)
+                )
+                matched_gt_vertices = (
+                    np.unique(gt_corners.reshape(-1, 3), axis=0) if len(gt_corners) else np.zeros((0, 3), dtype=np.float64)
+                )
+
+                tp_corners = len(matched_pred_vertices) + additional_corner_matches
+                tp_fp_corners = len(predicted_corners)
+                tp_fn_corners = len(label_corners)
+
+                if len(matched_pred_vertices) > 0 and len(matched_gt_vertices) > 0:
+                    distance_matrix = cdist(matched_pred_vertices, matched_gt_vertices)
+                    distances += float(np.min(distance_matrix, axis=1).sum())
+
+                if len(matched_pred_edge_indices) > 0:
+                    predicted_corners_for_wed = np.unique(label_edges_vertices.reshape(-1, 3), axis=0)
+                    submission_edges = computer_edges_wed(label_edges_vertices, predicted_corners_for_wed)
+                    wed = graph_edit_distance(
+                        predicted_corners_for_wed,
+                        submission_edges.copy(),
+                        label_corners.copy(),
+                        label_edges.copy(),
+                        distances,
+                    )
+                else:
+                    wed = graph_edit_distance(
+                        np.zeros((0, 3), dtype=np.float64),
+                        np.zeros((0, 2), dtype=np.int32),
+                        label_corners.copy(),
+                        label_edges.copy(),
+                        distances,
+                    )
+
+            else:
+                if len(predicted_corners) > 0 and len(label_corners) > 0:
+                    distance_matrix = cdist(predicted_corners, label_corners)
+                    predict_indices, label_indices = linear_sum_assignment(distance_matrix)
+                    mask = distance_matrix[predict_indices, label_indices] <= self.distance_thresh
+                    distances = float(distance_matrix[predict_indices[mask], label_indices[mask]].sum())
+                    tp_corners = int(mask.sum())
+                else:
+                    distances = 0.0
+                    tp_corners = 0
+
+                tp_fp_corners = len(predicted_corners)
+                tp_fn_corners = len(label_corners)
+                tp_edges = 0
+                tp_fp_edges = 0
+                tp_fn_edges = len(label_edges)
+                wed = 1.0
+
+            self.ap_dict["tp_corners"] += tp_corners
+            self.ap_dict["tp_fp_corners"] += tp_fp_corners
+            self.ap_dict["tp_fn_corners"] += tp_fn_corners
+            self.ap_dict["distance"] += distances
+            self.ap_dict["wed"] += wed
+            self.ap_dict["tp_edges"] += tp_edges
+            self.ap_dict["tp_fp_edges"] += tp_fp_edges
+            self.ap_dict["tp_fn_edges"] += tp_fn_edges
+
+    def output_accuracy(self):
+        self.ap_dict["average_corner_offset"] = _safe_div(self.ap_dict["distance"], self.ap_dict["tp_corners"])
+        self.ap_dict["average_wed"] = _safe_div(self.ap_dict["wed"], self.sample_count)
+        self.ap_dict["corners_precision"] = _safe_div(self.ap_dict["tp_corners"], self.ap_dict["tp_fp_corners"])
+        self.ap_dict["corners_recall"] = _safe_div(self.ap_dict["tp_corners"], self.ap_dict["tp_fn_corners"])
+
+        cp = self.ap_dict["corners_precision"]
+        cr = self.ap_dict["corners_recall"]
+        self.ap_dict["corners_f1"] = _safe_div(2 * cp * cr, cp + cr)
+
+        self.ap_dict["edges_precision"] = _safe_div(self.ap_dict["tp_edges"], self.ap_dict["tp_fp_edges"])
+        self.ap_dict["edges_recall"] = _safe_div(self.ap_dict["tp_edges"], self.ap_dict["tp_fn_edges"])
+
+        ep = self.ap_dict["edges_precision"]
+        er = self.ap_dict["edges_recall"]
+        self.ap_dict["edges_f1"] = _safe_div(2 * ep * er, ep + er)
+
+        return {
+            "ACO": self.ap_dict["average_corner_offset"],
+            "WED": self.ap_dict["average_wed"],
+            "CP": self.ap_dict["corners_precision"],
+            "CR": self.ap_dict["corners_recall"],
+            "CF1": self.ap_dict["corners_f1"],
+            "EP": self.ap_dict["edges_precision"],
+            "ER": self.ap_dict["edges_recall"],
+            "EF1": self.ap_dict["edges_f1"],
+            "support_samples": self.sample_count,
+            "tp_corners": self.ap_dict["tp_corners"],
+            "tp_fp_corners": self.ap_dict["tp_fp_corners"],
+            "tp_fn_corners": self.ap_dict["tp_fn_corners"],
+            "tp_edges": self.ap_dict["tp_edges"],
+            "tp_fp_edges": self.ap_dict["tp_fp_edges"],
+            "tp_fn_edges": self.ap_dict["tp_fn_edges"],
+        }
+
+    def reset(self):
+        self.ap_dict = {
+            "tp_corners": 0,
+            "tp_fp_corners": 0,
+            "tp_fn_corners": 0,
+            "distance": 0.0,
+            "tp_edges": 0,
+            "wed": 0.0,
+            "tp_fp_edges": 0,
+            "tp_fn_edges": 0,
+            "average_corner_offset": 0.0,
+            "corners_precision": 0.0,
+            "corners_recall": 0.0,
+            "corners_f1": 0.0,
+            "edges_precision": 0.0,
+            "edges_recall": 0.0,
+            "edges_f1": 0.0,
+        }
+        self.sample_count = 0
+
+
+# ============================================================================
+# 主要测试函数
+# ============================================================================
+
+def test_model(model, data_loader, logger, edge_thresh=0.5, point_match_thresh=0.1,
+               ap_distance_thresh=0.1):
     if len(data_loader.dataset) == 0:
         raise RuntimeError("The test split is empty. Check --data_path and --split.")
 
@@ -66,6 +367,9 @@ def test_model(model, data_loader, logger, edge_thresh=0.5, point_match_thresh=0
         'num_pred_edges': 0,
     }
 
+    # Initialize APCalculator for comprehensive metrics
+    ap_calculator = APCalculator(distance_thresh=ap_distance_thresh)
+
     dataloader_iter = iter(data_loader)
     with tqdm.trange(0, len(data_loader), desc='test', dynamic_ncols=True) as tbar:
         for _ in tbar:
@@ -75,6 +379,7 @@ def test_model(model, data_loader, logger, edge_thresh=0.5, point_match_thresh=0
                 batch = model(batch)
                 load_data_to_cpu(batch)
             eval_process(batch, statistics, edge_thresh=edge_thresh, point_match_thresh=point_match_thresh)
+            eval_process_ap(batch, ap_calculator, edge_thresh=edge_thresh)
 
     bias = statistics['pts_bias'] / max(statistics['tp_pts'], 1)
     metrics = {
@@ -86,11 +391,27 @@ def test_model(model, data_loader, logger, edge_thresh=0.5, point_match_thresh=0
         'edge_recall': _safe_div(statistics['tp_edges'], statistics['num_label_edges']),
         'edge_precision': _safe_div(statistics['tp_edges'], statistics['num_pred_edges']),
     }
+
+    # Merge APCalculator metrics
+    ap_metrics = ap_calculator.output_accuracy()
+    metrics.update(ap_metrics)
+
+    logger.info('========== Simple Matching Metrics ==========')
     logger.info('pts_recall: %f', metrics['pts_recall'])
     logger.info('pts_precision: %f', metrics['pts_precision'])
     logger.info('pts_bias: %f, %f, %f', bias[0], bias[1], bias[2])
     logger.info('edge_recall: %f', metrics['edge_recall'])
     logger.info('edge_precision: %f', metrics['edge_precision'])
+    logger.info('========== APCalculator Metrics (Hungarian + Hausdorff) ==========')
+    logger.info('Corner Precision (CP): %f', metrics['CP'])
+    logger.info('Corner Recall (CR): %f', metrics['CR'])
+    logger.info('Corner F1 (CF1): %f', metrics['CF1'])
+    logger.info('Edge Precision (EP): %f', metrics['EP'])
+    logger.info('Edge Recall (ER): %f', metrics['ER'])
+    logger.info('Edge F1 (EF1): %f', metrics['EF1'])
+    logger.info('Average Corner Offset (ACO): %f', metrics['ACO'])
+    logger.info('Wireframe Edit Distance (WED): %f', metrics['WED'])
+    logger.info('Support samples: %d', metrics['support_samples'])
     return metrics
 
 
@@ -153,6 +474,77 @@ def eval_process(batch, statistics, edge_thresh=0.5, point_match_thresh=0.1):
         statistics['tp_edges'] += tp_edges
         statistics['num_label_edges'] += len(gt_edge_set)
         statistics['num_pred_edges'] += len(pred_pairs)
+
+
+def eval_process_ap(batch, ap_calculator, edge_thresh=0.5):
+    """
+    Build per-sample predictions in the APCalculator batch format and
+    accumulate comprehensive metrics (CP/CR/CF1, EP/ER/EF1, ACO, WED).
+    """
+    batch_size = batch['batch_size']
+    keypoints = batch.get('keypoint', np.zeros((0, 4), dtype=np.float32))
+    refined_pts = batch.get('refined_keypoint', np.zeros((0, 3), dtype=np.float32))
+    label_pts = batch['vectors']
+    edge_scores = batch.get('edge_score', np.zeros((0,), dtype=np.float32))
+    pair_points = batch.get('pair_points', np.zeros((0, 2), dtype=np.int64))
+    label_edges = batch['edges']
+
+    predicted_vertices_list = []
+    predicted_edges_list = []
+    pred_edges_vertices_list = []
+    wf_vertices_list = []
+    wf_edges_list = []
+    wf_edges_vertices_list = []
+
+    edge_offset = 0
+    for i in range(batch_size):
+        # --- GT data ---
+        l_pts = label_pts[i]
+        l_pts = l_pts[np.sum(l_pts, -1, keepdims=False) > -2e1]
+        l_edges = label_edges[i]
+        l_edges = l_edges[np.sum(l_edges, -1, keepdims=False) >= 0]
+
+        if len(l_pts) > 0 and len(l_edges) > 0:
+            gt_edge_verts = np.stack([l_pts[l_edges[:, 0]], l_pts[l_edges[:, 1]]], axis=1)
+        elif len(l_pts) > 0:
+            gt_edge_verts = np.zeros((0, 2, 3), dtype=np.float64)
+        else:
+            gt_edge_verts = np.zeros((0, 2, 3), dtype=np.float64)
+
+        wf_vertices_list.append(l_pts)
+        wf_edges_list.append(l_edges)
+        wf_edges_vertices_list.append(gt_edge_verts)
+
+        # --- Prediction data ---
+        p_pts = refined_pts[keypoints[:, 0] == i] if len(keypoints) else np.zeros((0, 3), dtype=np.float32)
+        num_pairs = len(p_pts) * (len(p_pts) - 1) // 2
+        sample_pairs = pair_points[edge_offset: edge_offset + num_pairs]
+        sample_scores = edge_scores[edge_offset: edge_offset + num_pairs]
+        edge_offset += num_pairs
+
+        pred_mask = sample_scores > edge_thresh
+        pred_edges = sample_pairs[pred_mask] if len(sample_pairs) else np.zeros((0, 2), dtype=np.int64)
+
+        if len(p_pts) > 0 and len(pred_edges) > 0:
+            pred_edge_verts = np.stack([p_pts[pred_edges[:, 0]], p_pts[pred_edges[:, 1]]], axis=1)
+        elif len(p_pts) > 0:
+            pred_edge_verts = np.zeros((0, 2, 3), dtype=np.float64)
+        else:
+            pred_edge_verts = np.zeros((0, 2, 3), dtype=np.float64)
+
+        predicted_vertices_list.append(p_pts)
+        predicted_edges_list.append(pred_edges)
+        pred_edges_vertices_list.append(pred_edge_verts)
+
+    ap_batch = {
+        "predicted_vertices": predicted_vertices_list,
+        "predicted_edges": predicted_edges_list,
+        "pred_edges_vertices": pred_edges_vertices_list,
+        "wf_vertices": wf_vertices_list,
+        "wf_edges": wf_edges_list,
+        "wf_edges_vertices": wf_edges_vertices_list,
+    }
+    ap_calculator.compute_metrics(ap_batch)
 
 
 def load_data_to_gpu(batch_dict):
@@ -453,3 +845,100 @@ def process_and_visualize_sample(batch, sample_id, output_dir):
         )
     
     print(f"样本 {sample_id} 可视化完成: {output_dir}")
+
+
+def visualize_predictions(model, data_loader, output_dir, logger,
+                          vis_sample_id=None, vis_all=False, edge_thresh=0.5):
+    """
+    Visualize model predictions for specified samples or all samples.
+
+    Args:
+        model: RoofNet model in eval mode
+        data_loader: DataLoader (batch_size=1 recommended)
+        output_dir: Directory to save visualizations
+        logger: Logger instance
+        vis_sample_id: Specific sample ID to visualize (e.g. 'sample_001')
+        vis_all: If True, visualize all samples
+        edge_thresh: Edge score threshold
+    """
+    os.makedirs(output_dir, exist_ok=True)
+    model.eval()
+    model.use_edge = True
+
+    dataloader_iter = iter(data_loader)
+    vis_count = 0
+
+    with torch.no_grad():
+        for batch_idx in range(len(data_loader)):
+            batch = next(dataloader_iter)
+            load_data_to_gpu(batch)
+            batch = model(batch)
+            load_data_to_cpu(batch)
+
+            sample_ids = batch.get('frame_id', [str(batch_idx)])
+            for i in range(batch['batch_size']):
+                sid = sample_ids[i] if i < len(sample_ids) else str(batch_idx)
+
+                # Filter by vis_sample_id if specified
+                if vis_sample_id is not None and not vis_all:
+                    if sid != vis_sample_id:
+                        continue
+
+                # Extract data for this sample
+                keypoints = batch.get('keypoint', np.zeros((0, 4), dtype=np.float32))
+                refined_pts = batch.get('refined_keypoint', np.zeros((0, 3), dtype=np.float32))
+                edge_scores = batch.get('edge_score', np.zeros((0,), dtype=np.float32))
+                pair_points = batch.get('pair_points', np.zeros((0, 2), dtype=np.int64))
+                label_pts = batch['vectors'][i]
+                label_pts = label_pts[np.sum(label_pts, -1, keepdims=False) > -2e1]
+                label_edges = batch['edges'][i]
+                label_edges = label_edges[np.sum(label_edges, -1, keepdims=False) >= 0]
+                point_cloud = batch.get('points')
+
+                # Predicted vertices for this sample
+                p_pts = refined_pts[keypoints[:, 0] == i] if len(keypoints) else np.zeros((0, 3), dtype=np.float32)
+
+                # Predicted edges for this sample
+                num_pairs = len(p_pts) * (len(p_pts) - 1) // 2
+                # Find the correct edge offset for this sample
+                edge_offset = 0
+                for prev_i in range(i):
+                    prev_pts = refined_pts[keypoints[:, 0] == prev_i] if len(keypoints) else np.zeros((0, 3))
+                    edge_offset += len(prev_pts) * (len(prev_pts) - 1) // 2
+
+                sample_pairs = pair_points[edge_offset: edge_offset + num_pairs]
+                sample_scores = edge_scores[edge_offset: edge_offset + num_pairs]
+                pred_mask = sample_scores > edge_thresh
+                pred_edges = sample_pairs[pred_mask] if len(sample_pairs) else np.zeros((0, 2), dtype=np.int64)
+
+                # Save OBJ files
+                gt_obj_path = output_dir / f"{sid}_gt.obj"
+                pred_obj_path = output_dir / f"{sid}_pred.obj"
+                save_wireframe_obj(label_pts, label_edges, str(gt_obj_path))
+                save_wireframe_obj(p_pts, pred_edges, str(pred_obj_path))
+                logger.info("Exported %s and %s", gt_obj_path, pred_obj_path)
+
+                # Generate comparison image
+                if point_cloud is not None:
+                    if isinstance(point_cloud, torch.Tensor):
+                        pc = point_cloud.cpu().numpy()
+                    elif isinstance(point_cloud, np.ndarray):
+                        if point_cloud.ndim == 3:
+                            pc = point_cloud[i]
+                        else:
+                            pc = point_cloud
+                    else:
+                        pc = point_cloud
+
+                    comparison_path = output_dir / f"{sid}_comparison.png"
+                    visualize_3d_comparison(
+                        pc, label_pts, label_edges, p_pts, pred_edges,
+                        str(comparison_path)
+                    )
+
+                vis_count += 1
+                if vis_sample_id is not None and not vis_all:
+                    logger.info("Visualization complete for sample: %s", sid)
+                    return
+
+    logger.info("Visualization complete: %d samples saved to %s", vis_count, output_dir)

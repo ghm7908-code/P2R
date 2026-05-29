@@ -9,7 +9,7 @@ import torch
 from dataset.data_utils import build_dataloader
 from model import model_utils
 from model.roofnet import RoofNet
-from test_util import load_data_to_cpu, load_data_to_gpu, save_wireframe_obj, test_model
+from test_util import load_data_to_cpu, load_data_to_gpu, save_wireframe_obj, test_model, visualize_predictions
 from utils import common_utils
 
 
@@ -24,8 +24,13 @@ def parse_config():
     parser.add_argument("--ckpt", type=str, default=None)
     parser.add_argument("--edge_thresh", type=float, default=0.5)
     parser.add_argument("--point_thresh", type=float, default=0.1)
+    parser.add_argument("--ap_distance_thresh", type=float, default=0.1,
+                        help="Distance threshold for APCalculator Hungarian matching")
     parser.add_argument("--save_obj", action="store_true")
     parser.add_argument("--allow_random", action="store_true")
+    parser.add_argument("--visualize", action="store_true", help="Enable visualization mode")
+    parser.add_argument("--vis_sample_id", type=str, default=None, help="Sample ID to visualize")
+    parser.add_argument("--vis_all", action="store_true", help="Visualize all samples")
     args = parser.parse_args()
 
     cfg = common_utils.cfg_from_yaml_file(args.cfg_file)
@@ -140,6 +145,7 @@ def main():
         logger,
         edge_thresh=args.edge_thresh,
         point_match_thresh=args.point_thresh,
+        ap_distance_thresh=args.ap_distance_thresh,
     )
 
     if args.save_obj:
@@ -153,6 +159,26 @@ def main():
             split=args.split,
         )
         export_predictions(model, vis_loader, output_dir / "test_results", args.edge_thresh, logger)
+
+    if args.visualize:
+        logger.info("Visualization mode enabled")
+        vis_loader = build_dataloader(
+            cfg.DATA.root_dir,
+            1,
+            cfg.DATA,
+            workers=cfg.DATA.get("num_workers", 16),
+            logger=logger,
+            training=False,
+            split=args.split,
+        )
+        vis_output_dir = output_dir / "visualizations"
+        vis_output_dir.mkdir(parents=True, exist_ok=True)
+        visualize_predictions(
+            model, vis_loader, vis_output_dir, logger,
+            vis_sample_id=args.vis_sample_id,
+            vis_all=args.vis_all,
+            edge_thresh=args.edge_thresh,
+        )
 
     logger.info("metrics: %s", metrics)
 
