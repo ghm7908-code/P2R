@@ -29,7 +29,7 @@ class PointNet2(nn.Module):
             self.train_dict = {}
             self.add_module(
                 'cls_loss_func',
-                loss_utils.SigmoidFocalClassificationLoss(gamma=2.0, alpha=0.25)
+                loss_utils.SigmoidFocalClassificationLoss(gamma=2.0, alpha=0.75)
             )
             self.add_module(
                 'reg_loss_func',
