@@ -29,7 +29,7 @@ class PointNet2(nn.Module):
             self.train_dict = {}
             self.add_module(
                 'cls_loss_func',
-                loss_utils.SigmoidBCELoss()
+                loss_utils.SigmoidFocalClassificationLoss(gamma=2.0, alpha=0.25)
             )
             self.add_module(
                 'reg_loss_func',
@@ -123,14 +123,10 @@ class PointNet2(nn.Module):
 
     def get_cls_loss(self, pred, label, weight):
         batch_size = int(pred.shape[0])
-        positives = label > 0
-        negatives = label == 0
-        cls_weights = (negatives * 1.0 + positives * 1.0).float()
-        pos_normalizer = positives.sum(1, keepdim=True).float()
-        cls_weights /= torch.clamp(pos_normalizer, min=1.0)
-        cls_loss_src = self.cls_loss_func(pred.squeeze(-1), label, weights=cls_weights)  # [N, M]
+        # Focal Loss 内部已通过 alpha/gamma 处理正负样本平衡，外部权重统一为 1
+        cls_weights = torch.ones_like(label)
+        cls_loss_src = self.cls_loss_func(pred.squeeze(-1), label, weights=cls_weights)
         cls_loss = cls_loss_src.sum() / batch_size
-
         cls_loss = cls_loss * weight
         return cls_loss
 
@@ -292,7 +288,7 @@ class FurthestPointSampling(Function):
         return output
 
     @staticmethod
-    def backward(ctx, grad_out): return ()
+    def backward(ctx, grad_out): return None, None
 
 furthest_point_sample = FurthestPointSampling.apply
 
@@ -303,12 +299,18 @@ class GatherOperation(Function):
         B, C, N = features.size()
         idx = idx.long()
         output = features.gather(2, idx.unsqueeze(1).expand(-1, C, -1))
+        ctx.save_for_backward(idx)
+        ctx._N = N
         return output
 
     @staticmethod
     def backward(ctx, grad_out):
-        # 简化版 backward，满足大部分非训练采样需求
-        return None, None
+        idx, = ctx.saved_tensors
+        N = ctx._N
+        B, C, _ = grad_out.shape
+        grad_features = torch.zeros(B, C, N, device=grad_out.device, dtype=grad_out.dtype)
+        grad_features.scatter_add_(2, idx.unsqueeze(1).expand(-1, C, -1), grad_out)
+        return grad_features, None
 
 gather_operation = GatherOperation.apply
 
@@ -316,12 +318,24 @@ class ThreeNN(Function):
     @staticmethod
     def forward(ctx, unknown: torch.Tensor, known: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         """(B, N, 3), (B, M, 3) -> (B, N, 3), (B, N, 3)"""
-        dist = torch.cdist(unknown, known)
-        dist, idx = dist.sort(dim=-1)
-        return torch.sqrt(dist[:, :, :3]), idx[:, :, :3].int()
+        full_dist = torch.cdist(unknown, known)        # (B, N, M)
+        dist_sorted, idx_sorted = full_dist.sort(dim=-1)
+        dist3 = torch.sqrt(dist_sorted[:, :, :3].clamp(min=1e-12))
+        idx3 = idx_sorted[:, :, :3].int()
+        ctx.save_for_backward(unknown, known, idx3, dist3)
+        return dist3, idx3
 
     @staticmethod
-    def backward(ctx, a=None, b=None): return ()
+    def backward(ctx, grad_dist, grad_idx):
+        unknown, known, idx3, dist3 = ctx.saved_tensors
+        B, N, _ = unknown.shape
+        # 直接对 cdist 求导：对 unknown 的梯度 = (unknown - known[selected]) / dist
+        # cdist 的梯度 = direction vector
+        known_sel = known.gather(1, idx3.long())                            # (B, N, 3, 3)
+        diff = unknown.unsqueeze(2) - known_sel                              # (B, N, 3, 3)
+        safe_dist = dist3.unsqueeze(-1).clamp(min=1e-12)                     # (B, N, 3, 1)
+        grad_xyz = (grad_dist.unsqueeze(-1) * diff / safe_dist).sum(dim=2)   # (B, N, 3)
+        return grad_xyz, None
 
 three_nn = ThreeNN.apply
 
@@ -334,10 +348,22 @@ class ThreeInterpolate(Function):
         expanded_features = features.gather(2, idx.view(B, 1, N * 3).expand(-1, C, -1))
         expanded_features = expanded_features.view(B, C, N, 3)
         output = torch.sum(expanded_features * weight.unsqueeze(1), dim=-1)
+        ctx.save_for_backward(idx, weight)
+        ctx._M = M
         return output
 
     @staticmethod
-    def backward(ctx, grad_out): return None, None, None
+    def backward(ctx, grad_out):
+        """grad_out: (B, C, N) -> grad_features: (B, C, M), grad_idx: None, grad_weight: None"""
+        idx, weight = ctx.saved_tensors
+        M = ctx._M
+        B, C, N = grad_out.shape
+        # grad_out * weight -> (B, C, N, 3), scatter back to features
+        grad_expanded = grad_out.unsqueeze(-1) * weight.unsqueeze(1)       # (B, C, N, 3)
+        grad_features = torch.zeros(B, C, M, device=grad_out.device, dtype=grad_out.dtype)
+        idx_expanded = idx.unsqueeze(1).expand(-1, C, -1, -1).reshape(B, C, N * 3)
+        grad_features.scatter_add_(2, idx_expanded, grad_expanded.reshape(B, C, N * 3))
+        return grad_features, None, None
 
 three_interpolate = ThreeInterpolate.apply
 
@@ -348,10 +374,19 @@ class GroupingOperation(Function):
         npoint, nsample = idx.shape[1], idx.shape[2]
         idx = idx.long().view(B, npoint * nsample)
         output = features.gather(2, idx.unsqueeze(1).expand(-1, C, -1))
+        ctx.save_for_backward(idx)
+        ctx._N = N
         return output.view(B, C, npoint, nsample)
 
     @staticmethod
-    def backward(ctx, grad_out): return None, None
+    def backward(ctx, grad_out):
+        idx, = ctx.saved_tensors
+        N = ctx._N
+        B, C, npoint, nsample = grad_out.shape
+        grad_flat = grad_out.reshape(B, C, npoint * nsample)
+        grad_features = torch.zeros(B, C, N, device=grad_out.device, dtype=grad_out.dtype)
+        grad_features.scatter_add_(2, idx.unsqueeze(1).expand(-1, C, -1), grad_flat)
+        return grad_features, None
 
 grouping_operation = GroupingOperation.apply
 
