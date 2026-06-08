@@ -123,8 +123,9 @@ class PointNet2(nn.Module):
 
     def get_cls_loss(self, pred, label, weight):
         batch_size = int(pred.shape[0])
-        # Focal Loss 内部已通过 alpha/gamma 处理正负样本平衡，外部权重统一为 1
-        cls_weights = torch.ones_like(label)
+        # 正样本显式高权重，防止 loss 被大量负样本稀释后梯度信号过弱
+        positives = label > 0
+        cls_weights = torch.where(positives, 50.0, 1.0)
         cls_loss_src = self.cls_loss_func(pred.squeeze(-1), label, weights=cls_weights)
         cls_loss = cls_loss_src.sum() / batch_size
         cls_loss = cls_loss * weight
