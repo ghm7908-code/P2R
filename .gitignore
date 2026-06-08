@@ -9,4 +9,6 @@
 *.shp
 *.tif
 data/
-outputs/
+output/
+logs/
+results/

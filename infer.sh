@@ -27,7 +27,7 @@ echo "--- 推理启动时间: $(date) ---"
 export CUDA_VISIBLE_DEVICES=1
 python test.py \
     --cfg_file model_cfg.yaml \
-    --test_tag 'full_run_v2' \
+    --test_tag 'tallin_subset_4096' \
     --split test \
     --batch_size 1 \
     --edge_thresh 0.5 \
