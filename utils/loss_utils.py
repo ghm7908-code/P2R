@@ -61,8 +61,8 @@ class SigmoidFocalClassificationLoss(nn.Module):
 
         loss = focal_weight * bce_loss
 
-        if weights.shape.__len__() == 2 or \
-                (weights.shape.__len__() == 1 and target.shape.__len__() == 2):
+        # 确保 weights 和 loss 维度一致
+        while weights.dim() < loss.dim():
             weights = weights.unsqueeze(-1)
 
         assert weights.shape.__len__() == loss.shape.__len__()
