@@ -29,7 +29,7 @@ class PointNet2(nn.Module):
             self.train_dict = {}
             self.add_module(
                 'cls_loss_func',
-                loss_utils.SigmoidFocalClassificationLoss(gamma=2.0, alpha=0.75)
+                loss_utils.SigmoidFocalClassificationLoss(gamma=2.0, alpha=0.25)
             )
             self.add_module(
                 'reg_loss_func',
@@ -122,12 +122,13 @@ class PointNet2(nn.Module):
         return loss, loss_dict, disp_dict
 
     def get_cls_loss(self, pred, label, weight):
-        batch_size = int(pred.shape[0])
-        # 正样本显式高权重，防止 loss 被大量负样本稀释后梯度信号过弱
+        # 使用 batch_size 归一化（而非 N_pos_gt），保持 loss scale 稳定
+        # 旧方法 N_pos_gt 归一化在正样本极少时会将 loss 放大数千倍
+        B = pred.shape[0]
         positives = label > 0
-        cls_weights = torch.where(positives, 50.0, 1.0)
+        cls_weights = torch.where(positives, 2.0, 1.0)
         cls_loss_src = self.cls_loss_func(pred.squeeze(-1), label, weights=cls_weights)
-        cls_loss = cls_loss_src.sum() / batch_size
+        cls_loss = cls_loss_src.sum() / max(B, 1)
         cls_loss = cls_loss * weight
         return cls_loss
 
