@@ -20,7 +20,7 @@ OPTIM:
   lr_gamma: 0.5
 
 MODEL:
-  use_edge: true
+  use_edge: false
   edge_start_epoch: 6
   PointNet2:
     PosRadius: 0.15

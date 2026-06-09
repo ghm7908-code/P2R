@@ -161,10 +161,12 @@ def train_model(model, optim, data_loader, lr_sch, start_it, start_epoch, total_
                 sampler.set_epoch(e)
             
             edge_start_epoch = int(getattr(model, 'model_cfg', {}).get('edge_start_epoch', 6))
-            if e >= edge_start_epoch:
+            if (e + 1) < edge_start_epoch:
+                model.use_edge = False
+            elif (e + 1) == edge_start_epoch:
                 model.use_edge = True
                 if logger:
-                    logger.info(f'Epoch {e+1}: 启用边处理网络')
+                    logger.info(f'Epoch {e + 1}: 启用边处理网络')
             
             # 训练一个epoch
             accumulated_iter, avg_loss, avg_loss_dict = train_one_epoch(
