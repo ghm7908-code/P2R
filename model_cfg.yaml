@@ -13,22 +13,22 @@ DATA:
   use_intensity: false
 
 OPTIM:
-  epochs: 90
+  epochs: 120
   lr: 0.002
   weight_decay: 0.001
-  lr_step: 20
+  lr_step: 30
   lr_gamma: 0.5
 
 MODEL:
   use_edge: false
-  edge_start_epoch: 6
+  edge_start_epoch: 1
   PointNet2:
     PosRadius: 0.15
     LossWeight:
       cls_weight: 1.0
       reg_weight: 1.0
   ClusterRefineNet:
-    ScoreThresh: 0.5
+    ScoreThresh: 0.3
     MatchRadius: 0.5
     num_keypoints: 8
     Cluster:
@@ -43,3 +43,4 @@ MODEL:
   EdgeAttentionNet:
     LossWeight:
       cls_weight: 1.0
+    edge_pos_weight: 2.0

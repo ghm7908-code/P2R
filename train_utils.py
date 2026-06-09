@@ -5,6 +5,7 @@ import torch
 import numpy as np
 from test_util import test_model
 import datetime
+from torch.utils.tensorboard import SummaryWriter
 
 
 def load_data_to_gpu(batch_dict):
@@ -45,7 +46,7 @@ def load_data_to_gpu(batch_dict):
 
 
 def train_one_epoch(model, optim, data_loader, accumulated_iter,
-                    tbar, leave_pbar=False, logger=None):
+                    tbar, leave_pbar=False, logger=None, writer=None, epoch=0):
     """
     单epoch训练函数，适配Building3D格式
     """
@@ -97,13 +98,24 @@ def train_one_epoch(model, optim, data_loader, accumulated_iter,
 
         accumulated_iter += 1
         epoch_loss += loss.item()
-        
+
         # 累加各项损失
         for key, value in loss_dict.items():
             if key not in loss_dict_accum:
                 loss_dict_accum[key] = 0
             loss_dict_accum[key] += value
-        
+
+        # ---- TensorBoard: per-step logging (每隔 10 步) ----
+        if writer is not None and accumulated_iter % 10 == 0:
+            writer.add_scalar('Step/loss', loss.item(), accumulated_iter)
+            writer.add_scalar('Step/lr', cur_lr, accumulated_iter)
+            for key, value in loss_dict.items():
+                writer.add_scalar(f'Step/{key}', value, accumulated_iter)
+            for key, value in disp_dict.items():
+                if isinstance(value, (int, float)):
+                    writer.add_scalar(f'Step/{key}', value, accumulated_iter)
+        # --------------------------------------------------
+
         # 更新显示字典
         disp_dict.update(loss_dict)
         disp_dict.update({'loss': loss.item(), 'lr': cur_lr})
@@ -133,17 +145,25 @@ def train_one_epoch(model, optim, data_loader, accumulated_iter,
     return accumulated_iter, avg_loss, avg_loss_dict
 
 
-def train_model(model, optim, data_loader, lr_sch, start_it, start_epoch, total_epochs, 
+def train_model(model, optim, data_loader, lr_sch, start_it, start_epoch, total_epochs,
                 ckpt_save_dir, logger=None, sampler=None, max_ckpt_save_num=5):
     """
     主训练函数，适配Building3D格式
     """
     from pathlib import Path
-    
+
     # 确保检查点目录存在
     ckpt_save_dir = Path(ckpt_save_dir)
     ckpt_save_dir.mkdir(parents=True, exist_ok=True)
-    
+
+    # ---- TensorBoard ----
+    log_dir = ckpt_save_dir.parent / 'tensorboard'
+    log_dir.mkdir(parents=True, exist_ok=True)
+    writer = SummaryWriter(log_dir=str(log_dir))
+    if logger:
+        logger.info(f'TensorBoard 日志目录: {log_dir}')
+    # ---- end ----
+
     # 记录训练开始信息
     if logger:
         logger.info('=' * 60)
@@ -172,7 +192,9 @@ def train_model(model, optim, data_loader, lr_sch, start_it, start_epoch, total_
             accumulated_iter, avg_loss, avg_loss_dict = train_one_epoch(
                 model, optim, data_loader, accumulated_iter, tbar,
                 leave_pbar=(e + 1 == total_epochs),
-                logger=logger
+                logger=logger,
+                writer=writer,
+                epoch=e,
             )
             
             # 更新学习率
@@ -190,6 +212,14 @@ def train_model(model, optim, data_loader, lr_sch, start_it, start_epoch, total_
                 logger.info(f'学习率: {lr:.6f}')
                 for key, value in avg_loss_dict.items():
                     logger.info(f'  {key}: {value:.4f}')
+
+            # ---- TensorBoard: epoch-level logging ----
+            writer.add_scalar('Epoch/loss', avg_loss, e + 1)
+            writer.add_scalar('Epoch/lr', lr, e + 1)
+            writer.add_scalar('Epoch/edge_enabled', 1.0 if model.use_edge else 0.0, e + 1)
+            for key, value in avg_loss_dict.items():
+                writer.add_scalar(f'Epoch/{key}', value, e + 1)
+            # ---- end ----
             
             # 管理检查点（保留最新的几个）
             ckpt_list = glob.glob(str(ckpt_save_dir / 'checkpoint_epoch_*.pth'))
@@ -230,6 +260,10 @@ def train_model(model, optim, data_loader, lr_sch, start_it, start_epoch, total_
         
         if logger:
             logger.info('训练完成！')
+
+    writer.close()
+    if logger:
+        logger.info('TensorBoard writer 已关闭')
 
 
 def model_state_to_cpu(model_state):

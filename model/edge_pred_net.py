@@ -24,12 +24,10 @@ class EdgeAttentionNet(nn.Module):
 
         if self.training:
             self.train_dict = {}
-            pos_weight = torch.tensor([20.0])
-            # 1. 使用标准 Loss，并添加 pos_weight 解决正负样本不均
-            # 20.0 表示给正样本（存在的边）更高的权重
-            pos_weight = torch.tensor([20.0]) 
+            pw = float(self.model_cfg.get('edge_pos_weight', 2.0))
+            pos_weight = torch.tensor([pw])
             self.cls_loss_func = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
-            
+
             self.loss_weight = self.model_cfg.LossWeight
 
         self.init_weights()
