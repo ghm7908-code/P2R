@@ -28,11 +28,11 @@ MODEL:
       cls_weight: 1.0
       reg_weight: 1.0
   ClusterRefineNet:
-    ScoreThresh: 0.1
+    ScoreThresh: 0.02
     MatchRadius: 0.5
     Cluster:
-      eps: 0.1
-      min_pts: 2
+      eps: 0.15
+      min_pts: 1
     RefineSA:
       Radii: [0.1, 0.2]
       Nsamples: [16, 16]

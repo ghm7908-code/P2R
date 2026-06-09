@@ -70,13 +70,32 @@ class ClusterRefineNet(nn.Module):
         offset_pts[mask] += offset_flat[mask]
         B = batch_dict['batch_size']
         N = offset_pts.shape[0] // B
-        
+
         pts_cluster = offset_pts.new_ones(offset_pts.shape) * -10
         pts_cluster[mask] = offset_pts[mask]
         pts_cluster_3d = pts_cluster.reshape(B, N, 3).contiguous() # 结果是 [64, 4096, 3]
-        
+
         cluster_idx = dbscan_cluster(self.model_cfg.Cluster.eps, self.model_cfg.Cluster.min_pts, pts_cluster_3d)
         key_pts, num_cluster = get_cluster_pts(pts_cluster_3d, cluster_idx)
+
+        # ---- DEBUG: per-building pipeline stats ----
+        if self.training and not hasattr(self, '_cr_debug_printed'):
+            n_pass_thresh = mask.reshape(B, N).sum(dim=1)           # (B,) points above threshold
+            n_clusters = (key_pts[:, :, 0] > -2e1).sum(dim=1)       # (B,) valid cluster centers
+            print(f'[ClusterRefine DEBUG] ScoreThresh={score_thresh}, eps={self.model_cfg.Cluster.eps}, '
+                  f'min_pts={self.model_cfg.Cluster.min_pts}')
+            print(f'[ClusterRefine DEBUG] pts_above_thresh per building: '
+                  f'min={n_pass_thresh.min().item()}, mean={n_pass_thresh.float().mean().item():.1f}, '
+                  f'max={n_pass_thresh.max().item()}')
+            print(f'[ClusterRefine DEBUG] clusters per building: '
+                  f'min={n_clusters.min().item()}, mean={n_clusters.float().mean().item():.1f}, '
+                  f'max={n_clusters.max().item()}, zero_cluster_buildings={(n_clusters==0).sum().item()}')
+            print(f'[ClusterRefine DEBUG] score stats: '
+                  f'min={pts_score.min().item():.4f}, mean={pts_score.mean().item():.4f}, '
+                  f'max={pts_score.max().item():.4f}')
+            self._cr_debug_printed = True
+        # -------------------------------------------------
+
         if self.training:
              new_pts, targets, labels, matches, new_xyz_batch_cnt = self.matcher(key_pts, batch_dict['vectors'])
              offset_targets = (targets - new_pts) / self.model_cfg.MatchRadius if new_pts is not None else None
@@ -85,6 +104,18 @@ class ClusterRefineNet(nn.Module):
                  'keypoint_cls_label': labels,
                  'keypoint_offset_label': offset_targets
              })
+             # ---- DEBUG: post-matcher stats ----
+             if not hasattr(self, '_cr_match_debug_printed'):
+                 if new_xyz_batch_cnt is not None:
+                     print(f'[ClusterRefine DEBUG] after Hungarian matcher: '
+                           f'new_xyz_batch_cnt sum={new_xyz_batch_cnt.sum().item()}, '
+                           f'buildings_with_kp={(new_xyz_batch_cnt > 0).sum().item()}/{len(new_xyz_batch_cnt)}, '
+                           f'max_kp_per_bld={new_xyz_batch_cnt.max().item()}')
+                     if matches is not None:
+                         n_matched = (matches != -1).sum().item()
+                         print(f'[ClusterRefine DEBUG] matched kp (to GT verts): {n_matched}/{matches.shape[0]}')
+                 self._cr_match_debug_printed = True
+             # -------------------------------------------------
         else:
             pts_list, new_xyz_batch_cnt = [], []
             for i, pts in enumerate(key_pts):
