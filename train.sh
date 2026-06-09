@@ -17,8 +17,29 @@ cd /geogfs1/home/u3666068/Point2Roof-master/
 
 # 3. 环境变量（确保 Python 能找到所有模块）
 export PYTHONPATH=$PYTHONPATH:$(pwd)
+export PYTHONDONTWRITEBYTECODE=1    # 禁用 .pyc 缓存，强制读取源文件
+export PYTHONUNBUFFERED=1           # 禁用输出缓冲，日志实时可见
+
+# 3.5 清除旧缓存
+find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null
 
 echo "--- 训练启动时间: $(date) ---"
+
+# 3.6 验证代码修改已生效
+echo "--- 代码验证 ---"
+python -c "
+import inspect
+from model.pointnet2 import PointNet2
+src = inspect.getsource(PointNet2.get_cls_loss)
+print('=== get_cls_loss 源码 ===')
+print(src)
+print('=========================')
+# 检查 edge_start_epoch
+from utils import common_utils
+cfg = common_utils.cfg_from_yaml_file('model_cfg.yaml')
+print(f'edge_start_epoch = {cfg.MODEL.get(\"edge_start_epoch\", \"未设置\")}')
+print(f'lr = {cfg.OPTIM.lr}')
+"
 
 # 4. 执行训练 (保持你之前运行成功的参数)
 # 注意：请将 your_config.yaml 替换为你实际使用的配置文件名
