@@ -78,23 +78,6 @@ class ClusterRefineNet(nn.Module):
         # ---- FPS keypoint selection (replaces DBSCAN) ----
         K = int(self.model_cfg.get('num_keypoints', 8))
         key_pts = fps_keypoints(pts_cluster_3d, K=K)
-        # ---- DEBUG: FPS stats ----
-        if self.training and not hasattr(self, '_cr_debug_printed'):
-            n_pass_thresh = mask.reshape(B, N).sum(dim=1)           # (B,) points above threshold
-            n_kp = (key_pts[:, :, 0] > -2e1).sum(dim=1)             # (B,) valid kp
-            print(f'[ClusterRefine DEBUG] ScoreThresh={score_thresh}, '
-                  f'FPS K={K}')
-            print(f'[ClusterRefine DEBUG] pts_above_thresh per building: '
-                  f'min={n_pass_thresh.min().item()}, mean={n_pass_thresh.float().mean().item():.1f}, '
-                  f'max={n_pass_thresh.max().item()}')
-            print(f'[ClusterRefine DEBUG] FPS keypoints per building: '
-                  f'min={n_kp.min().item()}, mean={n_kp.float().mean().item():.1f}, '
-                  f'max={n_kp.max().item()}')
-            print(f'[ClusterRefine DEBUG] score stats: '
-                  f'min={pts_score.min().item():.4f}, mean={pts_score.mean().item():.4f}, '
-                  f'max={pts_score.max().item():.4f}')
-            self._cr_debug_printed = True
-        # ------------------------------------------------
 
         if self.training:
              new_pts, targets, labels, matches, new_xyz_batch_cnt = self.matcher(key_pts, batch_dict['vectors'])
@@ -104,18 +87,6 @@ class ClusterRefineNet(nn.Module):
                  'keypoint_cls_label': labels,
                  'keypoint_offset_label': offset_targets
              })
-             # ---- DEBUG: post-matcher stats ----
-             if not hasattr(self, '_cr_match_debug_printed'):
-                 if new_xyz_batch_cnt is not None:
-                     print(f'[ClusterRefine DEBUG] after Hungarian matcher: '
-                           f'new_xyz_batch_cnt sum={new_xyz_batch_cnt.sum().item()}, '
-                           f'buildings_with_kp={(new_xyz_batch_cnt > 0).sum().item()}/{len(new_xyz_batch_cnt)}, '
-                           f'max_kp_per_bld={new_xyz_batch_cnt.max().item()}')
-                     if matches is not None:
-                         n_matched = (matches != -1).sum().item()
-                         print(f'[ClusterRefine DEBUG] matched kp (to GT verts): {n_matched}/{matches.shape[0]}')
-                 self._cr_match_debug_printed = True
-             # -------------------------------------------------
         else:
             pts_list, new_xyz_batch_cnt = [], []
             for i, pts in enumerate(key_pts):

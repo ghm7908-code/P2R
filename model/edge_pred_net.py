@@ -57,26 +57,17 @@ class EdgeAttentionNet(nn.Module):
         matches = batch_dict.get('matches', None)
         edge_label = batch_dict.get('edges', [])
 
-        # ---- DEBUG counters ----
-        skip_no_edge_label = 0
-        skip_few_matches = 0
-        skip_few_pts = 0
-        success_samples = 0
-        # ----------------------
-
         idx = 0
         for i in range(batch_dict['batch_size']):
             mask = batch_idx == i
             num_pts = mask.sum().item()
 
             if num_pts <= 1:
-                skip_few_pts += 1
                 idx += num_pts
                 continue
 
             if self.training:
                 if i >= len(edge_label):
-                    skip_no_edge_label += 1
                     idx += num_pts
                     continue
 
@@ -85,7 +76,6 @@ class EdgeAttentionNet(nn.Module):
                 n_valid = valid_match_mask.sum().item()
 
                 if n_valid < 2:
-                    skip_few_matches += 1
                     idx += num_pts
                     continue
 
@@ -125,7 +115,6 @@ class EdgeAttentionNet(nn.Module):
                 pair_idx_list.append(pair_idx)
                 pair_idx_list1.append(pair_idx[:, 0] + idx)
                 pair_idx_list2.append(pair_idx[:, 1] + idx)
-                success_samples += 1
 
             else:
                 # 推理模式
@@ -136,26 +125,6 @@ class EdgeAttentionNet(nn.Module):
                 pair_idx_list2.append(pair_idx[:, 1] + idx)
 
             idx += num_pts
-
-        # ---- DEBUG: print summary once ----
-        if self.training and not hasattr(self, '_debug_printed'):
-            print(f'[EdgeNet DEBUG] batch_size={batch_dict["batch_size"]}, '
-                  f'has_matches={matches is not None}, '
-                  f'n_matches={matches.shape[0] if matches is not None else 0}, '
-                  f'n_edge_labels={len(edge_label)}')
-            print(f'[EdgeNet DEBUG] skip_few_pts={skip_few_pts}, '
-                  f'skip_no_edge_label={skip_no_edge_label}, '
-                  f'skip_few_matches={skip_few_matches}, '
-                  f'success_samples={success_samples}')
-            if skip_few_matches > 0 and matches is not None:
-                # 打印第一个样本的 match 详情
-                for _i in range(min(3, batch_dict['batch_size'])):
-                    _mask = batch_idx == _i
-                    _cm = matches[_mask]
-                    _n_valid = (_cm != -1).sum().item()
-                    print(f'[EdgeNet DEBUG]   sample {_i}: num_kp={_mask.sum().item()}, valid_matches={_n_valid}')
-            self._debug_printed = True
-        # -------------------------------------------------
 
         # --- 后续预测逻辑保持不变 ---
         if len(pair_idx_list1) > 0:

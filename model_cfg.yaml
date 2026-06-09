@@ -28,7 +28,7 @@ MODEL:
       cls_weight: 1.0
       reg_weight: 1.0
   ClusterRefineNet:
-    ScoreThresh: 0.02
+    ScoreThresh: 0.5
     MatchRadius: 0.5
     num_keypoints: 8
     Cluster:
