@@ -30,9 +30,10 @@ MODEL:
   ClusterRefineNet:
     ScoreThresh: 0.02
     MatchRadius: 0.5
+    num_keypoints: 8
     Cluster:
-      eps: 0.15
-      min_pts: 1
+      eps: 0.05
+      min_pts: 2
     RefineSA:
       Radii: [0.1, 0.2]
       Nsamples: [16, 16]

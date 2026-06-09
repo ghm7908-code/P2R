@@ -161,3 +161,60 @@ class GetClusterPts(Function):
     def backward(ctx, grad_out): return (None, None)
 
 get_cluster_pts = GetClusterPts.apply
+
+
+def fps_keypoints(pts, K=8):
+    """
+    用 Farthest Point Sampling 对每个建筑选取 K 个关键点。
+    DBSCAN 在 score 未校准时极易产出 0/1 簇，FPS 保证均匀分布的 K 个点。
+    Args:
+        pts: (B, N, 3) — 坐标；coord[0] < -5 的点视为无效（掩码填充）
+        K: 每建筑目标关键点数
+    Returns:
+        key_pts: (B, K, 3) — 不足时用 -10 补齐
+    """
+    B, N, _ = pts.shape
+    device = pts.device
+    key_pts_list = []
+
+    for b in range(B):
+        valid_mask = pts[b, :, 0] > -5
+        n_valid = valid_mask.sum().item()
+
+        if n_valid == 0:
+            key_pts_list.append(torch.full((K, 3), -10.0, device=device))
+            continue
+
+        candidates = pts[b][valid_mask]
+        k = min(K, n_valid)
+        indices = _fps_sample(candidates, k)
+        selected = candidates[indices]
+
+        if k < K:
+            pad = torch.full((K - k, 3), -10.0, device=device)
+            selected = torch.cat([selected, pad], dim=0)
+
+        key_pts_list.append(selected)
+
+    return torch.stack(key_pts_list)
+
+
+def _fps_sample(xyz, npoint):
+    """Farthest Point Sampling: (M, 3) → (npoint,) indices"""
+    M = xyz.shape[0]
+    if M <= npoint:
+        return torch.arange(M, device=xyz.device)
+
+    idx = torch.zeros(npoint, dtype=torch.long, device=xyz.device)
+    dist = torch.full((M,), 1e10, device=xyz.device)
+    farthest = torch.randint(0, M, (1,), device=xyz.device).item()
+
+    for i in range(npoint):
+        idx[i] = farthest
+        centroid = xyz[farthest].view(1, 3)
+        d = ((xyz - centroid) ** 2).sum(dim=1)
+        mask = d < dist
+        dist[mask] = d[mask]
+        farthest = dist.argmax().item()
+
+    return idx
