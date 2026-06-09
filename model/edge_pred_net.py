@@ -53,39 +53,50 @@ class EdgeAttentionNet(nn.Module):
 
         bin_label_list = []
         pair_idx_list, pair_idx_list1, pair_idx_list2 = [], [], []
-        
+
         matches = batch_dict.get('matches', None)
         edge_label = batch_dict.get('edges', [])
-        
+
+        # ---- DEBUG counters ----
+        skip_no_edge_label = 0
+        skip_few_matches = 0
+        skip_few_pts = 0
+        success_samples = 0
+        # ----------------------
+
         idx = 0
         for i in range(batch_dict['batch_size']):
             mask = batch_idx == i
             num_pts = mask.sum().item()
-            
+
             if num_pts <= 1:
+                skip_few_pts += 1
                 idx += num_pts
                 continue
-                
+
             if self.training:
                 if i >= len(edge_label):
+                    skip_no_edge_label += 1
                     idx += num_pts
                     continue
-                    
+
                 curr_match = matches[mask]
                 valid_match_mask = (curr_match != -1)
-                
-                if valid_match_mask.sum() < 2:
+                n_valid = valid_match_mask.sum().item()
+
+                if n_valid < 2:
+                    skip_few_matches += 1
                     idx += num_pts
                     continue
-                
+
                 # 1. 生成所有预测组合
                 pair_idx = list(itertools.combinations(range(num_pts), 2))
                 pair_idx = torch.tensor(pair_idx, device=device)
-                
+
                 # 2. 准备 GT 集合
                 curr_gt = edge_label[i]
                 gt_edge_set = set()
-                
+
                 if curr_gt is not None:
                     # 将数据转为 numpy 以便处理
                     if torch.is_tensor(curr_gt):
@@ -97,7 +108,7 @@ class EdgeAttentionNet(nn.Module):
                     if curr_gt_np.ndim == 1 and curr_gt_np.size == 2:
                         # 如果只有一条边被挤压成了 [v1, v2]，转为 [[v1, v2]]
                         curr_gt_np = curr_gt_np[np.newaxis, :]
-                    
+
                     if curr_gt_np.ndim == 2 and curr_gt_np.shape[1] == 2:
                         # 确保每个 e 都是可迭代的数组 [v1, v2]
                         curr_gt_np = curr_gt_np[np.sum(curr_gt_np, axis=1) >= 0]
@@ -106,15 +117,16 @@ class EdgeAttentionNet(nn.Module):
                 # 3. 生成标签
                 match_np = curr_match.cpu().numpy()
                 match_edges = [tuple(sorted((int(match_np[p[0]]), int(match_np[p[1]])))) for p in pair_idx.tolist()]
-                
+
                 label = torch.tensor([e in gt_edge_set for e in match_edges], device=device, dtype=torch.float)
-                
+
                 # DEBUG 打印
                 bin_label_list.append(label)
                 pair_idx_list.append(pair_idx)
                 pair_idx_list1.append(pair_idx[:, 0] + idx)
                 pair_idx_list2.append(pair_idx[:, 1] + idx)
-                
+                success_samples += 1
+
             else:
                 # 推理模式
                 pair_idx = list(itertools.combinations(range(num_pts), 2))
@@ -124,6 +136,26 @@ class EdgeAttentionNet(nn.Module):
                 pair_idx_list2.append(pair_idx[:, 1] + idx)
 
             idx += num_pts
+
+        # ---- DEBUG: print summary once ----
+        if self.training and not hasattr(self, '_debug_printed'):
+            print(f'[EdgeNet DEBUG] batch_size={batch_dict["batch_size"]}, '
+                  f'has_matches={matches is not None}, '
+                  f'n_matches={matches.shape[0] if matches is not None else 0}, '
+                  f'n_edge_labels={len(edge_label)}')
+            print(f'[EdgeNet DEBUG] skip_few_pts={skip_few_pts}, '
+                  f'skip_no_edge_label={skip_no_edge_label}, '
+                  f'skip_few_matches={skip_few_matches}, '
+                  f'success_samples={success_samples}')
+            if skip_few_matches > 0 and matches is not None:
+                # 打印第一个样本的 match 详情
+                for _i in range(min(3, batch_dict['batch_size'])):
+                    _mask = batch_idx == _i
+                    _cm = matches[_mask]
+                    _n_valid = (_cm != -1).sum().item()
+                    print(f'[EdgeNet DEBUG]   sample {_i}: num_kp={_mask.sum().item()}, valid_matches={_n_valid}')
+            self._debug_printed = True
+        # -------------------------------------------------
 
         # --- 后续预测逻辑保持不变 ---
         if len(pair_idx_list1) > 0:
