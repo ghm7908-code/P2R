@@ -21,14 +21,14 @@ OPTIM:
 
 MODEL:
   use_edge: false
-  edge_start_epoch: 8
+  edge_start_epoch: 30
   PointNet2:
     PosRadius: 0.15
     LossWeight:
       cls_weight: 1.0
       reg_weight: 1.0
   ClusterRefineNet:
-    ScoreThresh: 0.3
+    ScoreThresh: 0.02
     MatchRadius: 0.5
     num_keypoints: 8
     Cluster:
@@ -42,5 +42,5 @@ MODEL:
       reg_weight: 1.0
   EdgeAttentionNet:
     LossWeight:
-      cls_weight: 1.0
+      cls_weight: 0.1
     edge_pos_weight: 10.0
