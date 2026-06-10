@@ -21,7 +21,7 @@ OPTIM:
 
 MODEL:
   use_edge: false
-  edge_start_epoch: 1
+  edge_start_epoch: 8
   PointNet2:
     PosRadius: 0.15
     LossWeight:
@@ -43,4 +43,4 @@ MODEL:
   EdgeAttentionNet:
     LossWeight:
       cls_weight: 1.0
-    edge_pos_weight: 2.0
+    edge_pos_weight: 10.0

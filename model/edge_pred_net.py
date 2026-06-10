@@ -158,9 +158,8 @@ class EdgeAttentionNet(nn.Module):
         
         # 2. 计算分类 Loss
         cls_loss = self.cls_loss_func(pred_logits, label_cls)
-        
-        # 如果你有自定义的 get_cls_loss 也可以用，但建议保持一致：
-        # cls_loss = self.get_cls_loss(pred_logits, label_cls, self.loss_weight.get('cls_weight', 1.0))
+        weight = self.loss_weight.get('cls_weight', 1.0)
+        cls_loss = cls_loss * weight
         
         total_loss = cls_loss # 如果后续有其他 loss (如 offset loss) 再相加
         
