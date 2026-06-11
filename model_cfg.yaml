@@ -13,15 +13,15 @@ DATA:
   use_intensity: false
 
 OPTIM:
-  epochs: 120
+  epochs: 150
   lr: 0.002
   weight_decay: 0.001
-  lr_step: 30
+  lr_step: 25
   lr_gamma: 0.5
 
 MODEL:
   use_edge: false
-  edge_start_epoch: 30
+  edge_start_epoch: 3
   PointNet2:
     PosRadius: 0.15
     LossWeight:

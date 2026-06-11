@@ -145,7 +145,9 @@ class ClusterRefineNet(nn.Module):
         batch_dict['keypoint'] = torch.cat([batch_idx.view(-1, 1), new_pts], -1)
         batch_dict['keypoint_features'] = refine_fea
         # batch_dict['keypoint_pred_score'] = torch.sigmoid(pred_cls).squeeze(-1)
-        batch_dict['refined_keypoint'] = pred_offset * self.model_cfg.MatchRadius + new_pts
+        refined = pred_offset * self.model_cfg.MatchRadius + new_pts
+        refined = refined.clamp(0.0, 1.0)
+        batch_dict['refined_keypoint'] = refined
         return batch_dict
 
     def loss(self, loss_dict, disp_dict,batch_dict=None):
