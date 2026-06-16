@@ -108,7 +108,23 @@ class EdgeAttentionNet(nn.Module):
 
                 label = torch.tensor([e in gt_edge_set for e in match_edges], device=device, dtype=torch.float)
 
-                # DEBUG 打印
+                # 负采样: 保留全部正样本 + 最多 neg_ratio:1 的随机负样本
+                neg_ratio = int(self.model_cfg.get('edge_neg_ratio', 3))
+                pos_mask = label == 1
+                neg_mask = label == 0
+                n_pos = pos_mask.sum().item()
+                if n_pos > 0:
+                    neg_indices = torch.where(neg_mask)[0]
+                    n_neg_keep = n_pos * neg_ratio
+                    if len(neg_indices) > n_neg_keep:
+                        perm = torch.randperm(len(neg_indices))[:n_neg_keep].to(device)
+                        keep_neg = neg_indices[perm]
+                        keep_mask = torch.zeros(len(label), dtype=torch.bool, device=device)
+                        keep_mask[pos_mask] = True
+                        keep_mask[keep_neg] = True
+                        label = label[keep_mask]
+                        pair_idx = pair_idx[keep_mask]
+
                 bin_label_list.append(label)
                 pair_idx_list.append(pair_idx)
                 pair_idx_list1.append(pair_idx[:, 0] + idx)

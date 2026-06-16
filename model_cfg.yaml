@@ -30,7 +30,7 @@ MODEL:
   ClusterRefineNet:
     ScoreThresh: 0.02
     MatchRadius: 0.5
-    num_keypoints: 8
+    num_keypoints: 16
     Cluster:
       eps: 0.05
       min_pts: 2
@@ -42,5 +42,6 @@ MODEL:
       reg_weight: 1.0
   EdgeAttentionNet:
     LossWeight:
-      cls_weight: 0.1
-    edge_pos_weight: 10.0
+      cls_weight: 0.05
+    edge_pos_weight: 3.0
+    edge_neg_ratio: 3
