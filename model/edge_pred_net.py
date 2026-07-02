@@ -164,8 +164,10 @@ class EdgeAttentionNet(nn.Module):
         # 2. 计算分类 Loss（Focal Loss 返回逐样本损失，需手动归约）
         weights = torch.ones_like(pred_logits)
         cls_loss_src = self.cls_loss_func(pred_logits, label_cls, weights)
-        # 按总样本数归一化，保持 loss scale 稳定
-        cls_loss = cls_loss_src.sum() / max(pred_logits.numel(), 1)
+        # 按正样本数归一化（而非总预测数），避免梯度消失
+        # Focal Loss 的 gamma 已处理 easy negatives，再除以总量会淹没正样本梯度
+        num_pos = max((label_cls > 0).sum().item(), 1)
+        cls_loss = cls_loss_src.sum() / num_pos
         weight = self.loss_weight.get('cls_weight', 1.0)
         cls_loss = cls_loss * weight
         
