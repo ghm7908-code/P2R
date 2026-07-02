@@ -42,11 +42,9 @@ def resolve_split_path(root_or_split_path, data_cfg, training=True, split=None):
 
     if path.is_dir():
         if training:
-            target_count = _cfg_get(data_cfg, "subset_count", 4096)
+            target_count = _cfg_get(data_cfg, "subset_count", 40960)
             list_candidates = [
                 path / f"train_list_subset_{target_count}.txt",
-                path / "train_list_subset_4096.txt",
-                path / "train_list_subset_2048.txt",
                 path / "train_list.txt",
                 path / "train.txt",
             ]

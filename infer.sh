@@ -15,8 +15,8 @@
 set -e  # 遇错即停
 
 # ---------- 可调参数 ----------
-EXTRA_TAG="full_run_v2"      # 与 train.sh --extra_tag 一致
-SPLIT="val"                  # val / test
+EXTRA_TAG="full_run_v8"      # 与 train.sh --extra_tag 一致
+SPLIT="test"                  # val / test
 EDGE_THRESH=0.5
 POINT_THRESH=0.1
 AP_DIST_THRESH=0.1
