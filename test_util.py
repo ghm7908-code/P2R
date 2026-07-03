@@ -370,6 +370,11 @@ def test_model(model, data_loader, logger, edge_thresh=0.5, point_match_thresh=0
     # Initialize APCalculator for comprehensive metrics
     ap_calculator = APCalculator(distance_thresh=ap_distance_thresh)
 
+    # Diagnostic: collect edge score statistics from first N samples
+    diag_edge_scores = []
+    diag_sample_count = 0
+    diag_max_samples = 10  # only log first 10 batches
+
     dataloader_iter = iter(data_loader)
     with tqdm.trange(0, len(data_loader), desc='test', dynamic_ncols=True) as tbar:
         for _ in tbar:
@@ -380,6 +385,47 @@ def test_model(model, data_loader, logger, edge_thresh=0.5, point_match_thresh=0
                 load_data_to_cpu(batch)
             eval_process(batch, statistics, edge_thresh=edge_thresh, point_match_thresh=point_match_thresh)
             eval_process_ap(batch, ap_calculator, edge_thresh=edge_thresh)
+
+            # Diagnostic: log edge_score distribution for first few batches
+            if diag_sample_count < diag_max_samples:
+                edge_scores = batch.get('edge_score', np.zeros((0,), dtype=np.float32))
+                for i in range(batch['batch_size']):
+                    if diag_sample_count >= diag_max_samples:
+                        break
+                    keypoints = batch.get('keypoint', np.zeros((0, 4), dtype=np.float32))
+                    p_pts = batch['refined_keypoint'][keypoints[:, 0] == i] if len(keypoints) else np.zeros((0, 3))
+                    num_pairs = len(p_pts) * (len(p_pts) - 1) // 2
+                    offset = sum(
+                        len(batch['refined_keypoint'][keypoints[:, 0] == j]) * (len(batch['refined_keypoint'][keypoints[:, 0] == j]) - 1) // 2
+                        for j in range(i)
+                    ) if len(keypoints) else 0
+                    sample_scores = edge_scores[offset: offset + num_pairs] if num_pairs > 0 else np.zeros((0,))
+                    diag_edge_scores.append({
+                        'sample_id': batch['frame_id'][i] if i < len(batch.get('frame_id', [])) else str(diag_sample_count),
+                        'num_keypoints': len(p_pts),
+                        'num_pairs': num_pairs,
+                        'scores_mean': float(sample_scores.mean()) if len(sample_scores) else 0.0,
+                        'scores_std': float(sample_scores.std()) if len(sample_scores) else 0.0,
+                        'scores_min': float(sample_scores.min()) if len(sample_scores) else 0.0,
+                        'scores_max': float(sample_scores.max()) if len(sample_scores) else 0.0,
+                        'scores_above_05': int((sample_scores > 0.5).sum()) if len(sample_scores) else 0,
+                        'scores_above_03': int((sample_scores > 0.3).sum()) if len(sample_scores) else 0,
+                        'scores_above_01': int((sample_scores > 0.1).sum()) if len(sample_scores) else 0,
+                        'top10_scores': sorted(sample_scores.tolist(), reverse=True)[:10] if len(sample_scores) >= 10 else sorted(sample_scores.tolist(), reverse=True),
+                    })
+                    diag_sample_count += 1
+
+    # Log edge score diagnostics
+    logger.info('========== Edge Score Distribution Diagnostics (first %d samples) ==========', len(diag_edge_scores))
+    for info in diag_edge_scores:
+        logger.info(
+            'Sample %s: kpts=%d pairs=%d mean=%.4f std=%.4f min=%.4f max=%.4f '
+            '>0.5=%d >0.3=%d >0.1=%d top10=%s',
+            info['sample_id'], info['num_keypoints'], info['num_pairs'],
+            info['scores_mean'], info['scores_std'], info['scores_min'], info['scores_max'],
+            info['scores_above_05'], info['scores_above_03'], info['scores_above_01'],
+            [f'{v:.4f}' for v in info['top10_scores']],
+        )
 
     bias = statistics['pts_bias'] / max(statistics['tp_pts'], 1)
     metrics = {

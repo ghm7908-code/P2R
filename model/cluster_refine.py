@@ -55,29 +55,33 @@ class ClusterRefineNet(nn.Module):
                 nn.init.constant_(m.bias, 0)
 
 
-# tips: change from batch to stack
     def forward(self, batch_dict):
         if self.training:
             self.train_dict = {}
         offset_pts = batch_dict['points'].clone()
         offset = batch_dict['point_pred_offset']
         pts_score = batch_dict['point_pred_score']
-        pts_score_flat = pts_score.reshape(-1) 
-        offset_flat = offset.reshape(-1, 3)
 
-        score_thresh = self.model_cfg.ScoreThresh
-        mask = pts_score_flat > score_thresh
-        offset_pts[mask] += offset_flat[mask]
+        # offset_pts 来自 batch_dict['points']，可能是 (B*N, 3) 扁平形式
+        # 需要 reshape 为 (B, N, 3) 以匹配 pts_score (B, N) 和 offset (B, N, 3)
         B = batch_dict['batch_size']
         N = offset_pts.shape[0] // B
+        offset_pts = offset_pts.view(B, N, 3)
+
+        score_thresh = self.model_cfg.ScoreThresh
+        # 直接 (B,N)/(B,N,3) 索引
+        offset_pts[pts_score > score_thresh] += offset[pts_score > score_thresh]
 
         pts_cluster = offset_pts.new_ones(offset_pts.shape) * -10
-        pts_cluster[mask] = offset_pts[mask]
-        pts_cluster_3d = pts_cluster.reshape(B, N, 3).contiguous() # 结果是 [64, 4096, 3]
+        pts_cluster[pts_score > score_thresh] = offset_pts[pts_score > score_thresh]
 
-        # ---- FPS keypoint selection (replaces DBSCAN) ----
-        K = int(self.model_cfg.get('num_keypoints', 8))
-        key_pts = fps_keypoints(pts_cluster_3d, K=K)
+        # ---- DBSCAN 聚类：簇中心自然对应屋顶角点 ----
+        cluster_idx = dbscan_cluster(
+            self.model_cfg.Cluster.eps,
+            self.model_cfg.Cluster.min_pts,
+            pts_cluster,
+        )
+        key_pts, num_cluster = get_cluster_pts(pts_cluster, cluster_idx)
 
         if self.training:
              new_pts, targets, labels, matches, new_xyz_batch_cnt = self.matcher(key_pts, batch_dict['vectors'])
@@ -116,10 +120,8 @@ class ClusterRefineNet(nn.Module):
 
         pos_mask = new_xyz_batch_cnt > 0
 
-        offset_pts_3d = offset_pts.view(B, N, 3) 
-        # 只保留有聚类结果的建筑
-        offset_pts = offset_pts_3d[pos_mask] # 结果形状为 [有效建筑数, 4096, 3]
-
+        # offset_pts 已经是 (B, N, 3)，直接过滤有效建筑
+        offset_pts = offset_pts[pos_mask]  # [B_valid, N, 3]
         
         xyz = offset_pts.reshape(-1, 3)
         

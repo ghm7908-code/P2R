@@ -25,10 +25,10 @@ class EdgeAttentionNet(nn.Module):
         if self.training:
             self.train_dict = {}
             # 用 Focal Loss 替代 BCEWithLogitsLoss + 负采样
-            # Focal Loss 通过 alpha/gamma 天然处理类别不平衡，
-            # 训练和推理时看到的数据分布完全一致
+            # Focal Loss: alpha 上调到 0.5，加大正样本梯度权重，
+            # 防止模型塌缩到均匀预测（所有 edge_score ≈ 某个低值）
             self.cls_loss_func = loss_utils.SigmoidFocalClassificationLoss(
-                gamma=2.0, alpha=0.25
+                gamma=2.0, alpha=0.5
             )
 
             self.loss_weight = self.model_cfg.LossWeight

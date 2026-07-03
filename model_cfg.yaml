@@ -21,7 +21,7 @@ OPTIM:
 
 MODEL:
   use_edge: false
-  edge_start_epoch: 3
+  edge_start_epoch: 1
   PointNet2:
     PosRadius: 0.15
     LossWeight:
@@ -30,7 +30,9 @@ MODEL:
   ClusterRefineNet:
     ScoreThresh: 0.02
     MatchRadius: 0.5
-    num_keypoints: 12
+    # DBSCAN 聚类参数（FPS 已废弃，恢复为 DBSCAN）
+    # eps: 归一化空间中的邻域半径（0.03-0.05，越小角点分离越精细）
+    # min_pts: 形成簇的最小点数（2-5，屋顶角点多时降低）
     Cluster:
       eps: 0.05
       min_pts: 2
