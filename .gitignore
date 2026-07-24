@@ -12,3 +12,5 @@ data/
 output/
 logs/
 results/
+.workbuddy/
+__pycache__/

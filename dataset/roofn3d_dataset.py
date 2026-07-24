@@ -342,13 +342,13 @@ class RoofN3dDataset(Dataset):
         vectors, edges = load_obj(sample["obj_path"])
 
         if self.normalize_with_full_cloud:
-            min_pt, max_pt = self._square_bounds(all_points)
+            min_pt, max_pt = self._normalize_bounds(all_points)
 
         points = self.transform(all_points.copy())
         points = self._sample_points(points)
 
         if not self.normalize_with_full_cloud:
-            min_pt, max_pt = self._square_bounds(points)
+            min_pt, max_pt = self._normalize_bounds(points)
 
         denom = np.maximum(max_pt - min_pt, 1e-6)
         points = (points - min_pt) / denom
@@ -378,12 +378,30 @@ class RoofN3dDataset(Dataset):
         return points[idx]
 
     @staticmethod
-    def _square_bounds(points):
-        min_pt = np.min(points, axis=0).astype(np.float64)
-        max_pt = np.max(points, axis=0).astype(np.float64)
-        min_xyz = np.min(min_pt)
-        max_xyz = np.max(max_pt)
-        return np.full(3, min_xyz, dtype=np.float64), np.full(3, max_xyz, dtype=np.float64)
+    def _normalize_bounds(points):
+        """各向同性归一化: 去中心化 + 除以最大欧氏距离。
+
+        对于 UTM 坐标 (X~50万, Y~650万, Z~43) 的 Building3D 数据,
+        旧的 _square_bounds 会用 Y 轴的最大值归一化所有轴,
+        导致 Z 维度被压缩到 ~1e-6, 屋顶三维信息完全丢失。
+
+        新方案:
+          centered = points - centroid
+          points_norm = centered / max_distance   →  落在半径为 1 的球内, 约 [-1, 1]
+
+        返回 (min_pt, max_pt), 满足现有归一化/反归一化公式:
+          归一化:   (points - min_pt) / (max_pt - min_pt)
+          反归一化: normalized * (max_pt - min_pt) + min_pt
+        其中 max_pt - min_pt = max_distance (标量广播到 3D)。
+        """
+        centroid = np.mean(points, axis=0).astype(np.float64)
+        centered = points - centroid
+        max_dist = float(np.max(np.linalg.norm(centered, axis=1)))
+        if max_dist < 1e-6:
+            max_dist = 1.0
+        min_pt = centroid
+        max_pt = centroid + np.full(3, max_dist, dtype=np.float64)
+        return min_pt, max_pt
 
     @staticmethod
     def collate_batch(batch_list, _unused=False):

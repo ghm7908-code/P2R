@@ -23,8 +23,8 @@ def parse_config():
     parser.add_argument("--test_tag", type=str, default="default")
     parser.add_argument("--ckpt", type=str, default=None)
     parser.add_argument("--edge_thresh", type=float, default=0.5)
-    parser.add_argument("--point_thresh", type=float, default=0.1)
-    parser.add_argument("--ap_distance_thresh", type=float, default=0.1,
+    parser.add_argument("--point_thresh", type=float, default=0.2)
+    parser.add_argument("--ap_distance_thresh", type=float, default=0.2,
                         help="Distance threshold for APCalculator Hungarian matching")
     parser.add_argument("--save_obj", action="store_true")
     parser.add_argument("--allow_random", action="store_true")

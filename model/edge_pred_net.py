@@ -129,10 +129,16 @@ class EdgeAttentionNet(nn.Module):
 
             idx += num_pts
 
-        # --- 后续预测逻辑保持不变 ---
+        # --- 后续预测逻辑 ---
         if len(pair_idx_list1) > 0:
             p1, p2 = torch.cat(pair_idx_list1).long(), torch.cat(pair_idx_list2).long()
-            edge_fea = self.att_layer(point_fea[p1], point_fea[p2])
+            # 获取关键点坐标用于几何特征增强
+            keypoint_xyz = batch_dict.get('refined_keypoint', None)
+            if keypoint_xyz is not None:
+                edge_fea = self.att_layer(point_fea[p1], point_fea[p2],
+                                          keypoint_xyz[p1], keypoint_xyz[p2])
+            else:
+                edge_fea = self.att_layer(point_fea[p1], point_fea[p2])
             edge_pred = self.cls_fc(self.drop(self.shared_fc(edge_fea)))
             
             batch_dict['pair_points'] = torch.cat(pair_idx_list, 0)
@@ -216,8 +222,9 @@ class EdgeAttentionNet(nn.Module):
 
 
 class PairedPointAttention(nn.Module):
-    def __init__(self, input_channel):
+    def __init__(self, input_channel, use_geo=True):
         super().__init__()
+        self.use_geo = use_geo
         self.edge_att1 = nn.Sequential(
             nn.Linear(input_channel, input_channel),
             nn.BatchNorm1d(input_channel),
@@ -234,9 +241,11 @@ class PairedPointAttention(nn.Module):
         )
         self.fea_fusion_layer = nn.MaxPool1d(2)
 
-        self.num_output_feature = input_channel
+        # 几何特征维度: distance(1) + direction(3) = 4
+        geo_dim = 4 if use_geo else 0
+        self.num_output_feature = input_channel + geo_dim
 
-    def forward(self, point_fea1, point_fea2):
+    def forward(self, point_fea1, point_fea2, point_xyz1=None, point_xyz2=None):
         fusion_fea = point_fea1 + point_fea2
         att1 = self._forward_attention_mlp(self.edge_att1, fusion_fea)
         att2 = self._forward_attention_mlp(self.edge_att2, fusion_fea)
@@ -244,6 +253,15 @@ class PairedPointAttention(nn.Module):
         att_fea2 = point_fea2 * att2
         fea = torch.cat([att_fea1.unsqueeze(1), att_fea2.unsqueeze(1)], 1)
         fea = self.fea_fusion_layer(fea.permute(0, 2, 1)).squeeze(-1)
+
+        # 显式几何特征: 端点距离 + 单位方向向量
+        if self.use_geo and point_xyz1 is not None and point_xyz2 is not None:
+            vec = point_xyz2 - point_xyz1                          # (N, 3)
+            dist = torch.norm(vec, dim=-1, keepdim=True)           # (N, 1)
+            direction = vec / (dist + 1e-6)                        # (N, 3), normalized
+            geo_fea = torch.cat([dist, direction], dim=-1)         # (N, 4)
+            fea = torch.cat([fea, geo_fea], dim=-1)
+
         return fea
 
     @staticmethod

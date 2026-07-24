@@ -28,8 +28,9 @@ MODEL:
       cls_weight: 1.0
       reg_weight: 1.0
   ClusterRefineNet:
-    ScoreThresh: 0.02
-    MatchRadius: 0.5
+    ScoreThresh: 0.3
+    MatchRadius: 0.2
+    num_keypoints: 16
     # DBSCAN 聚类参数（FPS 已废弃，恢复为 DBSCAN）
     # eps: 归一化空间中的邻域半径（0.03-0.05，越小角点分离越精细）
     # min_pts: 形成簇的最小点数（2-5，屋顶角点多时降低）
