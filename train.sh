@@ -33,8 +33,14 @@ mkdir -p logs
 
 echo "--- 训练启动时间: $(date) ---"
 
-# 5. 执行训练
-# 不手动设 CUDA_VISIBLE_DEVICES，让 Slurm 自动分配
+# 5. GPU 诊断（排查 CUDA 初始化失败）
+echo "--- GPU 诊断 ---"
+echo "CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
+nvidia-smi 2>/dev/null || echo "(nvidia-smi 不可用，可能未分配 GPU)"
+echo "---"
+
+# 6. 执行训练
+export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
 python train.py \
     --cfg_file model_cfg.yaml \
     --extra_tag 'full_run_v9'
