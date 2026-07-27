@@ -52,9 +52,24 @@ def get_input_channels(cfg):
         desc += "+Intensity"
     return channels, desc
 
+def _log_gpu_info(arg_gpu):
+    """打印 GPU 可用性，排查 SLURM/Colab 下的 CUDA 初始化问题"""
+    env_gpu = os.environ.get('CUDA_VISIBLE_DEVICES', '(未设置)')
+    print(f"[GPU 诊断] --gpu={arg_gpu}, CUDA_VISIBLE_DEVICES={env_gpu}")
+    if torch.cuda.is_available():
+        print(f"[GPU 诊断] 可用 GPU 数: {torch.cuda.device_count()}")
+        for i in range(torch.cuda.device_count()):
+            print(f"  GPU {i}: {torch.cuda.get_device_name(i)}")
+    else:
+        print("[GPU 诊断] 警告: CUDA 不可用，将回退 CPU（极慢）")
+
+
 def main():
     args, cfg = parse_config()
-    os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
+    # 优先使用环境变量中已有的 GPU 分配（SLURM/Colab），避免覆盖系统分配
+    if "CUDA_VISIBLE_DEVICES" not in os.environ:
+        os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
+    _log_gpu_info(args.gpu)
 
     # 1. 实验环境准备
     time_str = datetime.datetime.now().strftime('%m%d_%H%M')
